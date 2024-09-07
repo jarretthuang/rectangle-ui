@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="https://labs.jhuang.ca/" target="_blank">
-        <img src="https://raw.githubusercontent.com/jarretthuang/rectangle-ui/main/projects/demo/public/logo-with-text.svg" alt=""  />
+        <img src="https://raw.githubusercontent.com/jarretthuang/rectangle-ui/main/projects/demo/public/logo-with-text.png" alt=""  />
     </a>
 </h1>
 
