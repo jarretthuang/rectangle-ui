@@ -11,7 +11,7 @@ import { NgOptimizedImage } from "@angular/common";
       class="flex h-full w-full select-none items-center justify-between px-5"
       aria-label="Header with logo and mode toggle">
       <div class="flex h-full items-center">
-        <img class="h-full" ngSrc="/logo.svg" alt="Logo" height="50" width="50" />
+        <img class="h-full invert dark:invert-0" ngSrc="/logo.svg" alt="Logo" height="50" width="50" />
         <span class="font-semibold">Rectangle UI</span>
       </div>
       <app-mode-toggle aria-label="Toggle dark and light mode"></app-mode-toggle>
