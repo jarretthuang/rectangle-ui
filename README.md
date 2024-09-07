@@ -1,6 +1,6 @@
-<h1 align="center">Rectangle-UI
+<h1 align="center">
     <a href="https://labs.jhuang.ca/" target="_blank">
-        <img src="https://raw.githubusercontent.com/jarretthuang/rectangle-ui/main/projects/demo/public/logo.svg" alt="" style="width: 60px; height: 60px; padding-left: 10px;" />
+        <img src="https://raw.githubusercontent.com/jarretthuang/rectangle-ui/main/projects/demo/public/logo-with-text.svg" alt=""  />
     </a>
 </h1>
 
