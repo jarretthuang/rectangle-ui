@@ -16,6 +16,14 @@
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
+    "paths": {
+      "rectangle-ui": [
+        "./projects/rectangle-ui/src/public-api"
+      ],
+      "utils-lib": [
+        "./projects/utils-lib/src/public-api"
+      ]
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
@@ -23,7 +31,7 @@
       "ES2022",
       "dom"
     ]
-  },
+},
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

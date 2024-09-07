@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .primary-gradient {
+    @apply bg-gradient-to-br dark:from-black dark:to-primary-1000 from-primary-100 to-primary-300;
+  }
+}
