@@ -2,7 +2,7 @@ const { join } = require("path");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [join(__dirname, "./**/!(*.spec).{ts,html}")],
+  content: [join(__dirname, "./projects/**/!(*.spec).{ts,html}")],
   theme: {
     extend: {
       colors: {
