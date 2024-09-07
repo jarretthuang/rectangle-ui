@@ -4,6 +4,12 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply min-h-screen block bg-mono-100 dark:bg-mono-1000 text-mono-800 dark:text-mono-100 overflow-x-hidden overflow-y-auto font-sans;
+  }
+}
+
+@layer utilities {
   .primary-gradient {
     @apply bg-gradient-to-br dark:from-black dark:to-primary-1000 from-primary-100 to-primary-300;
   }

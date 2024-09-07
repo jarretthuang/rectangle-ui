@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NgClass } from "@angular/common";
-import { tw } from "utils-lib";
+import { tw } from "@/utils/tailwind";
 
 @Component({
   selector: "rectangle-ui-badge",
@@ -15,8 +15,8 @@ import { tw } from "utils-lib";
 })
 export class BadgeComponent {
   styleClasses = [
-    tw`bg-primary-800/90 dark:bg-primary-200/90 hover:bg-primary-800 dark:hover:bg-primary-200`,
-    tw`text-primary-200 dark:text-primary-800 text-xs font-semibold`,
-    tw`flex w-fit rounded-lg p-2 duration-200`,
+    tw`bg-primary-900/90 hover:bg-primary-900 dark:bg-primary-100/95 dark:hover:bg-primary-100`,
+    tw`text-xs font-semibold text-mono-200 dark:text-mono-800`,
+    tw`flex w-fit rounded-lg p-2 transition-all duration-200`,
   ];
 }

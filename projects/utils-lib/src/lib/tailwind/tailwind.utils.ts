@@ -1,1 +1,3 @@
-export const tw = (strings: TemplateStringsArray, ...values: string[]) => String.raw({ raw: strings }, ...values);
+export function tw(strings: TemplateStringsArray, ...values: string[]): string {
+  return String.raw({ raw: strings }, ...values);
+}

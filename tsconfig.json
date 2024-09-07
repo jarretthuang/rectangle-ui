@@ -17,11 +17,11 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "paths": {
-      "rectangle-ui": [
-        "./projects/rectangle-ui/src/public-api"
+      "@/components/*": [
+        "./projects/rectangle-ui/src/lib/components/*"
       ],
-      "utils-lib": [
-        "./projects/utils-lib/src/public-api"
+      "@/utils/*": [
+        "./projects/utils-lib/src/lib/*"
       ]
     },
     "importHelpers": true,
