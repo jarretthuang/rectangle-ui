@@ -8,9 +8,7 @@ import { NgClass } from "@angular/common";
   standalone: true,
   imports: [NgIconComponent, NgClass],
   template: `
-    <button
-      class="relative flex rounded bg-transparent p-2 transition-all duration-300 hover:bg-mono-300 dark:hover:bg-mono-900"
-      (click)="toggleTheme()">
+    <button class="hover-outline relative flex p-2" (click)="toggleTheme()">
       <ng-icon class="text-xl" [title]="tooltip" [name]="icon"></ng-icon>
       @if (isSystemTheme) {
         <span class="absolute bottom-0 right-0 p-1 text-xs">A</span>

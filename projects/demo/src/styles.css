@@ -27,10 +27,27 @@
   p a {
     @apply underline font-bold hover:opacity-90;
   }
+
+  markdown img {
+    @apply rounded-xl;
+  }
+
+  markdown ul {
+    @apply px-2;
+  }
+
+  markdown ul li {
+    @apply px-4 border-l-primary-900 border-l-2;
+  }
 }
 
 @layer utilities {
   .primary-gradient {
     @apply bg-gradient-to-br dark:from-black dark:to-primary-1000 from-primary-100 to-primary-300;
+  }
+
+  .hover-outline {
+    @apply rounded bg-transparent hover:bg-mono-300 dark:hover:bg-mono-900;
+    @apply transition-all duration-200 ease-in-out;
   }
 }
