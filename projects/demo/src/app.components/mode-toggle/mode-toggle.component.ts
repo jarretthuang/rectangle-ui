@@ -1,45 +1,102 @@
-import { afterRender, Component } from "@angular/core";
+import { afterRender, Component, HostBinding, OnDestroy } from "@angular/core";
 import { NgIconComponent, provideIcons } from "@ng-icons/core";
 import { matDarkModeRound, matLightModeRound } from "@ng-icons/material-icons/round";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: "app-mode-toggle",
   standalone: true,
-  imports: [NgIconComponent],
+  imports: [NgIconComponent, NgClass],
   template: `
     <button
       class="relative flex rounded bg-transparent p-2 transition-all duration-300 hover:bg-mono-300 dark:hover:bg-mono-900"
       (click)="toggleTheme()">
-      <ng-icon class="text-xl" [name]="isDarkMode ? 'matDarkModeRound' : 'matLightModeRound'"></ng-icon>
+      <ng-icon class="text-xl" [title]="tooltip" [name]="icon"></ng-icon>
+      @if (isSystemTheme) {
+        <span class="absolute bottom-0 right-0 p-1 text-xs">A</span>
+      }
     </button>
   `,
   viewProviders: [provideIcons({ matLightModeRound, matDarkModeRound })],
 })
-export class ModeToggleComponent {
-  isDarkMode: boolean = false;
+export class ModeToggleComponent implements OnDestroy {
+  theme: "light" | "dark" | "system" = "system";
+  private mediaQuery: MediaQueryList | undefined;
+  @HostBinding("class") hostClass = "flex items-center gap-2";
 
   constructor() {
     afterRender(() => {
-      // Check the current theme in localStorage (if exists) or use system preference
-      const storedTheme = localStorage.getItem("theme");
-      this.isDarkMode =
-        storedTheme === "dark" || (!storedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      // Check the current theme in localStorage or default to 'system'
+      const storedTheme = localStorage.getItem("theme") as "light" | "dark" | "system";
+      this.theme = storedTheme || "system";
+      this.mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+      // Set up listener if in 'system' mode
+      if (this.theme === "system") {
+        this.mediaQuery.addEventListener("change", this.handleSystemThemeChange.bind(this));
+      }
+
       this.updateTheme();
     });
   }
 
+  get icon(): string {
+    if (this.theme === "system") {
+      return this.mediaQuery?.matches ? "matDarkModeRound" : "matLightModeRound";
+    }
+    return this.theme === "dark" ? "matDarkModeRound" : "matLightModeRound";
+  }
+
+  get tooltip(): string {
+    return this.theme === "light" ? "Light" : this.theme === "dark" ? "Dark" : "System";
+  }
+
+  get isSystemTheme(): boolean {
+    return this.theme === "system";
+  }
+
   toggleTheme(): void {
-    this.isDarkMode = !this.isDarkMode;
-    localStorage.setItem("theme", this.isDarkMode ? "dark" : "light");
+    if (this.theme === "light") {
+      this.theme = "dark";
+    } else if (this.theme === "dark") {
+      this.theme = "system";
+      this.mediaQuery?.addEventListener("change", this.handleSystemThemeChange.bind(this));
+    } else {
+      this.theme = "light";
+      this.mediaQuery?.removeEventListener("change", this.handleSystemThemeChange.bind(this));
+    }
+
+    localStorage.setItem("theme", this.theme);
     this.updateTheme();
   }
 
+  handleSystemThemeChange(event: MediaQueryListEvent): void {
+    if (this.theme === "system") {
+      this.updateTheme(); // Reapply the system preference
+    }
+  }
+
   updateTheme(): void {
-    const rootElement = document.documentElement; // `html` element
-    if (this.isDarkMode) {
-      rootElement.classList.add("dark"); // Tailwind's dark mode
-    } else {
+    const rootElement = document.documentElement;
+    if (this.theme === "dark") {
+      rootElement.classList.add("dark");
+    } else if (this.theme === "light") {
       rootElement.classList.remove("dark");
+    } else {
+      // 'system' option: follow the system preference
+      const prefersDark = this.mediaQuery?.matches;
+      if (prefersDark) {
+        rootElement.classList.add("dark");
+      } else {
+        rootElement.classList.remove("dark");
+      }
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Clean up the media query listener when the component is destroyed
+    if (this.theme === "system") {
+      this.mediaQuery?.removeEventListener("change", this.handleSystemThemeChange.bind(this));
     }
   }
 }

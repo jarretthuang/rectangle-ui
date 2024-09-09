@@ -15,8 +15,13 @@ import { tw } from "@/utils/tailwind";
 })
 export class BadgeComponent {
   styleClasses = [
-    tw`bg-primary-900/90 hover:bg-primary-900 dark:bg-primary-100/95 dark:hover:bg-primary-100`,
-    tw`text-xs font-semibold text-mono-200 dark:text-mono-800`,
-    tw`flex w-fit rounded-lg p-2 transition-all duration-200`,
+    // background color
+    tw`bg-primary-1000 hover:bg-primary-1000/80 dark:bg-primary-100 dark:hover:bg-primary-100/80`,
+    // text color
+    tw`text-sm font-semibold text-mono-200 dark:text-mono-900`,
+    // sizing and spacing
+    tw`flex w-fit rounded-xl px-3 py-2`,
+    // animation
+    tw`transition-colors duration-200 ease-in-out`,
   ];
 }
