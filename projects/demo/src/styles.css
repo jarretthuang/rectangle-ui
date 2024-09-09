@@ -7,6 +7,26 @@
   body {
     @apply min-h-screen block bg-mono-100 dark:bg-mono-1000 text-mono-800 dark:text-mono-100 overflow-x-hidden overflow-y-auto font-sans;
   }
+
+  h1 {
+    @apply py-4 text-2xl;
+  }
+
+  h2 {
+    @apply py-4 text-xl font-bold;
+  }
+
+  h3 {
+    @apply py-4 text-xl font-bold;
+  }
+
+  p {
+    @apply py-2 text-lg;
+  }
+
+  p a {
+    @apply underline font-bold hover:opacity-90;
+  }
 }
 
 @layer utilities {

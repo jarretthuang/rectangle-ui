@@ -10,29 +10,31 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
   selector: "app-page",
   standalone: true,
   template: `
-    <h1 class="text-2xl font-bold">{{ component()?.name ?? "404 page not found" }}</h1>
-    @if (component()?.mdUrl) {
-      <markdown lineNumbers [src]="component()?.mdUrl"></markdown>
-    }
+    <div>
+      <h1 class="text-2xl font-bold">{{ component()?.name ?? "404 page not found" }}</h1>
+      @if (component()?.mdUrl) {
+        <markdown ngPreserveWhitespaces lineNumbers [src]="component()?.mdUrl"></markdown>
+      }
+    </div>
 
     @if (component()?.componentRef) {
       <div>
-        <h2 class="py-4 text-xl font-bold">Preview</h2>
+        <h2>Preview</h2>
         <router-outlet></router-outlet>
       </div>
     }
 
     @if (component()?.usageCodeUrl) {
       <div>
-        <h2 class="py-4 text-xl font-bold">Usage</h2>
-        <markdown lineNumbers [src]="component()?.usageCodeUrl"></markdown>
+        <h2>Usage</h2>
+        <markdown ngPreserveWhitespaces lineNumbers [src]="component()?.usageCodeUrl"></markdown>
       </div>
     }
 
     @if (component()?.sourceCodeUrl) {
       <div>
-        <h2 class="py-4 text-xl font-bold">Source Code</h2>
-        <markdown lineNumbers [src]="component()?.sourceCodeUrl"></markdown>
+        <h2>Source Code</h2>
+        <markdown ngPreserveWhitespaces lineNumbers [src]="component()?.sourceCodeUrl"></markdown>
       </div>
     }
   `,
