@@ -23,13 +23,35 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/demo/public"
+                "input": "projects/demo/public",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/demo/src/pages",
+                "output": "/pages"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/rectangle-ui/src/lib/components",
+                "output": "/components"
+              },
+              { "glob": "README.md",
+                "input": ".",
+                "output": "/"
               }
             ],
             "styles": [
-              "projects/demo/src/styles.css"
+              "projects/demo/src/styles.css",
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
+            ],
             "server": "projects/demo/src/main.server.ts",
             "prerender": true,
             "ssr": {

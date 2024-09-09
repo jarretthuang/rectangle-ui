@@ -22,6 +22,9 @@
       ],
       "@/utils/*": [
         "./projects/utils-lib/src/lib/*"
+      ],
+      "@/pages/*": [
+        "./projects/demo/src/pages/*"
       ]
     },
     "importHelpers": true,
