@@ -3,7 +3,7 @@ import { tw } from "@/utils/tailwind";
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { BadgeComponent } from "@/components/badge";
 import { HttpClient } from "@angular/common/http";
-import { allComponentPages } from "../../page.metadata";
+import { allPages } from "../../page.metadata";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 
 @Component({
@@ -41,7 +41,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
 })
 export class PageComponent {
   componentId = input<string>();
-  component = computed(() => allComponentPages.find((component) => component.id === this.componentId()));
+  component = computed(() => allPages.find((component) => component.id === this.componentId()));
 
   @HostBinding("class") classes = tw`flex w-full flex-col gap-8 px-4`;
 

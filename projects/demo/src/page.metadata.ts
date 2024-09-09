@@ -5,15 +5,12 @@ export type Page = {
   id: string;
   name: string;
   mdUrl?: string;
-};
-
-export type ComponentPage = Page & {
   componentRef?: Type<any>;
   sourceCodeUrl?: string;
   usageCodeUrl?: string;
 };
 
-export const allComponentPages: ComponentPage[] = [
+export const allComponentPages: Page[] = [
   {
     id: "badge",
     name: "Badge",
@@ -29,3 +26,5 @@ export const readmePage: Page = {
   name: "README",
   mdUrl: "/README.md",
 };
+
+export const allPages: Page[] = [...allComponentPages, readmePage];
