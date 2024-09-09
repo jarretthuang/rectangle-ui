@@ -29,7 +29,12 @@
             "styles": [
               "projects/demo/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "server": "projects/demo/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/demo/server.ts"
+            }
           },
           "configurations": {
             "production": {

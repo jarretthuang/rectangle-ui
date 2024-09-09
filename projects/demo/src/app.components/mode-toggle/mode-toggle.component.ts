@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { afterRender, Component } from "@angular/core";
 import { NgIconComponent, provideIcons } from "@ng-icons/core";
 import { matDarkModeRound, matLightModeRound } from "@ng-icons/material-icons/round";
 
@@ -15,15 +15,17 @@ import { matDarkModeRound, matLightModeRound } from "@ng-icons/material-icons/ro
   `,
   viewProviders: [provideIcons({ matLightModeRound, matDarkModeRound })],
 })
-export class ModeToggleComponent implements OnInit {
+export class ModeToggleComponent {
   isDarkMode: boolean = false;
 
-  ngOnInit(): void {
-    // Check the current theme in localStorage (if exists) or use system preference
-    const storedTheme = localStorage.getItem("theme");
-    this.isDarkMode =
-      storedTheme === "dark" || (!storedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    this.updateTheme();
+  constructor() {
+    afterRender(() => {
+      // Check the current theme in localStorage (if exists) or use system preference
+      const storedTheme = localStorage.getItem("theme");
+      this.isDarkMode =
+        storedTheme === "dark" || (!storedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      this.updateTheme();
+    });
   }
 
   toggleTheme(): void {
