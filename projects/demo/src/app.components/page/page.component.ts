@@ -1,7 +1,6 @@
 import { afterRender, Component, computed, HostBinding, input } from "@angular/core";
 import { tw } from "@/utils/tailwind";
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
-import { BadgeComponent } from "@/components/badge";
 import { HttpClient } from "@angular/common/http";
 import { allPages } from "../../page.metadata";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
@@ -20,7 +19,10 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
     @if (component()?.componentRef) {
       <div>
         <h2>Preview</h2>
-        <router-outlet></router-outlet>
+        <div
+          class="flex h-60 w-full items-center justify-center rounded-lg border-[1px] border-mono-300 bg-mono-200/50 dark:border-mono-900 dark:bg-mono-900/50">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     }
 
@@ -39,7 +41,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
     }
   `,
   providers: [provideMarkdown({ loader: HttpClient })],
-  imports: [MarkdownComponent, BadgeComponent, RouterOutlet],
+  imports: [MarkdownComponent, RouterOutlet],
 })
 export class PageComponent {
   componentId = input<string>();

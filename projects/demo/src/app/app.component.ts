@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { RouterLink, RouterOutlet } from "@angular/router";
-import { BadgeComponent } from "@/components/badge";
 import { HeaderComponent } from "../app.components/header/header.component";
 import { PageComponent } from "../app.components/page/page.component";
 import { allComponentPages, readmePage } from "../page.metadata";
@@ -8,7 +7,7 @@ import { allComponentPages, readmePage } from "../page.metadata";
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet, BadgeComponent, HeaderComponent, HeaderComponent, PageComponent, RouterLink],
+  imports: [RouterOutlet, HeaderComponent, HeaderComponent, PageComponent, RouterLink],
   template: `
     <app-header></app-header>
     <main class="flex h-full w-full gap-4 p-5">

@@ -5,7 +5,8 @@
 
 @layer base {
   body {
-    @apply min-h-screen block bg-mono-100 dark:bg-mono-1000 text-mono-800 dark:text-mono-100 overflow-x-hidden overflow-y-auto font-sans;
+    @apply min-h-screen block overflow-x-hidden overflow-y-auto font-sans;
+    @apply bg-mono-100 dark:bg-mono-1000 text-mono-800 dark:text-mono-100;
   }
 
   h1 {
@@ -38,6 +39,14 @@
 
   markdown ul li {
     @apply px-2 list-disc list-inside;
+  }
+
+  markdown pre[class*=language-] {
+    @apply rounded-lg;
+  }
+
+  markdown code[class*=language-] {
+    @apply [text-shadow:none];
   }
 }
 
