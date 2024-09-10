@@ -53,7 +53,9 @@
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
             ],
             "server": "projects/demo/src/main.server.ts",
-            "prerender": true,
+            "prerender": {
+              "discoverRoutes": true
+            },
             "ssr": {
               "entry": "projects/demo/server.ts"
             }
