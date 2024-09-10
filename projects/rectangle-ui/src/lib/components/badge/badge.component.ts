@@ -14,7 +14,7 @@ import { tw } from "@/utils/tailwind";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeComponent {
-  styleClasses = [
+  protected readonly styleClasses: string[] = [
     // background
     tw`bg-primary-1000 hover:bg-primary-1000/80 dark:bg-primary-100 dark:hover:bg-primary-100/80`,
     // text

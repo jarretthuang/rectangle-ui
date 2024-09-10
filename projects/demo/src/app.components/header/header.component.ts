@@ -21,6 +21,6 @@ import { RouterLink } from "@angular/router";
   imports: [ModeToggleComponent, NgOptimizedImage, RouterLink],
 })
 export class HeaderComponent {
-  @HostBinding("class") classes =
+  @HostBinding("class") hostClass: string =
     tw`border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 block h-14 w-full shadow backdrop-blur dark:shadow-primary-200/10`;
 }

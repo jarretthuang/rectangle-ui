@@ -7,13 +7,15 @@ export type Page = {
   componentRef?: Type<any>;
   sourceCodeUrl?: string;
   usageCodeUrl?: string;
+  workInProgress?: boolean;
 };
 
 export class ComponentPage implements Page {
   constructor(
     public id: string,
     public name: string,
-    public componentRef: Type<any>
+    public componentRef: Type<any>,
+    public workInProgress: boolean = false
   ) {}
 
   get mdUrl(): string {

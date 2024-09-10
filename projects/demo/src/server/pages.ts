@@ -7,7 +7,7 @@ import { IconDemoComponent } from "@/components/icon/icon.component.demo";
 export const allComponentPages: ComponentPage[] = [
   new ComponentPage("badge", "Badge", BadgeDemoComponent),
   new ComponentPage("button", "Button", ButtonDemoComponent),
-  new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent),
+  new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent, true),
   new ComponentPage("icon", "Icon", IconDemoComponent),
 ];
 

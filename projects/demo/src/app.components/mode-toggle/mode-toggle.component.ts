@@ -9,6 +9,7 @@ import {
 import { matDarkModeRound, matLightModeRound } from "@ng-icons/material-icons/round";
 import { NgClass } from "@angular/common";
 import { IconComponent } from "@/components/icon/icon.component";
+import { tw } from "@/utils/tailwind";
 
 @Component({
   selector: "app-mode-toggle",
@@ -27,7 +28,7 @@ import { IconComponent } from "@/components/icon/icon.component";
 export class ModeToggleComponent implements OnDestroy {
   theme: "light" | "dark" | "system" = "system";
   private mediaQuery: MediaQueryList | undefined;
-  @HostBinding("class") hostClass = "flex items-center gap-2";
+  @HostBinding("class") hostClass: string = tw`flex items-center gap-2`;
 
   constructor(private cdr: ChangeDetectorRef) {
     afterRender(() => {
