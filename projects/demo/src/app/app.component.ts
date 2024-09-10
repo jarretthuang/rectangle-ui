@@ -12,7 +12,7 @@ import { allComponentPages, readmePage } from "../page.metadata";
   template: `
     <app-header></app-header>
     <main class="flex h-full w-full gap-4 p-5">
-      <nav class="fixed top-14 flex h-[calc(100vh-3.5rem)] w-40 flex-col gap-6 px-2 py-12">
+      <nav class="fixed top-14 flex h-[calc(100vh-3.5rem)] w-40 flex-col gap-6 py-12 pl-2 pr-12">
         <ul class="flex flex-col text-sm">
           <h3 class="text-base font-semibold">Introduction</h3>
           <li class="hover-outline cursor-pointer p-2"><a routerLink="{{ readmePage.id }}">Read me</a></li>

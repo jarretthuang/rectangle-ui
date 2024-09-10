@@ -37,7 +37,7 @@
   }
 
   markdown ul li {
-    @apply px-4 border-l-primary-900 border-l-2;
+    @apply px-2 list-disc list-inside;
   }
 }
 

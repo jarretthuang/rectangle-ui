@@ -1,5 +1,6 @@
 import { Type } from "@angular/core";
 import { BadgeDemoComponent } from "@/components/badge/badge.component.demo";
+import { ButtonDemoComponent } from "@/components/button/button.component.demo";
 
 export type Page = {
   id: string;
@@ -18,6 +19,14 @@ export const allComponentPages: Page[] = [
     componentRef: BadgeDemoComponent,
     sourceCodeUrl: "/components/badge/badge.component.ts",
     usageCodeUrl: "/components/badge/badge.component.demo.ts",
+  },
+  {
+    id: "button",
+    name: "Button",
+    mdUrl: "/pages/button.component.md",
+    componentRef: ButtonDemoComponent,
+    sourceCodeUrl: "/components/button/button.component.ts",
+    usageCodeUrl: "/components/button/button.component.demo.ts",
   },
 ];
 
