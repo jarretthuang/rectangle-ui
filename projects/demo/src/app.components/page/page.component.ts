@@ -2,8 +2,8 @@ import { afterRender, Component, computed, HostBinding, input } from "@angular/c
 import { tw } from "@/utils/tailwind";
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { HttpClient } from "@angular/common/http";
-import { allPages } from "../../page.metadata";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
+import { allPages } from "../../server/pages";
 
 @Component({
   selector: "app-page",
@@ -20,7 +20,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
       <div>
         <h2>Preview</h2>
         <div
-          class="flex h-60 w-full items-center justify-center rounded-lg border-[1px] border-mono-300 bg-mono-200/50 dark:border-mono-900 dark:bg-mono-900/50">
+          class="flex h-60 w-full items-center justify-center rounded-lg border-[1px] border-mono-300 shadow-sm dark:border-mono-900">
           <router-outlet></router-outlet>
         </div>
       </div>

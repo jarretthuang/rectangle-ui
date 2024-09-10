@@ -6,23 +6,22 @@ import {
   HostBinding,
   OnDestroy,
 } from "@angular/core";
-import { NgIconComponent, provideIcons } from "@ng-icons/core";
 import { matDarkModeRound, matLightModeRound } from "@ng-icons/material-icons/round";
 import { NgClass } from "@angular/common";
+import { IconComponent } from "@/components/icon/icon.component";
 
 @Component({
   selector: "app-mode-toggle",
   standalone: true,
-  imports: [NgIconComponent, NgClass],
+  imports: [NgClass, IconComponent],
   template: `
     <button class="hover-outline relative flex p-2" (click)="toggleTheme()">
-      <ng-icon class="text-xl" [title]="tooltip" [name]="icon"></ng-icon>
+      <rui-icon [icon]="icon" [tooltip]="tooltip"></rui-icon>
       @if (isSystemTheme) {
         <span class="absolute bottom-0 right-0 p-1 text-xs">A</span>
       }
     </button>
   `,
-  viewProviders: [provideIcons({ matLightModeRound, matDarkModeRound })],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModeToggleComponent implements OnDestroy {
@@ -46,9 +45,9 @@ export class ModeToggleComponent implements OnDestroy {
 
   get icon(): string {
     if (this.theme === "system") {
-      return this.mediaQuery?.matches ? "matDarkModeRound" : "matLightModeRound";
+      return this.mediaQuery?.matches ? matDarkModeRound : matLightModeRound;
     }
-    return this.theme === "dark" ? "matDarkModeRound" : "matLightModeRound";
+    return this.theme === "dark" ? matDarkModeRound : matLightModeRound;
   }
 
   get tooltip(): string {

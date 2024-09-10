@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { PageComponent } from "../app.components/page/page.component";
-import { allPages, Page } from "../page.metadata";
+import { Page } from "../server/page";
+import { allPages } from "../server/pages";
 
 export const routes: Routes = [
   ...allPages.map((page: Page) => {

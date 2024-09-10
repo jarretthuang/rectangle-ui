@@ -2,10 +2,10 @@ import { Component } from "@angular/core";
 import { ButtonComponent } from "@/components/button/button.component";
 
 @Component({
-  selector: "rectangle-ui-button-demo",
+  selector: "rui-button-demo",
   standalone: true,
   template: `
-    <rectangle-ui-button>Button</rectangle-ui-button>
+    <rui-button>Button</rui-button>
   `,
   imports: [ButtonComponent],
 })

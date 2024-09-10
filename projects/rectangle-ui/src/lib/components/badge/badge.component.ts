@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { NgClass } from "@angular/common";
 import { tw } from "@/utils/tailwind";
 
 @Component({
-  selector: "rectangle-ui-badge",
+  selector: "rui-badge",
   standalone: true,
   imports: [NgClass],
   template: `
@@ -11,6 +11,7 @@ import { tw } from "@/utils/tailwind";
       <ng-content></ng-content>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeComponent {
   styleClasses = [
