@@ -14,9 +14,9 @@ import { allComponentPages, readmePage } from "../server/pages";
       <nav class="fixed top-14 flex h-[calc(100vh-3.5rem)] w-40 flex-col gap-6 py-12 pl-2 pr-12">
         <ul class="flex flex-col text-sm">
           <h3 class="text-base font-semibold">Introduction</h3>
-          <li class="hover-outline cursor-pointer p-2">
-            <a routerLink="{{ readmePage.id }}" routerLinkActive="font-semibold">Read me</a>
-          </li>
+          <a routerLink="{{ readmePage.id }}" routerLinkActive="font-semibold">
+            <li class="hover-outline cursor-pointer p-2">Read me</li>
+          </a>
         </ul>
         <ul class="flex flex-col text-sm">
           <h3 class="text-base font-semibold">Components</h3>
