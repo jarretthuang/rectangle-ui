@@ -1,4 +1,11 @@
-import { afterRender, Component, HostBinding, OnDestroy } from "@angular/core";
+import {
+  afterRender,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostBinding,
+  OnDestroy,
+} from "@angular/core";
 import { NgIconComponent, provideIcons } from "@ng-icons/core";
 import { matDarkModeRound, matLightModeRound } from "@ng-icons/material-icons/round";
 import { NgClass } from "@angular/common";
@@ -16,20 +23,19 @@ import { NgClass } from "@angular/common";
     </button>
   `,
   viewProviders: [provideIcons({ matLightModeRound, matDarkModeRound })],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModeToggleComponent implements OnDestroy {
   theme: "light" | "dark" | "system" = "system";
   private mediaQuery: MediaQueryList | undefined;
   @HostBinding("class") hostClass = "flex items-center gap-2";
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     afterRender(() => {
-      // Check the current theme in localStorage or default to 'system'
       const storedTheme = localStorage.getItem("theme") as "light" | "dark" | "system";
       this.theme = storedTheme || "system";
       this.mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-      // Set up listener if in 'system' mode
       if (this.theme === "system") {
         this.mediaQuery.addEventListener("change", this.handleSystemThemeChange.bind(this));
       }
@@ -68,9 +74,9 @@ export class ModeToggleComponent implements OnDestroy {
     this.updateTheme();
   }
 
-  handleSystemThemeChange(event: MediaQueryListEvent): void {
+  handleSystemThemeChange(): void {
     if (this.theme === "system") {
-      this.updateTheme(); // Reapply the system preference
+      this.updateTheme();
     }
   }
 
@@ -81,7 +87,6 @@ export class ModeToggleComponent implements OnDestroy {
     } else if (this.theme === "light") {
       rootElement.classList.remove("dark");
     } else {
-      // 'system' option: follow the system preference
       const prefersDark = this.mediaQuery?.matches;
       if (prefersDark) {
         rootElement.classList.add("dark");
@@ -89,10 +94,10 @@ export class ModeToggleComponent implements OnDestroy {
         rootElement.classList.remove("dark");
       }
     }
+    this.cdr.detectChanges();
   }
 
   ngOnDestroy(): void {
-    // Clean up the media query listener when the component is destroyed
     if (this.theme === "system") {
       this.mediaQuery?.removeEventListener("change", this.handleSystemThemeChange.bind(this));
     }

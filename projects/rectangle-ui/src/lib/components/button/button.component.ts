@@ -11,7 +11,6 @@ import { tw } from "@/utils/tailwind";
       <ng-content></ng-content>
     </div>
   `,
-  styles: ``,
 })
 export class ButtonComponent {
   styleClasses = [
