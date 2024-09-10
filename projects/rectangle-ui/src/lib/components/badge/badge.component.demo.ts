@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { BadgeComponent } from "@/components/badge";
+import { BadgeComponent } from "@/components/badge/badge.component";
 
 @Component({
   selector: "rectangle-ui-badge-demo",
