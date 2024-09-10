@@ -46,6 +46,12 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
         <markdown lineNumbers [src]="component()?.sourceCodeUrl"></markdown>
       </div>
     }
+
+    <div class="pb-20 pt-40 text-xs opacity-50">
+      Copyright © {{ copyRightYear }}
+      <a class="underline" target="_blank" href="https://jhuang.ca">Jarrett Huang</a>
+      | MIT License
+    </div>
   `,
   providers: [provideMarkdown({ loader: HttpClient })],
   imports: [MarkdownComponent, RouterOutlet, IconComponent],
@@ -63,4 +69,7 @@ export class PageComponent {
   }
 
   protected readonly matConstruction = matConstruction;
+  protected readonly Date = Date;
+
+  copyRightYear = new Date().getFullYear();
 }
