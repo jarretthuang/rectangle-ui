@@ -3,7 +3,7 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
 export const slideUpDownAnimation = [
   trigger("slideUpDown", [
     state(
-      "in",
+      "down",
       style({
         height: "*",
         opacity: 1,
@@ -11,14 +11,14 @@ export const slideUpDownAnimation = [
       })
     ),
     state(
-      "out",
+      "up",
       style({
         height: "0px",
         opacity: 0,
         visibility: "hidden",
       })
     ),
-    transition("in => out", [animate("300ms ease-in")]),
-    transition("out => in", [animate("300ms ease-out")]),
+    transition("down => up", [animate("200ms ease-in")]),
+    transition("up => down", [animate("200ms ease-out")]),
   ]),
 ];

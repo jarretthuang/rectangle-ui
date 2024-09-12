@@ -15,11 +15,13 @@ import { matArrowDropDown, matArrowDropUp } from "@ng-icons/material-icons/basel
 import { IconComponent } from "@/components/icon/icon.component";
 import { DropdownModel } from "@/components/dropdown/dropdown.model";
 import { DropdownItemComponent } from "@/components/dropdown/dropdown.item.component";
+import { slideUpDownAnimation } from "@/utils/animations/slide";
 
 @Component({
   selector: "rui-dropdown",
   standalone: true,
   imports: [NgClass, IconComponent],
+  animations: [slideUpDownAnimation],
   template: `
     <div class="relative w-full">
       <div [ngClass]="styleClasses" (click)="toggleDropdown()">
@@ -30,7 +32,7 @@ import { DropdownItemComponent } from "@/components/dropdown/dropdown.item.compo
       </div>
       <ul
         class="absolute left-0 z-10 mt-1 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-mono-300 dark:border-mono-800"
-        [ngClass]="{ 'animate-slideDown': isExpanded, 'animate-slideUp': !isExpanded }">
+        [@slideUpDown]="isExpanded ? 'down' : 'up'">
         <ng-content select="rui-dropdown-item"></ng-content>
       </ul>
     </div>
@@ -55,8 +57,14 @@ export class DropdownComponent {
    */
   isExpanded = false;
 
+  /**
+   * Whether the component has finished initial rendering.
+   */
+  finishedRendering = false;
+
   constructor(private _elementRef: ElementRef) {
     afterRender(() => {
+      this.finishedRendering = true;
       this.items?.forEach((item) => {
         item.itemSelected.subscribe((model) => {
           this.selectedItem.set(model);
@@ -78,7 +86,7 @@ export class DropdownComponent {
 
   protected readonly styleClasses: string[] = [
     // background
-    tw`border-[1px] border-mono-300 bg-mono-100 hover:bg-mono-200 dark:border-mono-800 dark:bg-mono-900 dark:hover:bg-mono-900/50`,
+    tw`border-[1px] border-mono-400 bg-mono-100 hover:bg-mono-200 dark:border-mono-800 dark:bg-mono-900 dark:hover:bg-mono-900/50`,
     // text
     tw`cursor-pointer select-none text-sm font-semibold text-mono-900 dark:text-mono-100`,
     // sizing and spacing
