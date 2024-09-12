@@ -32,6 +32,20 @@ module.exports = {
           1000: "#1a1033", // Almost black with a purple tint
         },
       },
+      keyframes: {
+        slideDown: {
+          "0%": { opacity: "0", visibility: "hidden", transform: "translateY(-10px)" },
+          "100%": { opacity: "1", visibility: "visible", transform: "translateY(0)" },
+        },
+        slideUp: {
+          "0%": { opacity: "1", visibility: "visible", transform: "translateY(0)" },
+          "100%": { opacity: "0", visibility: "hidden", transform: "translateY(-10px)" },
+        },
+      },
+      animation: {
+        slideDown: "slideDown 0.3s ease-out forwards",
+        slideUp: "slideUp 0.3s ease-in forwards",
+      },
     },
   },
   plugins: [],

@@ -1,28 +1,80 @@
-import { Component, Input } from "@angular/core";
+import {
+  afterRender,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  ElementRef,
+  HostListener,
+  Input,
+  model,
+  QueryList,
+} from "@angular/core";
 import { NgClass } from "@angular/common";
 import { tw } from "@/utils/tailwind";
-import { provideIcons } from "@ng-icons/core";
-import { matArrowDropDown } from "@ng-icons/material-icons/baseline";
+import { matArrowDropDown, matArrowDropUp } from "@ng-icons/material-icons/baseline";
 import { IconComponent } from "@/components/icon/icon.component";
+import { DropdownModel } from "@/components/dropdown/dropdown.model";
+import { DropdownItemComponent } from "@/components/dropdown/dropdown.item.component";
 
 @Component({
   selector: "rui-dropdown",
   standalone: true,
   imports: [NgClass, IconComponent],
   template: `
-    <div [ngClass]="styleClasses">
-      <span class="px-2">{{ placeholder }}</span>
-      <!--  TODO: selection items <ng-content></ng-content>-->
-      <rui-icon [icon]="matArrowDropDown"></rui-icon>
+    <div class="relative w-full">
+      <div [ngClass]="styleClasses" (click)="toggleDropdown()">
+        <span class="px-2">
+          {{ selectedItem()?.label ?? placeholder }}
+        </span>
+        <rui-icon [icon]="isExpanded ? matArrowDropUp : matArrowDropDown"></rui-icon>
+      </div>
+      <ul
+        class="absolute left-0 z-10 mt-1 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-mono-300 dark:border-mono-800"
+        [ngClass]="{ 'animate-slideDown': isExpanded, 'animate-slideUp': !isExpanded }">
+        <ng-content select="rui-dropdown-item"></ng-content>
+      </ul>
     </div>
   `,
-  viewProviders: [provideIcons({ matArrowDropDown })],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownComponent {
+  @ContentChildren(DropdownItemComponent) items: QueryList<DropdownItemComponent> | undefined;
+
   /**
    * The placeholder text to display when no option is selected.
    */
   @Input() placeholder: string = "Select an option";
+
+  /**
+   * The currently selected item.
+   */
+  selectedItem = model<DropdownModel | undefined>();
+
+  /**
+   * The dropdown state.
+   */
+  isExpanded = false;
+
+  constructor(private _elementRef: ElementRef) {
+    afterRender(() => {
+      this.items?.forEach((item) => {
+        item.itemSelected.subscribe((model) => {
+          this.selectedItem.set(model);
+          this.isExpanded = false;
+        });
+      });
+    });
+  }
+
+  /**
+   * Toggles the dropdown state.
+   */
+  toggleDropdown() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  protected readonly matArrowDropUp = matArrowDropUp;
+  protected readonly matArrowDropDown = matArrowDropDown;
 
   protected readonly styleClasses: string[] = [
     // background
@@ -30,10 +82,16 @@ export class DropdownComponent {
     // text
     tw`cursor-pointer select-none text-sm font-semibold text-mono-900 dark:text-mono-100`,
     // sizing and spacing
-    tw`flex w-fit items-center rounded-lg px-2 py-2`,
+    tw`flex w-full items-center justify-between rounded-lg px-2 py-2`,
     // animation
     tw`transition-colors duration-200 ease-in-out`,
   ];
 
-  protected readonly matArrowDropDown = matArrowDropDown;
+  @HostListener("document:click", ["$event"])
+  onDocumentClick(event: MouseEvent) {
+    const clickedInside = this._elementRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.isExpanded = false;
+    }
+  }
 }
