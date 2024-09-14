@@ -42,7 +42,7 @@
   }
 
   markdown pre[class*=language-] {
-    @apply rounded-lg;
+    @apply rounded-lg block max-h-screen overflow-y-auto;
   }
 
   markdown code[class*=language-] {
