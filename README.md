@@ -13,5 +13,6 @@ Inspired by popular libraries like [shadcn-ui](https://github.com/shadcn-ui/ui) 
 ### Dependencies
 - `@angular/core`
 - `@angular/common`
+- `@angular/animations`
 - `@ng-icons`
 - `tailwindcss`

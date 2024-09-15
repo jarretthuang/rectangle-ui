@@ -6,7 +6,7 @@
 @layer base {
   body {
     @apply min-h-screen block overflow-x-hidden overflow-y-auto font-sans;
-    @apply bg-mono-100 dark:bg-mono-1000 text-mono-800 dark:text-mono-100;
+    @apply bg-mono-100 dark:bg-mono-1000 text-mono-800 dark:text-mono-300;
   }
 
   app-root {
@@ -14,7 +14,7 @@
   }
 
   h1 {
-    @apply py-4 text-2xl;
+    @apply py-4 text-2xl font-extrabold;
   }
 
   h2 {
