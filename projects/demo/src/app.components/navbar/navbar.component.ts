@@ -20,7 +20,6 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
             <li class="hover-outline cursor-pointer p-2">{{ component.name }}</li>
           </a>
         }
-        <li class="hover-outline cursor-pointer p-2">More...</li>
       </ul>
     </nav>
   `,

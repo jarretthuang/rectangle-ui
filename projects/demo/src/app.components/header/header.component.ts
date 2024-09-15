@@ -9,7 +9,7 @@ import { RouterLink } from "@angular/router";
   standalone: true,
   template: `
     <header
-      class="flex h-full w-full select-none items-center justify-between px-5"
+      class="m-auto flex h-full w-full max-w-6xl select-none items-center justify-between px-5"
       aria-label="Header with logo and mode toggle">
       <a routerLink="/" class="flex h-full items-center gap-1">
         <img class="p-1 invert dark:invert-0" ngSrc="/logo.svg" priority alt="Logo" height="50" width="50" />
@@ -22,5 +22,6 @@ import { RouterLink } from "@angular/router";
 })
 export class HeaderComponent {
   @HostBinding("class") hostClass: string =
-    tw`border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 block h-14 w-full shadow backdrop-blur dark:shadow-primary-200/10`;
+    tw`sticky top-0 z-50 block flex h-14 w-full ` +
+    tw`border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 shadow backdrop-blur dark:shadow-primary-200/10`;
 }

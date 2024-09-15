@@ -9,6 +9,10 @@
     @apply bg-mono-100 dark:bg-mono-1000 text-mono-800 dark:text-mono-100;
   }
 
+  app-root {
+    @apply flex flex-col items-center;
+  }
+
   h1 {
     @apply py-4 text-2xl;
   }
@@ -42,11 +46,11 @@
   }
 
   markdown pre[class*=language-] {
-    @apply rounded-lg block max-h-screen overflow-y-auto;
+    @apply rounded-lg block max-h-screen overflow-y-auto text-sm;
   }
 
   markdown code[class*=language-] {
-    @apply [text-shadow:none];
+    @apply [text-shadow:none] text-sm;
   }
 }
 

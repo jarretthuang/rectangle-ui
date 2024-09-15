@@ -19,7 +19,7 @@ import { NavbarComponent } from "../app.components/navbar/navbar.component";
   ],
   template: `
     <app-header></app-header>
-    <main class="flex h-full w-full gap-4 p-5">
+    <main class="flex h-full w-full max-w-6xl gap-4 p-5">
       <app-navbar></app-navbar>
       <main class="mr-0 min-h-screen w-full flex-1 py-5 pl-40">
         <router-outlet></router-outlet>
