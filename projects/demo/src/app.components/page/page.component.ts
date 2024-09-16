@@ -50,7 +50,8 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
     <div class="pb-20 pt-40 text-xs opacity-50">
       Copyright © {{ copyRightYear }}
       <a class="underline" target="_blank" href="https://jhuang.ca">Jarrett Huang</a>
-      | MIT License
+      | MIT License |
+      <a class="underline" target="_blank" href="https://github.com/jarretthuang/rectangle-ui">Github</a>
     </div>
   `,
   providers: [provideMarkdown({ loader: HttpClient })],
