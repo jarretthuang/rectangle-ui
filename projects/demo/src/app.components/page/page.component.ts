@@ -27,7 +27,7 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
       <div>
         <h2>Preview</h2>
         <div
-          class="flex h-60 w-full items-center justify-center rounded-lg border-[1px] border-mono-300 shadow-sm dark:border-mono-900">
+          class="flex h-60 w-full items-center justify-center rounded-lg border-[1px] border-mono-300 shadow-sm dark:border-mono-800">
           <router-outlet></router-outlet>
         </div>
       </div>

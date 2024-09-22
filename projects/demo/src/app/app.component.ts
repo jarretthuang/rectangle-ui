@@ -21,7 +21,7 @@ import { NavbarComponent } from "../app.components/navbar/navbar.component";
     <app-header></app-header>
     <main class="flex h-full w-full max-w-6xl p-5">
       <app-navbar></app-navbar>
-      <main class="mr-0 min-h-screen w-full flex-1 py-5 pl-32">
+      <main class="mr-0 min-h-screen w-full flex-1 py-5 md:pl-32">
         <router-outlet></router-outlet>
       </main>
     </main>

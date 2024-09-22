@@ -1,32 +1,40 @@
-import { Component } from "@angular/core";
-import { allComponentPages, readmePage } from "../../server/pages";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
+import { IconComponent } from "@/components/icon/icon.component";
+import { matMenu, matMenuOpen } from "@ng-icons/material-icons/baseline";
+import { NgClass } from "@angular/common";
+import { NavbarListComponent } from "./navbar.list.component";
+import { slideUpDownAnimation } from "@/utils/animations/slide";
 
 @Component({
   selector: "app-navbar",
   standalone: true,
+  animations: [slideUpDownAnimation],
   template: `
-    <nav
-      class="fixed top-14 flex h-[calc(100vh-3.5rem)] w-32 flex-col gap-2 py-12 pl-2 pr-6 text-mono-700 dark:text-mono-500">
-      <ul class="flex flex-col gap-1 text-sm">
-        <div class="py-2 text-sm font-bold">Introduction</div>
-        <a routerLink="{{ readmePage.id }}" routerLinkActive="font-semibold text-mono-800 dark:text-mono-400">
-          <li class="hover-outline cursor-pointer px-2 py-1">Read me</li>
-        </a>
-      </ul>
-      <ul class="flex flex-col gap-1 text-sm">
-        <div class="py-2 text-sm font-bold">Components</div>
-        @for (component of allComponents; track component.id) {
-          <a routerLink="{{ component.id }}" routerLinkActive="font-semibold text-mono-800 dark:text-mono-400">
-            <li class="hover-outline cursor-pointer px-2 py-1">{{ component.name }}</li>
-          </a>
-        }
-      </ul>
-    </nav>
+    <div class="fixed left-0 top-0 z-40 flex h-14 select-none md:hidden">
+      <div class="z-50 flex h-14 w-14">
+        <rui-icon
+          class="hover-outline m-auto cursor-pointer p-2"
+          [icon]="isMenuOpen ? matMenuOpen : matMenu"
+          (click)="isMenuOpen = !isMenuOpen"></rui-icon>
+      </div>
+      <div
+        [@slideUpDown]="isMenuOpen ? 'down' : 'up'"
+        class="fixed flex h-screen w-screen bg-mono-100 pl-5 pr-10 pt-20 dark:bg-mono-1000">
+        <div class="flex-1">
+          <app-navbar-list (selected)="isMenuOpen = false"></app-navbar-list>
+        </div>
+      </div>
+    </div>
+    <div class="fixed top-14 hidden h-screen w-32 py-12 pl-2 pr-5 md:flex md:h-[calc(100vh-3.5rem)]">
+      <app-navbar-list></app-navbar-list>
+    </div>
   `,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, IconComponent, NgClass, NavbarListComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
-  protected readonly readmePage = readmePage;
-  protected readonly allComponents = allComponentPages;
+  protected isMenuOpen: boolean = false;
+  protected readonly matMenu = matMenu;
+  protected readonly matMenuOpen = matMenuOpen;
 }
