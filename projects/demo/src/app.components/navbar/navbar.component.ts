@@ -16,7 +16,7 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
         <rui-icon
           class="hover-outline m-auto cursor-pointer p-2"
           [icon]="isMenuOpen ? matMenuOpen : matMenu"
-          (click)="isMenuOpen = !isMenuOpen"></rui-icon>
+          (click)="toggleMenu()"></rui-icon>
       </div>
       <div
         [@slideUpDown]="isMenuOpen ? 'down' : 'up'"
@@ -37,4 +37,13 @@ export class NavbarComponent {
   protected isMenuOpen: boolean = false;
   protected readonly matMenu = matMenu;
   protected readonly matMenuOpen = matMenuOpen;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    if (this.isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }
 }
