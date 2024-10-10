@@ -30,7 +30,7 @@
   }
 
   p a {
-    @apply underline font-bold hover:opacity-90;
+    @apply underline font-bold hover:opacity-90 active:opacity-90;
   }
 
   markdown img {
@@ -60,7 +60,7 @@
   }
 
   .hover-outline {
-    @apply rounded bg-transparent hover:bg-primary-300 dark:hover:bg-primary-900;
+    @apply rounded bg-transparent hover:bg-primary-300 active:bg-primary-300 dark:hover:bg-primary-900 dark:active:bg-primary-900;
     @apply transition-all duration-200 ease-in-out;
   }
 }

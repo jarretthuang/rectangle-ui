@@ -86,7 +86,7 @@ export class DropdownComponent {
 
   protected readonly styleClasses: string[] = [
     // background
-    tw`border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50`,
+    tw`border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 active:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:active:bg-primary-900/50`,
     // text
     tw`cursor-pointer select-none text-sm font-semibold text-primary-900 dark:text-primary-100`,
     // sizing and spacing

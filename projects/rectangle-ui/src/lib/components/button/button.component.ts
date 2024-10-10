@@ -21,7 +21,7 @@ export class ButtonComponent {
 
   protected readonly styleClasses: string[] = [
     // background
-    tw`bg-primary-1000 hover:bg-primary-1000/80 dark:bg-primary-100 dark:hover:bg-primary-100/80`,
+    tw`bg-primary-1000 hover:bg-primary-1000/80 active:bg-primary-1000/80 dark:bg-primary-100 dark:hover:bg-primary-100/80 dark:active:bg-primary-100/80`,
     // text
     tw`cursor-pointer select-none text-sm font-semibold text-primary-200 dark:text-primary-900`,
     // sizing and spacing
