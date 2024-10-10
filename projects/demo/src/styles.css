@@ -6,7 +6,7 @@
 @layer base {
   body {
     @apply min-h-screen block overflow-x-hidden overflow-y-auto font-sans;
-    @apply bg-mono-100 dark:bg-mono-1000 text-mono-800 dark:text-mono-300;
+    @apply bg-primary-50 dark:bg-primary-1000 text-primary-800 dark:text-primary-300;
   }
 
   app-root {
@@ -60,7 +60,7 @@
   }
 
   .hover-outline {
-    @apply rounded bg-transparent hover:bg-mono-300 dark:hover:bg-mono-900;
+    @apply rounded bg-transparent hover:bg-primary-300 dark:hover:bg-primary-900;
     @apply transition-all duration-200 ease-in-out;
   }
 }

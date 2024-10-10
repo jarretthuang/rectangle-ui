@@ -18,7 +18,7 @@ export class BadgeComponent {
     // background
     tw`bg-primary-1000 hover:bg-primary-1000/80 dark:bg-primary-100 dark:hover:bg-primary-100/80`,
     // text
-    tw`text-sm font-semibold text-mono-200 dark:text-mono-900`,
+    tw`text-sm font-semibold text-primary-200 dark:text-primary-900`,
     // sizing and spacing
     tw`flex w-fit rounded-2xl px-3 py-1.5`,
     // animation

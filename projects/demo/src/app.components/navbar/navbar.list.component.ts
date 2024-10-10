@@ -7,17 +7,17 @@ import { NgClass } from "@angular/common";
   selector: "app-navbar-list",
   standalone: true,
   template: `
-    <nav class="flex w-full select-none flex-col gap-2 text-mono-600">
+    <nav class="flex w-full select-none flex-col gap-2 text-primary-600">
       <ul class="flex flex-col gap-1 text-sm">
-        <div class="py-2 text-sm font-bold text-mono-800 dark:text-mono-400">Introduction</div>
-        <a routerLink="{{ readmePage.id }}" routerLinkActive="font-semibold text-mono-1000 dark:text-mono-100">
+        <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">Introduction</div>
+        <a routerLink="{{ readmePage.id }}" routerLinkActive="font-semibold text-primary-1000 dark:text-primary-100">
           <li class="hover-outline cursor-pointer px-2 py-1" (click)="selected.emit()">Read me</li>
         </a>
       </ul>
       <ul class="flex flex-col gap-1 text-sm">
-        <div class="py-2 text-sm font-bold text-mono-800 dark:text-mono-400">Components</div>
+        <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">Components</div>
         @for (component of allComponents; track component.id) {
-          <a routerLink="{{ component.id }}" routerLinkActive="font-semibold text-mono-1000 dark:text-mono-100">
+          <a routerLink="{{ component.id }}" routerLinkActive="font-semibold text-primary-1000 dark:text-primary-100">
             <li class="hover-outline cursor-pointer px-2 py-1" (click)="selected.emit()">
               {{ component.name }}
             </li>

@@ -31,7 +31,7 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
         <rui-icon [icon]="isExpanded ? matArrowDropUp : matArrowDropDown"></rui-icon>
       </div>
       <ul
-        class="absolute left-0 z-10 mt-1 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-mono-300 dark:border-mono-800"
+        class="absolute left-0 z-10 mt-1 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 dark:border-primary-800"
         [@slideUpDown]="isExpanded ? 'down' : 'up'">
         <ng-content select="rui-dropdown-item"></ng-content>
       </ul>
@@ -86,9 +86,9 @@ export class DropdownComponent {
 
   protected readonly styleClasses: string[] = [
     // background
-    tw`border-[1px] border-mono-400 bg-mono-100 hover:bg-mono-200 dark:border-mono-800 dark:bg-mono-900 dark:hover:bg-mono-900/50`,
+    tw`border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50`,
     // text
-    tw`cursor-pointer select-none text-sm font-semibold text-mono-900 dark:text-mono-100`,
+    tw`cursor-pointer select-none text-sm font-semibold text-primary-900 dark:text-primary-100`,
     // sizing and spacing
     tw`flex w-full items-center justify-between rounded-lg px-2 py-2`,
     // animation

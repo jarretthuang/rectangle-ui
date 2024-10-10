@@ -34,9 +34,9 @@ export class DropdownItemComponent {
 
   protected readonly styleClasses: string[] = [
     // background
-    tw`bg-mono-100 hover:bg-mono-200 dark:bg-mono-900 dark:hover:bg-mono-800`,
+    tw`bg-primary-100 hover:bg-primary-200 dark:bg-primary-900 dark:hover:bg-primary-800`,
     // text
-    tw`cursor-pointer select-none text-sm font-semibold text-mono-900 dark:text-mono-100`,
+    tw`cursor-pointer select-none text-sm font-semibold text-primary-900 dark:text-primary-100`,
     // sizing and spacing
     tw`flex w-full items-center px-4 py-2`,
     // animation
