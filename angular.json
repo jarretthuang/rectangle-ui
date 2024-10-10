@@ -43,7 +43,7 @@
             ],
             "styles": [
               "projects/demo/src/styles.css",
-              "node_modules/prismjs/themes/prism-tomorrow.css",
+              "projects/demo/src/theme/prism-laserwave.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
             "scripts": [
