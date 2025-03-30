@@ -3,15 +3,14 @@ import { NgClass } from "@angular/common";
 import { tw } from "@/utils/tailwind";
 
 @Component({
-  selector: "rui-button",
-  standalone: true,
-  imports: [NgClass],
-  template: `
+    selector: "rui-button",
+    imports: [NgClass],
+    template: `
     <div [ngClass]="styleClasses" (click)="click.emit()">
       <ng-content></ng-content>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
   /**

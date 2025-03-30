@@ -2,13 +2,12 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from "@angular
 import { NgIconComponent } from "@ng-icons/core";
 
 @Component({
-  selector: "rui-icon",
-  standalone: true,
-  imports: [NgIconComponent],
-  template: `
+    selector: "rui-icon",
+    imports: [NgIconComponent],
+    template: `
     <ng-icon class="text-xl" [title]="tooltip ?? ''" [svg]="icon"></ng-icon>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconComponent {
   @HostBinding("class") hostClass: string = "flex aspect-square";

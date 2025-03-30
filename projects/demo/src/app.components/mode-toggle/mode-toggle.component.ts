@@ -12,10 +12,9 @@ import { IconComponent } from "@/components/icon/icon.component";
 import { tw } from "@/utils/tailwind";
 
 @Component({
-  selector: "app-mode-toggle",
-  standalone: true,
-  imports: [NgClass, IconComponent],
-  template: `
+    selector: "app-mode-toggle",
+    imports: [NgClass, IconComponent],
+    template: `
     <button class="hover-outline relative flex p-2" (click)="toggleTheme()">
       <rui-icon [icon]="icon" [tooltip]="tooltip"></rui-icon>
       @if (isSystemTheme) {
@@ -23,7 +22,7 @@ import { tw } from "@/utils/tailwind";
       }
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModeToggleComponent implements OnDestroy {
   theme: "light" | "dark" | "system" = "system";

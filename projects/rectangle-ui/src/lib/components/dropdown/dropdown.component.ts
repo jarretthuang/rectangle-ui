@@ -18,11 +18,10 @@ import { DropdownItemComponent } from "@/components/dropdown/dropdown.item.compo
 import { slideUpDownAnimation } from "@/utils/animations/slide";
 
 @Component({
-  selector: "rui-dropdown",
-  standalone: true,
-  imports: [NgClass, IconComponent],
-  animations: [slideUpDownAnimation],
-  template: `
+    selector: "rui-dropdown",
+    imports: [NgClass, IconComponent],
+    animations: [slideUpDownAnimation],
+    template: `
     <div class="relative w-full">
       <div [ngClass]="styleClasses" (click)="toggleDropdown()">
         <span class="px-2">
@@ -37,7 +36,7 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
       </ul>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent {
   @ContentChildren(DropdownItemComponent) items: QueryList<DropdownItemComponent> | undefined;

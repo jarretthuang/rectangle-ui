@@ -3,15 +3,14 @@ import { NgClass } from "@angular/common";
 import { tw } from "@/utils/tailwind";
 
 @Component({
-  selector: "rui-badge",
-  standalone: true,
-  imports: [NgClass],
-  template: `
+    selector: "rui-badge",
+    imports: [NgClass],
+    template: `
     <div [ngClass]="styleClasses">
       <ng-content></ng-content>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BadgeComponent {
   protected readonly styleClasses: string[] = [

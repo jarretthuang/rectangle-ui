@@ -5,9 +5,8 @@ import { NgOptimizedImage } from "@angular/common";
 import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: "app-header",
-  standalone: true,
-  template: `
+    selector: "app-header",
+    template: `
     <header
       class="m-auto flex h-full w-full max-w-6xl select-none items-center justify-between px-5"
       aria-label="Header with logo and mode toggle">
@@ -19,7 +18,7 @@ import { RouterLink } from "@angular/router";
       <app-mode-toggle aria-label="Toggle dark and light mode"></app-mode-toggle>
     </header>
   `,
-  imports: [ModeToggleComponent, NgOptimizedImage, RouterLink],
+    imports: [ModeToggleComponent, NgOptimizedImage, RouterLink]
 })
 export class HeaderComponent {
   @HostBinding("class") hostClass: string =

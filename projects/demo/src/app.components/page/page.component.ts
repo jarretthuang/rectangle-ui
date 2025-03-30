@@ -8,9 +8,8 @@ import { IconComponent } from "@/components/icon/icon.component";
 import { matConstruction } from "@ng-icons/material-icons/baseline";
 
 @Component({
-  selector: "app-page",
-  standalone: true,
-  template: `
+    selector: "app-page",
+    template: `
     <div>
       <div class="flex items-center gap-2">
         <h1>{{ component()?.name ?? "404 page not found" }}</h1>
@@ -54,8 +53,8 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
       <a class="underline" target="_blank" href="https://github.com/jarretthuang/rectangle-ui">Github</a>
     </div>
   `,
-  providers: [provideMarkdown({ loader: HttpClient })],
-  imports: [MarkdownComponent, RouterOutlet, IconComponent],
+    providers: [provideMarkdown({ loader: HttpClient })],
+    imports: [MarkdownComponent, RouterOutlet, IconComponent]
 })
 export class PageComponent {
   componentId = input<string>();

@@ -4,15 +4,14 @@ import { tw } from "@/utils/tailwind";
 import { DropdownModel } from "@/components/dropdown/dropdown.model";
 
 @Component({
-  selector: "rui-dropdown-item",
-  standalone: true,
-  imports: [NgClass],
-  template: `
+    selector: "rui-dropdown-item",
+    imports: [NgClass],
+    template: `
     <li (click)="onSelect()" [ngClass]="styleClasses">
       <ng-content></ng-content>
     </li>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownItemComponent {
   /**

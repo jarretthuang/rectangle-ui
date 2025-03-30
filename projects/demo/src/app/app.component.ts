@@ -6,18 +6,17 @@ import { allComponentPages, readmePage } from "../server/pages";
 import { NavbarComponent } from "../app.components/navbar/navbar.component";
 
 @Component({
-  selector: "app-root",
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    HeaderComponent,
-    PageComponent,
-    RouterLink,
-    RouterLinkActive,
-    NavbarComponent,
-  ],
-  template: `
+    selector: "app-root",
+    imports: [
+        RouterOutlet,
+        HeaderComponent,
+        HeaderComponent,
+        PageComponent,
+        RouterLink,
+        RouterLinkActive,
+        NavbarComponent,
+    ],
+    template: `
     <app-header></app-header>
     <main class="flex h-full w-full max-w-6xl p-5">
       <app-navbar></app-navbar>
@@ -25,7 +24,7 @@ import { NavbarComponent } from "../app.components/navbar/navbar.component";
         <router-outlet></router-outlet>
       </main>
     </main>
-  `,
+  `
 })
 export class AppComponent {
   protected readonly allComponents = allComponentPages;

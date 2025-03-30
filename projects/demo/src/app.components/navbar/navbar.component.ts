@@ -7,10 +7,9 @@ import { NavbarListComponent } from "./navbar.list.component";
 import { slideUpDownAnimation } from "@/utils/animations/slide";
 
 @Component({
-  selector: "app-navbar",
-  standalone: true,
-  animations: [slideUpDownAnimation],
-  template: `
+    selector: "app-navbar",
+    animations: [slideUpDownAnimation],
+    template: `
     <div class="fixed left-0 top-0 z-40 flex h-14 select-none md:hidden">
       <div class="z-50 flex h-14 w-14">
         <rui-icon
@@ -30,8 +29,8 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
       <app-navbar-list></app-navbar-list>
     </div>
   `,
-  imports: [RouterLink, RouterLinkActive, IconComponent, NgClass, NavbarListComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [RouterLink, RouterLinkActive, IconComponent, NgClass, NavbarListComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {
   protected isMenuOpen: boolean = false;
