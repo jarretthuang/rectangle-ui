@@ -36,7 +36,8 @@
                 "input": "projects/rectangle-ui/src/lib/components",
                 "output": "/components"
               },
-              { "glob": "README.md",
+              {
+                "glob": "README.md",
                 "input": ".",
                 "output": "/"
               }
@@ -119,6 +120,16 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/demo/**/*.ts",
+              "projects/demo/**/*.html"
+            ],
+            "eslintConfig": "projects/demo/eslint.config.js"
+          }
         }
       }
     },
@@ -151,6 +162,16 @@
               "zone.js",
               "zone.js/testing"
             ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/rectangle-ui/**/*.ts",
+              "projects/rectangle-ui/**/*.html"
+            ],
+            "eslintConfig": "projects/rectangle-ui/eslint.config.js"
           }
         }
       }

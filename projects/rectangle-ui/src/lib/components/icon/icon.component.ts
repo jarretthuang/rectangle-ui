@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from "@angular/core";
 import { NgIconComponent } from "@ng-icons/core";
-import { NgClass } from "@angular/common";
 
 @Component({
   selector: "rui-icon",
   standalone: true,
-  imports: [NgIconComponent, NgClass],
+  imports: [NgIconComponent],
   template: `
     <ng-icon class="text-xl" [title]="tooltip ?? ''" [svg]="icon"></ng-icon>
   `,
