@@ -4,7 +4,7 @@ export type Page = {
   id: string;
   name: string;
   mdUrl?: string;
-  componentRef?: Type<any>;
+  componentRef?: Type<unknown>;
   sourceCodeUrl?: string;
   usageCodeUrl?: string;
   workInProgress?: boolean;
@@ -14,7 +14,7 @@ export class ComponentPage implements Page {
   constructor(
     public id: string,
     public name: string,
-    public componentRef: Type<any>,
+    public componentRef: Type<unknown>,
     public workInProgress: boolean = false
   ) {}
 
