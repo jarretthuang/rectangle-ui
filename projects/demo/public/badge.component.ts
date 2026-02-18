@@ -3,7 +3,7 @@ import { NgClass } from "@angular/common";
 import { tw } from "@/utils/tailwind";
 
 @Component({
-  selector: "app-rectangle-ui-badge",
+  selector: "rectangle-ui-badge",
   standalone: true,
   imports: [NgClass],
   template: `
