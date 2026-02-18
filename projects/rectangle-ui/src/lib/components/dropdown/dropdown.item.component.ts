@@ -11,9 +11,11 @@ const DROPDOWN_ITEM_ANIMATION = "transition-colors duration-200 ease-in-out";
     selector: "rui-dropdown-item",
     imports: [NgClass],
     template: `
-    <button type="button" (click)="onSelect()" [ngClass]="styleClasses">
-      <ng-content></ng-content>
-    </button>
+    <li class="list-none">
+      <button type="button" (click)="onSelect()" [ngClass]="styleClasses">
+        <ng-content></ng-content>
+      </button>
+    </li>
   `,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
