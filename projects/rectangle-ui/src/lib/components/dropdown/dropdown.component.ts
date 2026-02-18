@@ -10,12 +10,17 @@ import {
   QueryList,
 } from "@angular/core";
 import { NgClass } from "@angular/common";
-import { tw } from "@/utils/tailwind";
 import { matArrowDropDown, matArrowDropUp } from "@ng-icons/material-icons/baseline";
 import { IconComponent } from "@/components/icon/icon.component";
 import { DropdownModel } from "@/components/dropdown/dropdown.model";
 import { DropdownItemComponent } from "@/components/dropdown/dropdown.item.component";
 import { slideUpDownAnimation } from "@/utils/animations/slide";
+
+const DROPDOWN_BACKGROUND =
+  "border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 active:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:active:bg-primary-900/50";
+const DROPDOWN_TEXT = "cursor-pointer select-none text-sm font-semibold text-primary-900 dark:text-primary-100";
+const DROPDOWN_LAYOUT = "flex w-full items-center justify-between rounded-lg px-2 py-2";
+const DROPDOWN_ANIMATION = "transition-colors duration-200 ease-in-out";
 
 @Component({
     selector: "rui-dropdown",
@@ -84,14 +89,10 @@ export class DropdownComponent {
   protected readonly matArrowDropDown = matArrowDropDown;
 
   protected readonly styleClasses: string[] = [
-    // background
-    tw`border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 active:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:active:bg-primary-900/50`,
-    // text
-    tw`cursor-pointer select-none text-sm font-semibold text-primary-900 dark:text-primary-100`,
-    // sizing and spacing
-    tw`flex w-full items-center justify-between rounded-lg px-2 py-2`,
-    // animation
-    tw`transition-colors duration-200 ease-in-out`,
+    DROPDOWN_BACKGROUND,
+    DROPDOWN_TEXT,
+    DROPDOWN_LAYOUT,
+    DROPDOWN_ANIMATION,
   ];
 
   @HostListener("document:click", ["$event"])

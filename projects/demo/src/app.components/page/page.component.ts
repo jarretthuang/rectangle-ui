@@ -1,5 +1,4 @@
 import { afterRender, Component, computed, HostBinding, input } from "@angular/core";
-import { tw } from "@/utils/tailwind";
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
@@ -60,7 +59,7 @@ export class PageComponent {
   componentId = input<string>();
   component = computed(() => allPages.find((component) => component.id === this.componentId()));
 
-  @HostBinding("class") hostClass: string = tw`flex w-full flex-col gap-8 px-4`;
+  @HostBinding("class") hostClass: string = "flex w-full flex-col gap-8 px-4";
 
   constructor(private route: ActivatedRoute) {
     afterRender(() => {
