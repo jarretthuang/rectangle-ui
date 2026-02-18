@@ -7,9 +7,9 @@ import { DropdownModel } from "@/components/dropdown/dropdown.model";
     selector: "rui-dropdown-item",
     imports: [NgClass],
     template: `
-    <li (click)="onSelect()" [ngClass]="styleClasses">
+    <button type="button" (click)="onSelect()" [ngClass]="styleClasses">
       <ng-content></ng-content>
-    </li>
+    </button>
   `,
     changeDetection: ChangeDetectionStrategy.OnPush
 })

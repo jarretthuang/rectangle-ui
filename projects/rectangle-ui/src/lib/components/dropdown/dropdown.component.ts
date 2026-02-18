@@ -23,12 +23,12 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
     animations: [slideUpDownAnimation],
     template: `
     <div class="relative w-full">
-      <div [ngClass]="styleClasses" (click)="toggleDropdown()">
+      <button type="button" [ngClass]="styleClasses" (click)="toggleDropdown()">
         <span class="px-2">
           {{ selectedItem()?.label ?? placeholder }}
         </span>
         <rui-icon [icon]="isExpanded ? matArrowDropUp : matArrowDropDown"></rui-icon>
-      </div>
+      </button>
       <ul
         class="absolute left-0 z-10 mt-1 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 dark:border-primary-800"
         [@slideUpDown]="isExpanded ? 'down' : 'up'">

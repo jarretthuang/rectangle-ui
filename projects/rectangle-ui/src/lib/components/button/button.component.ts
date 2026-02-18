@@ -6,9 +6,9 @@ import { tw } from "@/utils/tailwind";
     selector: "rui-button",
     imports: [NgClass],
     template: `
-    <div [ngClass]="styleClasses" (click)="click.emit()">
+    <button type="button" [ngClass]="styleClasses" (click)="buttonClick.emit()">
       <ng-content></ng-content>
-    </div>
+    </button>
   `,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -16,7 +16,7 @@ export class ButtonComponent {
   /**
    * Emits when the button is clicked.
    */
-  @Output() click = new EventEmitter<void>();
+  @Output() buttonClick = new EventEmitter<void>();
 
   protected readonly styleClasses: string[] = [
     // background
