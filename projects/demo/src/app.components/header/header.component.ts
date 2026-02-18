@@ -1,8 +1,10 @@
 import { Component, HostBinding } from "@angular/core";
 import { ModeToggleComponent } from "../mode-toggle/mode-toggle.component";
-import { tw } from "@/utils/tailwind";
 import { NgOptimizedImage } from "@angular/common";
 import { RouterLink } from "@angular/router";
+
+const HEADER_HOST_CLASS =
+  "sticky top-0 z-10 block flex h-14 w-full border-border/40 bg-background/95 shadow backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:shadow-primary-200/10";
 
 @Component({
     selector: "app-header",
@@ -21,7 +23,5 @@ import { RouterLink } from "@angular/router";
     imports: [ModeToggleComponent, NgOptimizedImage, RouterLink]
 })
 export class HeaderComponent {
-  @HostBinding("class") hostClass: string =
-    tw`sticky top-0 z-10 block flex h-14 w-full ` +
-    tw`border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 shadow backdrop-blur dark:shadow-primary-200/10`;
+  @HostBinding("class") hostClass: string = HEADER_HOST_CLASS;
 }

@@ -4,7 +4,7 @@ import { ButtonComponent } from "@/components/button/button.component";
 @Component({
     selector: "rui-button-demo",
     template: `
-    <rui-button (click)="onButtonClicked()">Button</rui-button>
+    <rui-button (buttonClick)="onButtonClicked()">Button</rui-button>
   `,
     imports: [ButtonComponent]
 })
