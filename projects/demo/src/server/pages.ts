@@ -3,12 +3,14 @@ import { ButtonDemoComponent } from "@/components/button/button.component.demo";
 import { DropdownDemoComponent } from "@/components/dropdown/dropdown.component.demo";
 import { ComponentPage, Page } from "./page";
 import { IconDemoComponent } from "@/components/icon/icon.component.demo";
+import { InputDemoComponent } from "@/components/input/input.component.demo";
 
 export const allComponentPages: ComponentPage[] = [
   new ComponentPage("badge", "Badge", BadgeDemoComponent),
   new ComponentPage("button", "Button", ButtonDemoComponent),
   new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent),
   new ComponentPage("icon", "Icon", IconDemoComponent),
+  new ComponentPage("input", "Input", InputDemoComponent),
 ];
 
 export const readmePage: Page = {
