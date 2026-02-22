@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, model } from "@angular/core";
+import { booleanAttribute, ChangeDetectionStrategy, Component, Input, model } from "@angular/core";
 import { NgClass } from "@angular/common";
 
 const INPUT_BACKGROUND =
@@ -35,7 +35,7 @@ export class InputComponent {
   /**
    * Whether the input is disabled.
    */
-  @Input() disabled: boolean = false;
+  @Input({ transform: booleanAttribute }) disabled: boolean = false;
 
   /**
    * Current input value.

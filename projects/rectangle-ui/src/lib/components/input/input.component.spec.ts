@@ -1,5 +1,12 @@
+import { Component } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { InputComponent } from "./input.component";
+
+@Component({
+  template: `<rui-input disabled></rui-input>`,
+  imports: [InputComponent],
+})
+class HostDisabledInputComponent {}
 
 describe("InputComponent", () => {
   let component: InputComponent;
@@ -27,5 +34,13 @@ describe("InputComponent", () => {
     fixture.detectChanges();
 
     expect(component.value()).toBe("hello@rectangle.dev");
+  });
+
+  it("should coerce disabled attribute to true", async () => {
+    const hostFixture = TestBed.createComponent(HostDisabledInputComponent);
+    hostFixture.detectChanges();
+
+    const input: HTMLInputElement = hostFixture.nativeElement.querySelector("input");
+    expect(input.disabled).toBeTrue();
   });
 });
