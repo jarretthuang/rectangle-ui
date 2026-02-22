@@ -36,7 +36,21 @@ describe("InputComponent", () => {
     expect(component.value()).toBe("hello@rectangle.dev");
   });
 
-  it("should coerce disabled attribute to true", async () => {
+  it("should clear value when clear button is clicked", () => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
+
+    input.value = "hello@rectangle.dev";
+    input.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear input"]');
+    clearButton.click();
+    fixture.detectChanges();
+
+    expect(component.value()).toBe("");
+  });
+
+  it("should coerce disabled attribute to true", () => {
     const hostFixture = TestBed.createComponent(HostDisabledInputComponent);
     hostFixture.detectChanges();
 
