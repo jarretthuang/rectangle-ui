@@ -19,9 +19,9 @@ const COMBOBOX_BACKGROUND =
 const COMBOBOX_TEXT = "text-sm font-semibold text-primary-900 placeholder:text-primary-700/70 dark:text-primary-100 dark:placeholder:text-primary-300/70";
 const COMBOBOX_LAYOUT = "w-full rounded-xl px-3 py-2 pr-16 outline-none";
 const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
-const CONTROLS_LAYOUT = "absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1";
+const CONTROLS_LAYOUT = "pointer-events-none absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1";
 const ICON_BUTTON_LAYOUT =
-  "rounded-md p-1 text-primary-700 hover:bg-primary-300/60 dark:text-primary-300 dark:hover:bg-primary-800";
+  "pointer-events-auto rounded-md p-1 text-primary-700 hover:bg-primary-300/60 dark:text-primary-300 dark:hover:bg-primary-800";
 
 @Component({
   selector: "rui-combobox",
