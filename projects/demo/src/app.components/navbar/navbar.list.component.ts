@@ -1,14 +1,22 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Output } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Output,
+} from "@angular/core";
 import { allComponentPages, readmePage } from "../../server/pages";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { NgClass } from "@angular/common";
 
 @Component({
-    selector: "app-navbar-list",
-    template: `
+  selector: "app-navbar-list",
+  template: `
     <nav class="flex w-full select-none flex-col gap-2 text-primary-600">
       <ul class="flex flex-col gap-1 text-sm">
-        <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">Introduction</div>
+        <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">
+          Introduction
+        </div>
         <a
           routerLink="{{ readmePage.id }}"
           routerLinkActive="font-semibold text-primary-1000 dark:text-primary-100"
@@ -31,8 +39,8 @@ import { NgClass } from "@angular/common";
       </ul>
     </nav>
   `,
-    imports: [RouterLink, RouterLinkActive, NgClass],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [RouterLink, RouterLinkActive, NgClass],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarListComponent {
   @HostBinding("class") hostClass: string = "w-full";

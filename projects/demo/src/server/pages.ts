@@ -61,4 +61,6 @@ export const readmePage: Page = {
   mdUrl: "/README.md",
 };
 
-export const allPages: Page[] = [...allComponentPages, readmePage].sort((a, b) => a.name.localeCompare(b.name));
+export const allPages: Page[] = [...allComponentPages, readmePage].sort((a, b) =>
+  a.name.localeCompare(b.name)
+);

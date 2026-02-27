@@ -4,6 +4,7 @@ This branch tracks an overnight component sprint inspired by shadcn/ui patterns.
 Each component should be introduced in its own commit (implementation + focused demo/tests/docs).
 
 Planned components:
+
 1. textarea
 2. label
 3. separator

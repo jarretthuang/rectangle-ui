@@ -62,7 +62,9 @@ describe("ComboboxComponent", () => {
     input.dispatchEvent(new Event("input"));
     fixture.detectChanges();
 
-    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear combobox input"]');
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'button[aria-label="Clear combobox input"]'
+    );
     clearButton.click();
     fixture.detectChanges();
 
@@ -72,7 +74,9 @@ describe("ComboboxComponent", () => {
 
   it("should keep clear button mounted and only toggle visibility", () => {
     const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
-    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear combobox input"]');
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'button[aria-label="Clear combobox input"]'
+    );
 
     expect(clearButton).toBeTruthy();
     expect(clearButton.classList.contains("invisible")).toBeTrue();
@@ -86,8 +90,12 @@ describe("ComboboxComponent", () => {
 
   it("should let non-button overlay area pass clicks through to the input", () => {
     const controls: HTMLDivElement = fixture.nativeElement.querySelector(".pointer-events-none");
-    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear combobox input"]');
-    const toggleButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Toggle options"]');
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'button[aria-label="Clear combobox input"]'
+    );
+    const toggleButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'button[aria-label="Toggle options"]'
+    );
 
     expect(controls).toBeTruthy();
     expect(clearButton.classList.contains("pointer-events-auto")).toBeTrue();

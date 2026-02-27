@@ -4,9 +4,9 @@ import { DropdownItemComponent } from "@/components/dropdown/dropdown.item.compo
 import { DropdownModel } from "@/components/dropdown/dropdown.model";
 
 @Component({
-    selector: "rui-dropdown-demo",
-    template: `
-    <div class="w-64 flex flex-col gap-4">
+  selector: "rui-dropdown-demo",
+  template: `
+    <div class="flex w-64 flex-col gap-4">
       <div class="flex flex-col gap-2">
         <span>Without default value:</span>
         <rui-dropdown [placeholder]="'Select a Pokémon..'" [(selectedItem)]="selectedPokemon1">
@@ -29,7 +29,7 @@ import { DropdownModel } from "@/components/dropdown/dropdown.model";
       </div>
     </div>
   `,
-    imports: [DropdownComponent, DropdownItemComponent]
+  imports: [DropdownComponent, DropdownItemComponent],
 })
 export class DropdownDemoComponent {
   allPokemons: DropdownModel[] = [
@@ -51,5 +51,4 @@ export class DropdownDemoComponent {
   handlePokemonSelected(pokemon: DropdownModel) {
     console.log("Selected Pokémon:", pokemon.label);
   }
-
 }

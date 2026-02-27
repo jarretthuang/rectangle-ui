@@ -3,14 +3,14 @@ import { matDarkModeRound, matLightModeRound } from "@ng-icons/material-icons/ro
 import { IconComponent } from "@/components/icon/icon.component";
 
 @Component({
-    selector: "rui-icon-demo",
-    template: `
+  selector: "rui-icon-demo",
+  template: `
     <div class="flex gap-2">
       <rui-icon [icon]="matLightModeRound" [tooltip]="'Switch to light mode'"></rui-icon>
       <rui-icon [icon]="matDarkModeRound"></rui-icon>
     </div>
   `,
-    imports: [IconComponent]
+  imports: [IconComponent],
 })
 export class IconDemoComponent {
   protected readonly matLightModeRound = matLightModeRound;

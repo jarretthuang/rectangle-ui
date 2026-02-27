@@ -11,9 +11,9 @@ import { NgClass } from "@angular/common";
 import { IconComponent } from "@/components/icon/icon.component";
 
 @Component({
-    selector: "app-mode-toggle",
-    imports: [NgClass, IconComponent],
-    template: `
+  selector: "app-mode-toggle",
+  imports: [NgClass, IconComponent],
+  template: `
     <button class="hover-outline relative flex p-2" (click)="toggleTheme()">
       <rui-icon [icon]="icon" [tooltip]="tooltip"></rui-icon>
       @if (isSystemTheme) {
@@ -21,7 +21,7 @@ import { IconComponent } from "@/components/icon/icon.component";
       }
     </button>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModeToggleComponent implements OnDestroy {
   theme: "light" | "dark" | "system" = "system";

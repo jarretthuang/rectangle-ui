@@ -5,8 +5,8 @@
 
 @layer base {
   body {
-    @apply min-h-screen block overflow-x-hidden overflow-y-auto font-sans;
-    @apply bg-primary-50 dark:bg-primary-1000 text-primary-800 dark:text-primary-300;
+    @apply block min-h-screen overflow-y-auto overflow-x-hidden font-sans;
+    @apply bg-primary-50 text-primary-800 dark:bg-primary-1000 dark:text-primary-300;
   }
 
   app-root {
@@ -30,7 +30,7 @@
   }
 
   p a {
-    @apply underline font-bold hover:opacity-90 active:opacity-90;
+    @apply font-bold underline hover:opacity-90 active:opacity-90;
   }
 
   markdown img {
@@ -42,21 +42,21 @@
   }
 
   markdown ul li {
-    @apply px-2 list-disc list-inside;
+    @apply list-inside list-disc px-2;
   }
 
-  markdown pre[class*=language-] {
-    @apply rounded-lg block max-h-screen overflow-y-auto text-sm;
+  markdown pre[class*="language-"] {
+    @apply block max-h-screen overflow-y-auto rounded-lg text-sm;
   }
 
-  markdown code[class*=language-] {
-    @apply [text-shadow:none] text-sm;
+  markdown code[class*="language-"] {
+    @apply text-sm [text-shadow:none];
   }
 }
 
 @layer utilities {
   .primary-gradient {
-    @apply bg-gradient-to-br dark:from-black dark:to-primary-1000 from-primary-100 to-primary-300;
+    @apply bg-gradient-to-br from-primary-100 to-primary-300 dark:from-black dark:to-primary-1000;
   }
 
   .hover-outline {

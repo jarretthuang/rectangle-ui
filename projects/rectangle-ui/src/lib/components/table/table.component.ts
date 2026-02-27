@@ -1,3 +1,34 @@
 import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
-@Component({selector:"rui-table",template:`<div class="overflow-x-auto rounded-xl border border-primary-300 dark:border-primary-800"><table class="min-w-full divide-y divide-primary-300 text-sm dark:divide-primary-800"><thead class="bg-primary-100 dark:bg-primary-900"><tr>@for (column of columns; track column) {<th class="px-3 py-2 text-left font-semibold text-primary-900 dark:text-primary-100">{{column}}</th>}</tr></thead><tbody class="divide-y divide-primary-200 bg-white dark:divide-primary-800 dark:bg-primary-950">@for (row of rows; track $index) {<tr>@for (cell of row; track $index) {<td class="px-3 py-2 text-primary-700 dark:text-primary-300">{{cell}}</td>}</tr>}</tbody></table></div>`,changeDetection:ChangeDetectionStrategy.OnPush})
-export class TableComponent{ @Input() columns:string[]=[]; @Input() rows:string[][]=[]; }
+@Component({
+  selector: "rui-table",
+  template: `
+    <div class="overflow-x-auto rounded-xl border border-primary-300 dark:border-primary-800">
+      <table class="min-w-full divide-y divide-primary-300 text-sm dark:divide-primary-800">
+        <thead class="bg-primary-100 dark:bg-primary-900">
+          <tr>
+            @for (column of columns; track column) {
+              <th class="px-3 py-2 text-left font-semibold text-primary-900 dark:text-primary-100">
+                {{ column }}
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody
+          class="dark:bg-primary-950 divide-y divide-primary-200 bg-white dark:divide-primary-800">
+          @for (row of rows; track $index) {
+            <tr>
+              @for (cell of row; track $index) {
+                <td class="px-3 py-2 text-primary-700 dark:text-primary-300">{{ cell }}</td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class TableComponent {
+  @Input() columns: string[] = [];
+  @Input() rows: string[][] = [];
+}

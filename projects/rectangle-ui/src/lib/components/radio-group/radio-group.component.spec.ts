@@ -29,7 +29,8 @@ describe("RadioGroupComponent", () => {
     secondFixture.detectChanges();
 
     const firstInput: HTMLInputElement = fixture.nativeElement.querySelector("input[type='radio']");
-    const secondInput: HTMLInputElement = secondFixture.nativeElement.querySelector("input[type='radio']");
+    const secondInput: HTMLInputElement =
+      secondFixture.nativeElement.querySelector("input[type='radio']");
 
     expect(firstInput.name).toBeTruthy();
     expect(secondInput.name).toBeTruthy();

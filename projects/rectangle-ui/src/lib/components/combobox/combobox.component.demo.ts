@@ -6,9 +6,7 @@ import { ComboboxComponent } from "@/components/combobox/combobox.component";
   imports: [ComboboxComponent],
   template: `
     <div class="w-64">
-      <rui-combobox
-        placeholder="Pick a framework"
-        [options]="frameworks"></rui-combobox>
+      <rui-combobox placeholder="Pick a framework" [options]="frameworks"></rui-combobox>
     </div>
   `,
 })

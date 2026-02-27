@@ -3,7 +3,9 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ButtonComponent } from "./button.component";
 
 @Component({
-  template: `<rui-button disabled>Disabled</rui-button>`,
+  template: `
+    <rui-button disabled>Disabled</rui-button>
+  `,
   imports: [ButtonComponent],
 })
 class HostDisabledButtonComponent {}

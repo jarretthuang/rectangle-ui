@@ -1,4 +1,11 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from "@angular/core";
 import { NgClass } from "@angular/common";
 
 const BUTTON_TEXT = "cursor-pointer select-none text-sm font-semibold";
@@ -19,7 +26,11 @@ const BUTTON_VARIANT_CLASSES: Record<ButtonVariant, string> = {
   selector: "rui-button",
   imports: [NgClass],
   template: `
-    <button type="button" [disabled]="disabled" [ngClass]="styleClasses" (click)="buttonClick.emit()">
+    <button
+      type="button"
+      [disabled]="disabled"
+      [ngClass]="styleClasses"
+      (click)="buttonClick.emit()">
       <ng-content></ng-content>
     </button>
   `,

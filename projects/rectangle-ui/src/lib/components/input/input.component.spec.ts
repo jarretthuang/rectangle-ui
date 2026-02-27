@@ -3,7 +3,9 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { InputComponent } from "./input.component";
 
 @Component({
-  template: `<rui-input disabled></rui-input>`,
+  template: `
+    <rui-input disabled></rui-input>
+  `,
   imports: [InputComponent],
 })
 class HostDisabledInputComponent {}
@@ -43,7 +45,9 @@ describe("InputComponent", () => {
     input.dispatchEvent(new Event("input"));
     fixture.detectChanges();
 
-    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear input"]');
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'button[aria-label="Clear input"]'
+    );
     clearButton.click();
     fixture.detectChanges();
 

@@ -39,7 +39,9 @@ describe("DropdownComponent", () => {
     component.isExpanded = true;
     fixture.detectChanges();
 
-    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear selection"]');
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      'button[aria-label="Clear selection"]'
+    );
     expect(clearButton).toBeTruthy();
     expect(clearButton.textContent?.trim()).toBe("None");
 
@@ -55,7 +57,9 @@ describe("DropdownComponent", () => {
     component.isExpanded = true;
     fixture.detectChanges();
 
-    const clearButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('button[aria-label="Clear selection"]');
+    const clearButton: HTMLButtonElement | null = fixture.nativeElement.querySelector(
+      'button[aria-label="Clear selection"]'
+    );
     expect(clearButton).toBeNull();
   });
 });
