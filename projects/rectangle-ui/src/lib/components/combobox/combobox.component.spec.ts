@@ -65,6 +65,20 @@ describe("ComboboxComponent", () => {
     expect(input.value).toBe("");
   });
 
+  it("should keep clear button mounted and only toggle visibility", () => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear combobox input"]');
+
+    expect(clearButton).toBeTruthy();
+    expect(clearButton.classList.contains("invisible")).toBeTrue();
+
+    input.value = "a";
+    input.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+
+    expect(clearButton.classList.contains("invisible")).toBeFalse();
+  });
+
   it("should update visible options when options input changes", () => {
     const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
 

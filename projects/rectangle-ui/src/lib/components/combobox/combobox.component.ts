@@ -17,9 +17,10 @@ import { ComboboxOption } from "@/components/combobox/combobox.model";
 const COMBOBOX_BACKGROUND =
   "border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 focus-within:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:focus-within:bg-primary-900/50";
 const COMBOBOX_TEXT = "text-sm font-semibold text-primary-900 placeholder:text-primary-700/70 dark:text-primary-100 dark:placeholder:text-primary-300/70";
-const COMBOBOX_LAYOUT = "w-full rounded-xl px-3 py-2 outline-none";
+const COMBOBOX_LAYOUT = "w-full rounded-xl px-3 py-2 pr-16 outline-none";
 const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
-const CLEAR_BUTTON_LAYOUT =
+const CONTROLS_LAYOUT = "absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1";
+const ICON_BUTTON_LAYOUT =
   "rounded-md p-1 text-primary-700 hover:bg-primary-300/60 dark:text-primary-300 dark:hover:bg-primary-800";
 
 @Component({
@@ -27,22 +28,26 @@ const CLEAR_BUTTON_LAYOUT =
   imports: [NgClass, IconComponent],
   template: `
     <div class="relative w-full">
-      <div [ngClass]="containerClasses">
-        <input
-          type="text"
-          [placeholder]="placeholder"
-          [value]="query()"
-          [ngClass]="inputClasses"
-          (focus)="open()"
-          (input)="onInput($event)" />
+      <input
+        type="text"
+        [placeholder]="placeholder"
+        [value]="query()"
+        [ngClass]="styleClasses"
+        (focus)="open()"
+        (input)="onInput($event)" />
 
-        @if (query()) {
-          <button type="button" [ngClass]="clearButtonClasses" (click)="clear()" aria-label="Clear combobox input">
-            <rui-icon [icon]="matClose"></rui-icon>
-          </button>
-        }
+      <div [ngClass]="controlsClasses">
+        <button
+          type="button"
+          [ngClass]="iconButtonClasses"
+          [class.invisible]="!query()"
+          [class.pointer-events-none]="!query()"
+          (click)="clear()"
+          aria-label="Clear combobox input">
+          <rui-icon [icon]="matClose"></rui-icon>
+        </button>
 
-        <button type="button" class="rounded-md p-1" (click)="toggleExpanded()" aria-label="Toggle options">
+        <button type="button" [ngClass]="iconButtonClasses" (click)="toggleExpanded()" aria-label="Toggle options">
           <rui-icon class="scale-110" [icon]="isExpanded() ? matArrowDropUp : matArrowDropDown"></rui-icon>
         </button>
       </div>
@@ -84,16 +89,14 @@ export class ComboboxComponent {
   protected readonly query = signal("");
   private readonly optionsSignal = signal<ComboboxOption[]>([]);
 
-  protected readonly containerClasses: string[] = [
+  protected readonly styleClasses: string[] = [
     COMBOBOX_BACKGROUND,
     COMBOBOX_TEXT,
     COMBOBOX_LAYOUT,
     COMBOBOX_ANIMATION,
-    "flex items-center gap-2",
   ];
-
-  protected readonly inputClasses: string[] = ["w-full bg-transparent outline-none"];
-  protected readonly clearButtonClasses: string[] = [CLEAR_BUTTON_LAYOUT];
+  protected readonly controlsClasses: string[] = [CONTROLS_LAYOUT];
+  protected readonly iconButtonClasses: string[] = [ICON_BUTTON_LAYOUT];
 
   protected readonly filteredOptions = computed(() => {
     const options = this.optionsSignal();
