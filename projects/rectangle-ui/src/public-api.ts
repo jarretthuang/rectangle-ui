@@ -13,3 +13,4 @@ export * from "./lib/components/skeleton/skeleton.component";
 export * from "./lib/components/progress/progress.component";
 export * from "./lib/components/checkbox/checkbox.component";
 export * from "./lib/components/switch/switch.component";
+export * from "./lib/components/radio-group/radio-group.component";

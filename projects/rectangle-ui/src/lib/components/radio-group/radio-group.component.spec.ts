@@ -1,0 +1,3 @@
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { RadioGroupComponent } from "./radio-group.component";
+describe("RadioGroupComponent",()=>{let component:RadioGroupComponent;let fixture:ComponentFixture<RadioGroupComponent>;beforeEach(async()=>{await TestBed.configureTestingModule({imports:[RadioGroupComponent]}).compileComponents();fixture=TestBed.createComponent(RadioGroupComponent);component=fixture.componentInstance;component.options=[{label:"A",value:"a"},{label:"B",value:"b"}];fixture.detectChanges();});it("should create",()=>expect(component).toBeTruthy());it("should set selected value",()=>{component.value.set("b");expect(component.value()).toBe("b");});});
