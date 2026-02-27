@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { provideNoopAnimations } from "@angular/platform-browser/animations";
 import { ComboboxComponent } from "./combobox.component";
 
 describe("ComboboxComponent", () => {
@@ -8,6 +9,7 @@ describe("ComboboxComponent", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ComboboxComponent],
+      providers: [provideNoopAnimations()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ComboboxComponent);

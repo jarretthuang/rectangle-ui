@@ -12,6 +12,7 @@ import { NgClass } from "@angular/common";
 import { matArrowDropDown, matArrowDropUp, matCheck } from "@ng-icons/material-icons/baseline";
 import { IconComponent } from "@/components/icon/icon.component";
 import { ComboboxOption } from "@/components/combobox/combobox.model";
+import { slideUpDownAnimation } from "@/utils/animations/slide";
 
 const COMBOBOX_BACKGROUND =
   "border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 focus-within:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:focus-within:bg-primary-900/50";
@@ -22,6 +23,7 @@ const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
 @Component({
   selector: "rui-combobox",
   imports: [NgClass, IconComponent],
+  animations: [slideUpDownAnimation],
   template: `
     <div class="relative w-full">
       <div [ngClass]="containerClasses">
@@ -38,13 +40,15 @@ const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
         </button>
       </div>
 
-      @if (isExpanded()) {
-        <ul class="absolute left-0 z-20 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border-[1px] border-primary-300 bg-primary-100 p-1 dark:border-primary-800 dark:bg-primary-900">
+      <ul
+        class="absolute left-0 z-20 mt-1 max-h-60 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 bg-primary-100 dark:border-primary-800 dark:bg-primary-900"
+        [@slideUpDown]="isExpanded() ? 'down' : 'up'">
+        @if (isExpanded()) {
           @for (option of filteredOptions(); track option.value) {
             <li>
               <button
                 type="button"
-                class="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm hover:bg-primary-200 dark:hover:bg-primary-800"
+                class="flex w-full items-center justify-between rounded-lg px-4 py-2 text-left text-sm font-semibold text-primary-900 transition-colors duration-200 ease-in-out hover:bg-primary-200 dark:text-primary-100 dark:hover:bg-primary-800"
                 (click)="select(option)">
                 <span>{{ option.label }}</span>
                 @if (selectedOption()?.value === option.value) {
@@ -53,10 +57,10 @@ const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
               </button>
             </li>
           } @empty {
-            <li class="px-3 py-2 text-sm opacity-70">No options found</li>
+            <li class="px-4 py-2 text-sm font-semibold text-primary-700/70 dark:text-primary-300/70">No options found</li>
           }
-        </ul>
-      }
+        }
+      </ul>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
