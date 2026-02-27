@@ -6,7 +6,7 @@ import { DropdownModel } from "@/components/dropdown/dropdown.model";
 @Component({
     selector: "rui-dropdown-demo",
     template: `
-    <div class="max-w-sm flex flex-col gap-4">
+    <div class="w-80 flex flex-col gap-4">
       <div class="flex flex-col gap-2">
         <span>Without default value:</span>
         <rui-dropdown [placeholder]="'Select a Pokémon..'" [(selectedItem)]="selectedPokemon1">
