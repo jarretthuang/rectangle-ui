@@ -1,5 +1,6 @@
 import {
   afterRender,
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
@@ -20,6 +21,7 @@ const DROPDOWN_BACKGROUND =
 const DROPDOWN_TEXT = "cursor-pointer select-none text-sm font-semibold text-primary-900 dark:text-primary-100";
 const DROPDOWN_LAYOUT = "flex w-full items-center justify-between rounded-lg px-2 py-2";
 const DROPDOWN_ANIMATION = "transition-colors duration-200 ease-in-out";
+const EMPTY_OPTION_TEXT = "text-primary-700/70 dark:text-primary-300/70";
 
 @Component({
     selector: "rui-dropdown",
@@ -27,13 +29,20 @@ const DROPDOWN_ANIMATION = "transition-colors duration-200 ease-in-out";
     template: `
     <div class="relative w-full">
       <button type="button" [ngClass]="styleClasses" (click)="toggleDropdown()">
-        <span class="px-2">
+        <span class="px-2" [ngClass]="!selectedItem() ? placeholderTextClasses : []">
           {{ selectedItem()?.label ?? placeholder }}
         </span>
         <rui-icon class="scale-110" [icon]="isExpanded ? matArrowDropUp : matArrowDropDown"></rui-icon>
       </button>
       @if (isExpanded) {
         <ul class="absolute left-0 z-10 mt-1 max-h-60 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 dark:border-primary-800">
+          @if (!required) {
+            <li class="list-none">
+              <button type="button" [ngClass]="emptyOptionClasses" (click)="clearSelection()" aria-label="Clear selection">
+                {{ emptyOptionLabel }}
+              </button>
+            </li>
+          }
           <ng-content select="rui-dropdown-item"></ng-content>
         </ul>
       }
@@ -48,6 +57,16 @@ export class DropdownComponent {
    * The placeholder text to display when no option is selected.
    */
   @Input() placeholder: string = "Select an option";
+
+  /**
+   * Whether selecting an empty value is disallowed.
+   */
+  @Input({ transform: booleanAttribute }) required: boolean = false;
+
+  /**
+   * Label shown for the empty option when the dropdown is not required.
+   */
+  @Input() emptyOptionLabel: string = "None";
 
   /**
    * The currently selected item.
@@ -83,6 +102,11 @@ export class DropdownComponent {
     this.isExpanded = !this.isExpanded;
   }
 
+  clearSelection() {
+    this.selectedItem.set(undefined);
+    this.isExpanded = false;
+  }
+
   protected readonly matArrowDropUp = matArrowDropUp;
   protected readonly matArrowDropDown = matArrowDropDown;
 
@@ -92,6 +116,12 @@ export class DropdownComponent {
     DROPDOWN_LAYOUT,
     DROPDOWN_ANIMATION,
   ];
+  protected readonly emptyOptionClasses: string[] = [
+    "flex w-full items-center px-4 py-2 text-sm font-semibold transition-colors duration-200 ease-in-out",
+    "bg-primary-100 hover:bg-primary-200 dark:bg-primary-900 dark:hover:bg-primary-800",
+    EMPTY_OPTION_TEXT,
+  ];
+  protected readonly placeholderTextClasses: string[] = ["text-primary-700/70", "dark:text-primary-300/70"];
 
   @HostListener("document:click", ["$event"])
   onDocumentClick(event: MouseEvent) {
