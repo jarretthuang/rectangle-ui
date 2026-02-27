@@ -25,6 +25,11 @@ describe("ComboboxComponent", () => {
     expect(component).toBeTruthy();
   });
 
+  it("should render host as block-level full width", () => {
+    expect(fixture.nativeElement.classList.contains("block")).toBeTrue();
+    expect(fixture.nativeElement.classList.contains("w-full")).toBeTrue();
+  });
+
   it("should filter options by input query", () => {
     const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
 

@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  HostBinding,
   HostListener,
   Input,
   computed,
@@ -71,6 +72,8 @@ const CLEAR_BUTTON_LAYOUT =
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComboboxComponent {
+  @HostBinding("class") hostClasses = "block w-full";
+
   @Input() placeholder: string = "Search...";
 
   @Input()
