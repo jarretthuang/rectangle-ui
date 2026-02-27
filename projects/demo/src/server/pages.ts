@@ -5,6 +5,7 @@ import { ComboboxDemoComponent } from "@/components/combobox/combobox.component.
 import { ComponentPage, Page } from "./page";
 import { IconDemoComponent } from "@/components/icon/icon.component.demo";
 import { InputDemoComponent } from "@/components/input/input.component.demo";
+import { TableDemoComponent } from "@/components/table/table.component.demo";
 import { PaginationDemoComponent } from "@/components/pagination/pagination.component.demo";
 import { BreadcrumbDemoComponent } from "@/components/breadcrumb/breadcrumb.component.demo";
 import { TabsDemoComponent } from "@/components/tabs/tabs.component.demo";
@@ -31,6 +32,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent),
   new ComponentPage("icon", "Icon", IconDemoComponent),
   new ComponentPage("input", "Input", InputDemoComponent),
+  new ComponentPage("table", "Table", TableDemoComponent),
   new ComponentPage("pagination", "Pagination", PaginationDemoComponent),
   new ComponentPage("breadcrumb", "Breadcrumb", BreadcrumbDemoComponent),
   new ComponentPage("tabs", "Tabs", TabsDemoComponent),
