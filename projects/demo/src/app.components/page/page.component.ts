@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { allPages } from "../../server/pages";
 import { IconComponent } from "@/components/icon/icon.component";
 import { matConstruction } from "@ng-icons/material-icons/baseline";
+import { ReadmeHeroComponent } from "../readme-hero/readme-hero.component";
 
 @Component({
     selector: "app-page",
@@ -16,8 +17,12 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
           <rui-icon [icon]="matConstruction" [tooltip]="'WIP'"></rui-icon>
         }
       </div>
+      @if (component()?.id === 'read-me') {
+        <app-readme-hero></app-readme-hero>
+      }
+
       @if (component()?.mdUrl) {
-        <markdown lineNumbers [src]="component()?.mdUrl"></markdown>
+        <markdown lineNumbers [class.readme-markdown]="component()?.id === 'read-me'" [src]="component()?.mdUrl"></markdown>
       }
     </div>
 
@@ -53,7 +58,7 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
     </div>
   `,
     providers: [provideMarkdown({ loader: HttpClient })],
-    imports: [MarkdownComponent, RouterOutlet, IconComponent]
+    imports: [MarkdownComponent, RouterOutlet, IconComponent, ReadmeHeroComponent]
 })
 export class PageComponent {
   componentId = input<string>();
