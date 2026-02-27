@@ -8,3 +8,4 @@ export * from "./lib/components/combobox/combobox.component";
 export * from "./lib/components/combobox/combobox.model";
 export * from "./lib/components/textarea/textarea.component";
 export * from "./lib/components/label/label.component";
+export * from "./lib/components/separator/separator.component";
