@@ -50,5 +50,5 @@ export class DropdownDemoComponent {
     console.log("Selected Pokémon:", pokemon.label);
   }
 
-  @HostBinding("class") hostClasses = "w-48 flex flex-col gap-4";
+  @HostBinding("class") hostClasses = "w-full max-w-sm flex flex-col gap-4";
 }
