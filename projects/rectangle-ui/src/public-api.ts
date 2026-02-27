@@ -25,3 +25,4 @@ export * from "./lib/components/tabs/tabs.component";
 export * from "./lib/components/breadcrumb/breadcrumb.component";
 export * from "./lib/components/pagination/pagination.component";
 export * from "./lib/components/table/table.component";
+export * from "./lib/components/badge-group/badge-group.component";
