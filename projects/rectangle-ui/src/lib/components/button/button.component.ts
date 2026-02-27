@@ -8,11 +8,11 @@ const BUTTON_DISABLED = "disabled:cursor-not-allowed disabled:opacity-60";
 
 const BUTTON_VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary:
-    "border border-primary-400 bg-primary-100 text-primary-900 hover:bg-primary-200 active:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:text-primary-100 dark:hover:bg-primary-900/50 dark:active:bg-primary-900/50",
+    "border border-primary-400 bg-primary-100 text-primary-900 enabled:hover:bg-primary-200 enabled:active:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:text-primary-100 dark:enabled:hover:bg-primary-900/50 dark:enabled:active:bg-primary-900/50",
   secondary:
-    "border border-primary-300 bg-transparent text-primary-900 hover:bg-primary-100 active:bg-primary-100 dark:border-primary-700 dark:text-primary-100 dark:hover:bg-primary-900/40 dark:active:bg-primary-900/40",
+    "border border-primary-300 bg-transparent text-primary-900 enabled:hover:bg-primary-100 enabled:active:bg-primary-100 dark:border-primary-700 dark:text-primary-100 dark:enabled:hover:bg-primary-900/40 dark:enabled:active:bg-primary-900/40",
   danger:
-    "border border-red-300 bg-red-50 text-red-700 hover:bg-red-100 active:bg-red-100 dark:border-red-800 dark:bg-red-950/40 dark:text-red-300 dark:hover:bg-red-900/40 dark:active:bg-red-900/40",
+    "border border-red-300 bg-red-50 text-red-700 enabled:hover:bg-red-100 enabled:active:bg-red-100 dark:border-red-800 dark:bg-red-950/40 dark:text-red-300 dark:enabled:hover:bg-red-900/40 dark:enabled:active:bg-red-900/40",
 };
 
 @Component({

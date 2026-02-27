@@ -55,4 +55,13 @@ describe("ButtonComponent", () => {
     const button: HTMLButtonElement = hostFixture.nativeElement.querySelector("button");
     expect(button.disabled).toBeTrue();
   });
+
+  it("should gate hover/active styles behind enabled state", () => {
+    const classes = (component as any).styleClasses.join(" ");
+
+    expect(classes).toContain("enabled:hover:bg-primary-200");
+    expect(classes).toContain("enabled:active:bg-primary-200");
+    expect(classes).not.toContain(" hover:bg-primary-200");
+    expect(classes).not.toContain(" active:bg-primary-200");
+  });
 });
