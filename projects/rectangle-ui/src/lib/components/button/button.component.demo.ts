@@ -8,6 +8,7 @@ import { ButtonComponent } from "@/components/button/button.component";
       <rui-button variant="primary" (buttonClick)="onButtonClicked('Primary')">Primary</rui-button>
       <rui-button variant="secondary" (buttonClick)="onButtonClicked('Secondary')">Secondary</rui-button>
       <rui-button variant="danger" (buttonClick)="onButtonClicked('Danger')">Danger</rui-button>
+      <rui-button variant="primary" [disabled]="true">Disabled</rui-button>
     </div>
   `,
   imports: [ButtonComponent],
