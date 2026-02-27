@@ -65,6 +65,30 @@ describe("ComboboxComponent", () => {
     expect(input.value).toBe("");
   });
 
+  it("should keep clear button mounted and only toggle visibility", () => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear combobox input"]');
+
+    expect(clearButton).toBeTruthy();
+    expect(clearButton.classList.contains("invisible")).toBeTrue();
+
+    input.value = "a";
+    input.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+
+    expect(clearButton.classList.contains("invisible")).toBeFalse();
+  });
+
+  it("should let non-button overlay area pass clicks through to the input", () => {
+    const controls: HTMLDivElement = fixture.nativeElement.querySelector(".pointer-events-none");
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear combobox input"]');
+    const toggleButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Toggle options"]');
+
+    expect(controls).toBeTruthy();
+    expect(clearButton.classList.contains("pointer-events-auto")).toBeTrue();
+    expect(toggleButton.classList.contains("pointer-events-auto")).toBeTrue();
+  });
+
   it("should update visible options when options input changes", () => {
     const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
 
