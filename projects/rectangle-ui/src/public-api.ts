@@ -15,3 +15,4 @@ export * from "./lib/components/checkbox/checkbox.component";
 export * from "./lib/components/switch/switch.component";
 export * from "./lib/components/radio-group/radio-group.component";
 export * from "./lib/components/card/card.component";
+export * from "./lib/components/alert/alert.component";

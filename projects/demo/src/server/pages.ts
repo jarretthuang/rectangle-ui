@@ -5,6 +5,7 @@ import { ComboboxDemoComponent } from "@/components/combobox/combobox.component.
 import { ComponentPage, Page } from "./page";
 import { IconDemoComponent } from "@/components/icon/icon.component.demo";
 import { InputDemoComponent } from "@/components/input/input.component.demo";
+import { AlertDemoComponent } from "@/components/alert/alert.component.demo";
 import { CardDemoComponent } from "@/components/card/card.component.demo";
 import { RadioGroupDemoComponent } from "@/components/radio-group/radio-group.component.demo";
 import { SwitchDemoComponent } from "@/components/switch/switch.component.demo";
@@ -22,6 +23,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent),
   new ComponentPage("icon", "Icon", IconDemoComponent),
   new ComponentPage("input", "Input", InputDemoComponent),
+  new ComponentPage("alert", "Alert", AlertDemoComponent),
   new ComponentPage("card", "Card", CardDemoComponent),
   new ComponentPage("radio-group", "RadioGroup", RadioGroupDemoComponent),
   new ComponentPage("switch", "Switch", SwitchDemoComponent),
