@@ -48,6 +48,15 @@ describe("ButtonComponent", () => {
     expect(classes).toContain("text-red-700");
   });
 
+  it("should fallback to primary classes for unsupported variants", () => {
+    (component as any).variant = "mystery";
+
+    const classes = (component as any).styleClasses.join(" ");
+    expect(classes).toContain("border-primary-400");
+    expect(classes).toContain("bg-primary-100");
+    expect(classes).not.toContain("undefined");
+  });
+
   it("should coerce disabled attribute to true", () => {
     const hostFixture = TestBed.createComponent(HostDisabledButtonComponent);
     hostFixture.detectChanges();

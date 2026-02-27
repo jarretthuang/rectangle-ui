@@ -29,7 +29,7 @@ export class ButtonComponent {
   /**
    * Visual style variant for the button.
    */
-  @Input() variant: ButtonVariant = "primary";
+  @Input() variant: ButtonVariant | string = "primary";
 
   /**
    * Whether the button is disabled.
@@ -42,8 +42,25 @@ export class ButtonComponent {
   @Output() buttonClick = new EventEmitter<void>();
 
   protected get styleClasses(): string[] {
-    return [BUTTON_VARIANT_CLASSES[this.variant], BUTTON_TEXT, BUTTON_LAYOUT, BUTTON_ANIMATION, BUTTON_DISABLED];
+    return [
+      BUTTON_VARIANT_CLASSES[resolveButtonVariant(this.variant)],
+      BUTTON_TEXT,
+      BUTTON_LAYOUT,
+      BUTTON_ANIMATION,
+      BUTTON_DISABLED,
+    ];
   }
 }
 
 export type ButtonVariant = "primary" | "secondary" | "danger";
+
+function resolveButtonVariant(variant: string): ButtonVariant {
+  switch (variant) {
+    case "secondary":
+    case "danger":
+    case "primary":
+      return variant;
+    default:
+      return "primary";
+  }
+}
