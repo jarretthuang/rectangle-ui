@@ -10,3 +10,4 @@ export * from "./lib/components/textarea/textarea.component";
 export * from "./lib/components/label/label.component";
 export * from "./lib/components/separator/separator.component";
 export * from "./lib/components/skeleton/skeleton.component";
+export * from "./lib/components/progress/progress.component";
