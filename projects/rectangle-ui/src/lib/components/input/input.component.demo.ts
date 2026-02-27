@@ -4,7 +4,7 @@ import { InputComponent } from "@/components/input/input.component";
 @Component({
   selector: "rui-input-demo",
   template: `
-    <div class="w-40">
+    <div class="w-64">
       <rui-input placeholder="Email" type="email"></rui-input>
     </div>
   `,
