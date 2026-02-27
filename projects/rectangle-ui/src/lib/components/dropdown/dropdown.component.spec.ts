@@ -33,4 +33,29 @@ describe("DropdownComponent", () => {
     expect(label.classList.contains("text-primary-700/70")).toBeFalse();
     expect(label.classList.contains("dark:text-primary-300/70")).toBeFalse();
   });
+
+  it("should render and support the empty option by default", () => {
+    component.selectedItem.set({ id: "1", label: "Pikachu" });
+    component.isExpanded = true;
+    fixture.detectChanges();
+
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear selection"]');
+    expect(clearButton).toBeTruthy();
+    expect(clearButton.textContent?.trim()).toBe("None");
+
+    clearButton.click();
+    fixture.detectChanges();
+
+    expect(component.selectedItem()).toBeUndefined();
+    expect(component.isExpanded).toBeFalse();
+  });
+
+  it("should hide the empty option when required=true", () => {
+    component.required = true;
+    component.isExpanded = true;
+    fixture.detectChanges();
+
+    const clearButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('button[aria-label="Clear selection"]');
+    expect(clearButton).toBeNull();
+  });
 });
