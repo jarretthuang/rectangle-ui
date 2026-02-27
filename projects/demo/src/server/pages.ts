@@ -5,6 +5,7 @@ import { ComboboxDemoComponent } from "@/components/combobox/combobox.component.
 import { ComponentPage, Page } from "./page";
 import { IconDemoComponent } from "@/components/icon/icon.component.demo";
 import { InputDemoComponent } from "@/components/input/input.component.demo";
+import { CheckboxDemoComponent } from "@/components/checkbox/checkbox.component.demo";
 import { ProgressDemoComponent } from "@/components/progress/progress.component.demo";
 import { SkeletonDemoComponent } from "@/components/skeleton/skeleton.component.demo";
 import { SeparatorDemoComponent } from "@/components/separator/separator.component.demo";
@@ -18,6 +19,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent),
   new ComponentPage("icon", "Icon", IconDemoComponent),
   new ComponentPage("input", "Input", InputDemoComponent),
+  new ComponentPage("checkbox", "Checkbox", CheckboxDemoComponent),
   new ComponentPage("progress", "Progress", ProgressDemoComponent),
   new ComponentPage("skeleton", "Skeleton", SkeletonDemoComponent),
   new ComponentPage("separator", "Separator", SeparatorDemoComponent),
