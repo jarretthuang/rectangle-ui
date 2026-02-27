@@ -18,3 +18,4 @@ export * from "./lib/components/card/card.component";
 export * from "./lib/components/alert/alert.component";
 export * from "./lib/components/avatar/avatar.component";
 export * from "./lib/components/tooltip/tooltip.component";
+export * from "./lib/components/popover/popover.component";
