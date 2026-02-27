@@ -3,3 +3,5 @@
  */
 
 export * from "./lib/components/input/input.component";
+export * from "./lib/components/combobox/combobox.component";
+export * from "./lib/components/combobox/combobox.model";
