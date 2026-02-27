@@ -1,4 +1,4 @@
-import { Component, HostBinding, signal } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { DropdownComponent } from "@/components/dropdown/dropdown.component";
 import { DropdownItemComponent } from "@/components/dropdown/dropdown.item.component";
 import { DropdownModel } from "@/components/dropdown/dropdown.model";
@@ -6,25 +6,27 @@ import { DropdownModel } from "@/components/dropdown/dropdown.model";
 @Component({
     selector: "rui-dropdown-demo",
     template: `
-    <div class="flex flex-col gap-2">
-      <span>Without default value:</span>
-      <rui-dropdown [placeholder]="'Select a Pokémon..'" [(selectedItem)]="selectedPokemon1">
-        @for (p of allPokemons; track p.id) {
-          <rui-dropdown-item [item]="p" (itemSelected)="handlePokemonSelected($event)">
-            {{ p.label }}
-          </rui-dropdown-item>
-        }
-      </rui-dropdown>
-    </div>
-    <div class="flex flex-col gap-2">
-      <span>With default value:</span>
-      <rui-dropdown [placeholder]="'Select a Pokémon'" [(selectedItem)]="selectedPokemon2">
-        @for (p of allPokemons; track p.id) {
-          <rui-dropdown-item [item]="p" (itemSelected)="handlePokemonSelected($event)">
-            {{ p.label }}
-          </rui-dropdown-item>
-        }
-      </rui-dropdown>
+    <div class="max-w-sm flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <span>Without default value:</span>
+        <rui-dropdown [placeholder]="'Select a Pokémon..'" [(selectedItem)]="selectedPokemon1">
+          @for (p of allPokemons; track p.id) {
+            <rui-dropdown-item [item]="p" (itemSelected)="handlePokemonSelected($event)">
+              {{ p.label }}
+            </rui-dropdown-item>
+          }
+        </rui-dropdown>
+      </div>
+      <div class="flex flex-col gap-2">
+        <span>With default value:</span>
+        <rui-dropdown [placeholder]="'Select a Pokémon'" [(selectedItem)]="selectedPokemon2">
+          @for (p of allPokemons; track p.id) {
+            <rui-dropdown-item [item]="p" (itemSelected)="handlePokemonSelected($event)">
+              {{ p.label }}
+            </rui-dropdown-item>
+          }
+        </rui-dropdown>
+      </div>
     </div>
   `,
     imports: [DropdownComponent, DropdownItemComponent]
@@ -50,5 +52,4 @@ export class DropdownDemoComponent {
     console.log("Selected Pokémon:", pokemon.label);
   }
 
-  @HostBinding("class") hostClasses = "w-full max-w-sm flex flex-col gap-4";
 }
