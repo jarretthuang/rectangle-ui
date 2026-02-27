@@ -5,6 +5,7 @@ import {
   HostListener,
   Input,
   computed,
+  effect,
   model,
   signal,
 } from "@angular/core";
@@ -71,12 +72,17 @@ const CLEAR_BUTTON_LAYOUT =
 })
 export class ComboboxComponent {
   @Input() placeholder: string = "Search...";
-  @Input() options: ComboboxOption[] = [];
+
+  @Input()
+  set options(value: ComboboxOption[]) {
+    this.optionsSignal.set(value ?? []);
+  }
 
   selectedOption = model<ComboboxOption | undefined>();
 
   protected readonly isExpanded = signal(false);
   protected readonly query = signal("");
+  private readonly optionsSignal = signal<ComboboxOption[]>([]);
 
   protected readonly containerClasses: string[] = [
     COMBOBOX_BACKGROUND,
@@ -90,10 +96,11 @@ export class ComboboxComponent {
   protected readonly clearButtonClasses: string[] = [CLEAR_BUTTON_LAYOUT];
 
   protected readonly filteredOptions = computed(() => {
+    const options = this.optionsSignal();
     const q = this.query().toLowerCase().trim();
-    if (!q) return this.options;
+    if (!q) return options;
 
-    return this.options.filter((option) => option.label.toLowerCase().includes(q));
+    return options.filter((option) => option.label.toLowerCase().includes(q));
   });
 
   protected readonly matArrowDropUp = matArrowDropUp;
@@ -101,7 +108,11 @@ export class ComboboxComponent {
   protected readonly matCheck = matCheck;
   protected readonly matClose = matClose;
 
-  constructor(private readonly elementRef: ElementRef) {}
+  constructor(private readonly elementRef: ElementRef) {
+    effect(() => {
+      this.query.set(this.selectedOption()?.label ?? "");
+    });
+  }
 
   open() {
     this.isExpanded.set(true);
@@ -113,8 +124,14 @@ export class ComboboxComponent {
 
   onInput(event: Event) {
     const target = event.target as HTMLInputElement;
-    this.query.set(target.value);
+    const nextQuery = target.value;
+
+    this.query.set(nextQuery);
     this.isExpanded.set(true);
+
+    if (this.selectedOption() && this.selectedOption()?.label !== nextQuery) {
+      this.selectedOption.set(undefined);
+    }
   }
 
   select(option: ComboboxOption) {

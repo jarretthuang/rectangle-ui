@@ -64,4 +64,34 @@ describe("ComboboxComponent", () => {
     expect(component.selectedOption()).toBeUndefined();
     expect(input.value).toBe("");
   });
+
+  it("should update visible options when options input changes", () => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
+
+    input.value = "ang";
+    input.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+
+    component.options = [{ label: "AngularJS", value: "angularjs" }];
+    fixture.detectChanges();
+
+    const options = fixture.nativeElement.querySelectorAll("li button");
+    expect(options.length).toBe(1);
+    expect(options[0].textContent).toContain("AngularJS");
+  });
+
+  it("should reflect externally controlled selected option in the input", () => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
+
+    component.selectedOption.set({ label: "React", value: "react" });
+    fixture.detectChanges();
+
+    expect(input.value).toBe("React");
+
+    input.value = "Re";
+    input.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+
+    expect(component.selectedOption()).toBeUndefined();
+  });
 });
