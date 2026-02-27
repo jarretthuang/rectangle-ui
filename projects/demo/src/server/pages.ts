@@ -5,6 +5,7 @@ import { ComboboxDemoComponent } from "@/components/combobox/combobox.component.
 import { ComponentPage, Page } from "./page";
 import { IconDemoComponent } from "@/components/icon/icon.component.demo";
 import { InputDemoComponent } from "@/components/input/input.component.demo";
+import { LabelDemoComponent } from "@/components/label/label.component.demo";
 import { TextareaDemoComponent } from "@/components/textarea/textarea.component.demo";
 
 export const allComponentPages: ComponentPage[] = [
@@ -14,6 +15,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent),
   new ComponentPage("icon", "Icon", IconDemoComponent),
   new ComponentPage("input", "Input", InputDemoComponent),
+  new ComponentPage("label", "Label", LabelDemoComponent),
   new ComponentPage("textarea", "Textarea", TextareaDemoComponent),
 ];
 
