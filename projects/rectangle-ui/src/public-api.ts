@@ -21,3 +21,4 @@ export * from "./lib/components/tooltip/tooltip.component";
 export * from "./lib/components/popover/popover.component";
 export * from "./lib/components/dialog/dialog.component";
 export * from "./lib/components/accordion/accordion.component";
+export * from "./lib/components/tabs/tabs.component";

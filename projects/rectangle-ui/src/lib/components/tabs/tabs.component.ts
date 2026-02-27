@@ -1,0 +1,4 @@
+import { ChangeDetectionStrategy, Component, Input, model } from "@angular/core";
+export type TabItem={label:string;value:string};
+@Component({selector:"rui-tabs",template:`<div class="space-y-3"><div class="inline-flex rounded-xl border border-primary-300 bg-primary-100 p-1 dark:border-primary-800 dark:bg-primary-900">@for (tab of tabs; track tab.value) {<button type="button" class="rounded-lg px-3 py-1 text-sm font-semibold" [class.bg-primary-200]="active()===tab.value" [class.dark:bg-primary-800]="active()===tab.value" (click)="active.set(tab.value)">{{tab.label}}</button>}</div><div class="text-sm text-primary-700 dark:text-primary-300"><ng-content></ng-content></div></div>`,changeDetection:ChangeDetectionStrategy.OnPush})
+export class TabsComponent{ @Input() tabs:TabItem[]=[]; active=model(""); }
