@@ -27,7 +27,7 @@ const DROPDOWN_ANIMATION = "transition-colors duration-200 ease-in-out";
     template: `
     <div class="relative w-full">
       <button type="button" [ngClass]="styleClasses" (click)="toggleDropdown()">
-        <span class="px-2">
+        <span class="px-2" [ngClass]="!selectedItem() ? placeholderTextClasses : []">
           {{ selectedItem()?.label ?? placeholder }}
         </span>
         <rui-icon class="scale-110" [icon]="isExpanded ? matArrowDropUp : matArrowDropDown"></rui-icon>
@@ -92,6 +92,7 @@ export class DropdownComponent {
     DROPDOWN_LAYOUT,
     DROPDOWN_ANIMATION,
   ];
+  protected readonly placeholderTextClasses: string[] = ["text-primary-700/70", "dark:text-primary-300/70"];
 
   @HostListener("document:click", ["$event"])
   onDocumentClick(event: MouseEvent) {
