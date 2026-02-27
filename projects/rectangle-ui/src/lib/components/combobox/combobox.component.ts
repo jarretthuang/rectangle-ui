@@ -12,7 +12,6 @@ import { NgClass } from "@angular/common";
 import { matArrowDropDown, matArrowDropUp, matCheck } from "@ng-icons/material-icons/baseline";
 import { IconComponent } from "@/components/icon/icon.component";
 import { ComboboxOption } from "@/components/combobox/combobox.model";
-import { slideUpDownAnimation } from "@/utils/animations/slide";
 
 const COMBOBOX_BACKGROUND =
   "border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 focus-within:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:focus-within:bg-primary-900/50";
@@ -23,7 +22,6 @@ const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
 @Component({
   selector: "rui-combobox",
   imports: [NgClass, IconComponent],
-  animations: [slideUpDownAnimation],
   template: `
     <div class="relative w-full">
       <div [ngClass]="containerClasses">
@@ -36,14 +34,12 @@ const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
           (input)="onInput($event)" />
 
         <button type="button" class="rounded-md p-1" (click)="toggleExpanded()" aria-label="Toggle options">
-          <rui-icon [icon]="isExpanded() ? matArrowDropUp : matArrowDropDown"></rui-icon>
+          <rui-icon class="scale-110" [icon]="isExpanded() ? matArrowDropUp : matArrowDropDown"></rui-icon>
         </button>
       </div>
 
-      <ul
-        class="absolute left-0 z-20 mt-1 max-h-60 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 bg-primary-100 dark:border-primary-800 dark:bg-primary-900"
-        [@slideUpDown]="isExpanded() ? 'down' : 'up'">
-        @if (isExpanded()) {
+      @if (isExpanded()) {
+        <ul class="absolute left-0 z-20 mt-1 max-h-60 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 bg-primary-100 dark:border-primary-800 dark:bg-primary-900">
           @for (option of filteredOptions(); track option.value) {
             <li>
               <button
@@ -59,8 +55,8 @@ const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
           } @empty {
             <li class="px-4 py-2 text-sm font-semibold text-primary-700/70 dark:text-primary-300/70">No options found</li>
           }
-        }
-      </ul>
+        </ul>
+      }
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
