@@ -49,4 +49,19 @@ describe("ComboboxComponent", () => {
     expect(component.selectedOption()?.value).toBe("angular");
     expect(input.value).toBe("Angular");
   });
+
+  it("should clear query and selection when clear button is clicked", () => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector("input");
+
+    input.value = "React";
+    input.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+
+    const clearButton: HTMLButtonElement = fixture.nativeElement.querySelector('button[aria-label="Clear combobox input"]');
+    clearButton.click();
+    fixture.detectChanges();
+
+    expect(component.selectedOption()).toBeUndefined();
+    expect(input.value).toBe("");
+  });
 });

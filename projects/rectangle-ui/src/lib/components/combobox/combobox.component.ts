@@ -9,7 +9,7 @@ import {
   signal,
 } from "@angular/core";
 import { NgClass } from "@angular/common";
-import { matArrowDropDown, matArrowDropUp, matCheck } from "@ng-icons/material-icons/baseline";
+import { matArrowDropDown, matArrowDropUp, matCheck, matClose } from "@ng-icons/material-icons/baseline";
 import { IconComponent } from "@/components/icon/icon.component";
 import { ComboboxOption } from "@/components/combobox/combobox.model";
 
@@ -18,6 +18,8 @@ const COMBOBOX_BACKGROUND =
 const COMBOBOX_TEXT = "text-sm font-semibold text-primary-900 placeholder:text-primary-700/70 dark:text-primary-100 dark:placeholder:text-primary-300/70";
 const COMBOBOX_LAYOUT = "w-full rounded-xl px-3 py-2 outline-none";
 const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
+const CLEAR_BUTTON_LAYOUT =
+  "rounded-md p-1 text-primary-700 hover:bg-primary-300/60 dark:text-primary-300 dark:hover:bg-primary-800";
 
 @Component({
   selector: "rui-combobox",
@@ -32,6 +34,12 @@ const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
           [ngClass]="inputClasses"
           (focus)="open()"
           (input)="onInput($event)" />
+
+        @if (query()) {
+          <button type="button" [ngClass]="clearButtonClasses" (click)="clear()" aria-label="Clear combobox input">
+            <rui-icon [icon]="matClose"></rui-icon>
+          </button>
+        }
 
         <button type="button" class="rounded-md p-1" (click)="toggleExpanded()" aria-label="Toggle options">
           <rui-icon class="scale-110" [icon]="isExpanded() ? matArrowDropUp : matArrowDropDown"></rui-icon>
@@ -79,6 +87,7 @@ export class ComboboxComponent {
   ];
 
   protected readonly inputClasses: string[] = ["w-full bg-transparent outline-none"];
+  protected readonly clearButtonClasses: string[] = [CLEAR_BUTTON_LAYOUT];
 
   protected readonly filteredOptions = computed(() => {
     const q = this.query().toLowerCase().trim();
@@ -90,6 +99,7 @@ export class ComboboxComponent {
   protected readonly matArrowDropUp = matArrowDropUp;
   protected readonly matArrowDropDown = matArrowDropDown;
   protected readonly matCheck = matCheck;
+  protected readonly matClose = matClose;
 
   constructor(private readonly elementRef: ElementRef) {}
 
@@ -110,6 +120,12 @@ export class ComboboxComponent {
   select(option: ComboboxOption) {
     this.selectedOption.set(option);
     this.query.set(option.label);
+    this.isExpanded.set(false);
+  }
+
+  clear() {
+    this.query.set("");
+    this.selectedOption.set(undefined);
     this.isExpanded.set(false);
   }
 
