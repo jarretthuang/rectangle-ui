@@ -4,13 +4,19 @@
 @tailwind utilities;
 
 @layer base {
+  html,
   body {
-    @apply block min-h-screen overflow-y-auto overflow-x-hidden font-sans;
+    @apply h-full overflow-hidden;
+    overscroll-behavior: none;
+  }
+
+  body {
+    @apply block font-sans;
     @apply bg-primary-50 text-primary-800 dark:bg-primary-1000 dark:text-primary-300;
   }
 
   app-root {
-    @apply flex flex-col items-center;
+    @apply flex h-dvh flex-col items-center;
   }
 
   h1 {
