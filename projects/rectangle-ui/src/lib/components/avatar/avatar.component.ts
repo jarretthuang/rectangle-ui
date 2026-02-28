@@ -14,7 +14,19 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
-  @Input() src?: string;
+  private _src?: string;
+
+  @Input()
+  set src(value: string | undefined) {
+    if (value !== this._src) {
+      this.hasImageError = false;
+      this._src = value;
+    }
+  }
+
+  get src(): string | undefined {
+    return this._src;
+  }
 
   protected hasImageError = false;
   @Input() alt: string = "avatar";

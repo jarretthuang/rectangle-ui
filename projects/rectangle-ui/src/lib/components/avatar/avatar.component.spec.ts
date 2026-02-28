@@ -25,4 +25,19 @@ describe("AvatarComponent", () => {
     expect(fixture.nativeElement.querySelector("span")).not.toBeNull();
   });
 
+  it("should reset image error state when src changes", () => {
+    component.src = "https://example.com/broken.png";
+    fixture.detectChanges();
+
+    (component as unknown as { onImageError: () => void }).onImageError();
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector("img")).toBeNull();
+
+    component.src = "https://example.com/fixed.png";
+    fixture.detectChanges();
+
+    expect((component as unknown as { hasImageError: boolean }).hasImageError).toBeFalse();
+  });
+
+
 });
