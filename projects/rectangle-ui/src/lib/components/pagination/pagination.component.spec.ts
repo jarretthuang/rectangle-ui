@@ -17,4 +17,14 @@ describe("PaginationComponent", () => {
     component.go(3);
     expect(component.pageChange.emit).toHaveBeenCalledWith(3);
   });
+
+  it("should clamp page changes to totalPages", () => {
+    spyOn(component.pageChange, "emit");
+    component.page = 5;
+    component.totalPages = 2;
+
+    component.go(4);
+
+    expect(component.pageChange.emit).toHaveBeenCalledWith(2);
+  });
 });

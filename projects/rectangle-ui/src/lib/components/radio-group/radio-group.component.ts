@@ -2,8 +2,6 @@ import { ChangeDetectionStrategy, Component, Input, model } from "@angular/core"
 
 export type RadioOption = { label: string; value: string };
 
-let nextRadioGroupId = 0;
-
 @Component({
   selector: "rui-radio-group",
   template: `
@@ -14,6 +12,7 @@ let nextRadioGroupId = 0;
           <input
             type="radio"
             [attr.name]="resolvedName"
+            [value]="option.value"
             class="h-4 w-4 accent-primary-500"
             [checked]="value() === option.value"
             (change)="value.set(option.value)" />
@@ -30,9 +29,7 @@ export class RadioGroupComponent {
 
   value = model<string>("");
 
-  protected readonly generatedName = `rui-radio-group-${nextRadioGroupId++}`;
-
-  protected get resolvedName(): string {
-    return this.name?.trim() || this.generatedName;
+  protected get resolvedName(): string | null {
+    return this.name?.trim() || null;
   }
 }

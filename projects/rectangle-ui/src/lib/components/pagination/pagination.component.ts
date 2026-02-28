@@ -29,7 +29,12 @@ export class PaginationComponent {
   @Input() totalPages = 1;
   @Output() pageChange = new EventEmitter<number>();
   go(next: number) {
-    if (next < 1 || next > this.totalPages) return;
-    this.pageChange.emit(next);
+    if (next < 1) return;
+
+    const maxPage = Math.max(1, this.totalPages);
+    const safeNext = Math.min(next, maxPage);
+
+    if (safeNext === this.page) return;
+    this.pageChange.emit(safeNext);
   }
 }

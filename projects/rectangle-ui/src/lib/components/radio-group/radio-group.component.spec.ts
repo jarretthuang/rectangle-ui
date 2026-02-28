@@ -23,18 +23,14 @@ describe("RadioGroupComponent", () => {
     expect(component.value()).toBe("b");
   });
 
-  it("should generate a unique name per component instance by default", () => {
-    const secondFixture = TestBed.createComponent(RadioGroupComponent);
-    secondFixture.componentInstance.options = [{ label: "X", value: "x" }];
-    secondFixture.detectChanges();
+  it("should not set a default native name", () => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector("input[type='radio']");
+    expect(input.getAttribute("name")).toBeNull();
+  });
 
-    const firstInput: HTMLInputElement = fixture.nativeElement.querySelector("input[type='radio']");
-    const secondInput: HTMLInputElement =
-      secondFixture.nativeElement.querySelector("input[type='radio']");
-
-    expect(firstInput.name).toBeTruthy();
-    expect(secondInput.name).toBeTruthy();
-    expect(firstInput.name).not.toBe(secondInput.name);
+  it("should bind option value to native input value", () => {
+    const input: HTMLInputElement = fixture.nativeElement.querySelector("input[type='radio']");
+    expect(input.value).toBe("a");
   });
 
   it("should use provided name when set", () => {
