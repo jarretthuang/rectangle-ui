@@ -12,11 +12,9 @@ import { NgClass } from "@angular/common";
 @Component({
   selector: "app-navbar-list",
   template: `
-    <nav class="flex w-full select-none flex-col gap-2 text-primary-600">
+    <nav class="flex h-full w-full select-none flex-col text-primary-600">
+      <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">Introduction</div>
       <ul class="flex flex-col gap-1 text-sm">
-        <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">
-          Introduction
-        </div>
         <a
           routerLink="{{ readmePage.id }}"
           routerLinkActive="font-semibold text-primary-1000 dark:text-primary-100"
@@ -24,8 +22,8 @@ import { NgClass } from "@angular/common";
           <li class="hover-outline cursor-pointer px-2 py-1">Read me</li>
         </a>
       </ul>
-      <ul class="flex flex-col gap-1 text-sm">
-        <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">Components</div>
+      <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">Components</div>
+      <ul class="flex flex-1 flex-col gap-1 overflow-y-auto text-sm">
         @for (component of allComponents; track component.id) {
           <a
             routerLink="{{ component.id }}"
@@ -43,7 +41,7 @@ import { NgClass } from "@angular/common";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarListComponent {
-  @HostBinding("class") hostClass: string = "w-full";
+  @HostBinding("class") hostClass: string = "w-full h-full";
 
   /**
    * Emits when a component is selected.
