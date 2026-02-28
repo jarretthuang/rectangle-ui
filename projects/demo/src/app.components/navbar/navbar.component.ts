@@ -19,7 +19,7 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
       </div>
       <div
         [@slideUpDown]="isMenuOpen ? 'down' : 'up'"
-        class="fixed flex h-screen w-screen bg-primary-100 pl-5 pr-10 pt-20 dark:bg-primary-1000">
+        class="fixed flex h-screen w-screen bg-primary-100 px-5 pt-20 dark:bg-primary-1000">
         <div class="flex-1">
           <app-navbar-list (selected)="toggleMenu()"></app-navbar-list>
         </div>

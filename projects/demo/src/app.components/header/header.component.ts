@@ -4,7 +4,7 @@ import { NgOptimizedImage } from "@angular/common";
 import { RouterLink } from "@angular/router";
 
 const HEADER_HOST_CLASS =
-  "sticky top-0 z-10 block flex h-14 w-full border-border/40 bg-background/95 shadow backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:shadow-primary-200/10";
+  "sticky top-0 z-10 block flex h-14 w-full border-border/40 bg-primary-50 dark:bg-primary-1000 shadow dark:shadow-primary-200/10";
 
 @Component({
   selector: "app-header",

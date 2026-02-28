@@ -16,7 +16,7 @@
   }
 
   app-root {
-    @apply flex h-dvh flex-col items-center;
+    @apply flex h-dvh w-dvw flex-col items-center overflow-y-auto;
   }
 
   h1 {
