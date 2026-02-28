@@ -49,5 +49,7 @@ export class NavbarListComponent {
   @Output() selected = new EventEmitter<void>();
 
   protected readonly readmePage = readmePage;
-  protected readonly allComponents = allComponentPages;
+  protected readonly allComponents = [...allComponentPages].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
 }
