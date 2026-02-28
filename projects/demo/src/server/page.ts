@@ -1,6 +1,6 @@
 import { Type } from "@angular/core";
 
-export type ComponentVersion = "private" | "prod";
+export type ComponentVersion = "private" | "beta" | "prod";
 
 export type Page = {
   id: string;
@@ -9,7 +9,7 @@ export type Page = {
   componentRef?: Type<unknown>;
   sourceCodeUrl?: string;
   usageCodeUrl?: string;
-  workInProgress?: boolean;
+  version?: ComponentVersion;
 };
 
 export class ComponentPage implements Page {
@@ -17,8 +17,7 @@ export class ComponentPage implements Page {
     public id: string,
     public name: string,
     public componentRef: Type<unknown>,
-    public version: ComponentVersion = "private",
-    public workInProgress: boolean = false
+    public version: ComponentVersion = "private"
   ) {}
 
   get mdUrl(): string {

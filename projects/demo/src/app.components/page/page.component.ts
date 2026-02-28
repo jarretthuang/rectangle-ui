@@ -12,8 +12,8 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
     <div>
       <div class="flex items-center gap-2">
         <h1>{{ component()?.name ?? "404 page not found" }}</h1>
-        @if (component()?.workInProgress) {
-          <rui-icon [icon]="matConstruction" [tooltip]="'WIP'"></rui-icon>
+        @if (component()?.version === "beta") {
+          <rui-icon [icon]="matConstruction" [tooltip]="'WIP (beta)'"></rui-icon>
         }
       </div>
       @if (component()?.mdUrl) {
