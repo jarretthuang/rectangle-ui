@@ -18,7 +18,7 @@ export class ProgressComponent {
   @Input() max: number = 100;
 
   protected get width(): string {
-    if (this.max <= 0) {
+    if (!Number.isFinite(this.value) || !Number.isFinite(this.max) || this.max <= 0) {
       return "0%";
     }
 

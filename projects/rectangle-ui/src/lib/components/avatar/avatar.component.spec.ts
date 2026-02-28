@@ -13,4 +13,16 @@ describe("AvatarComponent", () => {
   it("should render default fallback", () => {
     expect(fixture.nativeElement.textContent).toContain("?");
   });
+
+  it("should render fallback when image fails to load", () => {
+    component.src = "https://example.com/broken.png";
+    fixture.detectChanges();
+
+    (component as unknown as { onImageError: () => void }).onImageError();
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector("img")).toBeNull();
+    expect(fixture.nativeElement.querySelector("span")).not.toBeNull();
+  });
+
 });

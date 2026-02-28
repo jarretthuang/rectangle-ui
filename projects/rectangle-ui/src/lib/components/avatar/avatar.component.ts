@@ -4,8 +4,8 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
   template: `
     <div
       class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-primary-300 bg-primary-200 text-sm font-semibold text-primary-900 dark:border-primary-700 dark:bg-primary-800 dark:text-primary-100">
-      @if (src) {
-        <img [src]="src" [alt]="alt" class="h-full w-full object-cover" />
+      @if (src && !hasImageError) {
+        <img [src]="src" [alt]="alt" class="h-full w-full object-cover" (error)="onImageError()" />
       } @else {
         <span>{{ fallback }}</span>
       }
@@ -15,6 +15,12 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 })
 export class AvatarComponent {
   @Input() src?: string;
+
+  protected hasImageError = false;
   @Input() alt: string = "avatar";
   @Input() fallback: string = "?";
+
+  protected onImageError() {
+    this.hasImageError = true;
+  }
 }
