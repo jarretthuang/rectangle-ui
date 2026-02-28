@@ -29,4 +29,21 @@ describe("ProgressComponent", () => {
 
     expect((component as unknown as { width: string }).width).toBe("0%");
   });
+
+  it("should return 0% when value is NaN", () => {
+    component.value = Number.NaN;
+    component.max = 100;
+    fixture.detectChanges();
+
+    expect((component as unknown as { width: string }).width).toBe("0%");
+  });
+
+  it("should return 0% when max is NaN", () => {
+    component.value = 50;
+    component.max = Number.NaN;
+    fixture.detectChanges();
+
+    expect((component as unknown as { width: string }).width).toBe("0%");
+  });
+
 });
