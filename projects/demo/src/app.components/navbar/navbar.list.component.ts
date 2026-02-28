@@ -13,8 +13,8 @@ import { NgClass } from "@angular/common";
   selector: "app-navbar-list",
   template: `
     <nav class="flex h-full w-full select-none flex-col text-primary-600">
-      <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">Introduction</div>
-      <ul class="flex flex-col gap-1 text-sm">
+      <div class="p-2 text-sm font-bold text-primary-800 dark:text-primary-400">Introduction</div>
+      <ul class="flex flex-col gap-1 px-4 py-1 text-sm">
         <a
           routerLink="{{ readmePage.id }}"
           routerLinkActive="font-semibold text-primary-1000 dark:text-primary-100"
@@ -22,8 +22,8 @@ import { NgClass } from "@angular/common";
           <li class="hover-outline cursor-pointer px-2 py-1">Read me</li>
         </a>
       </ul>
-      <div class="py-2 text-sm font-bold text-primary-800 dark:text-primary-400">Components</div>
-      <ul class="flex flex-1 flex-col gap-1 overflow-y-auto text-sm">
+      <div class="p-2 text-sm font-bold text-primary-800 dark:text-primary-400">Components</div>
+      <ul class="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-1 text-sm">
         @for (component of allComponents; track component.id) {
           <a
             routerLink="{{ component.id }}"

@@ -25,8 +25,7 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
         </div>
       </div>
     </div>
-    <div
-      class="fixed top-14 hidden h-screen w-32 py-12 pl-2 pr-5 md:flex md:h-[calc(100vh-3.5rem)]">
+    <div class="fixed top-14 hidden h-screen w-32 py-12 md:flex md:h-[calc(100vh-3.5rem)]">
       <app-navbar-list></app-navbar-list>
     </div>
   `,
