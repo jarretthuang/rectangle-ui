@@ -26,12 +26,12 @@ import { LabelDemoComponent } from "@/components/label/label.component.demo";
 import { TextareaDemoComponent } from "@/components/textarea/textarea.component.demo";
 
 export const allComponentPages: ComponentPage[] = [
-  new ComponentPage("badge", "Badge", BadgeDemoComponent),
-  new ComponentPage("button", "Button", ButtonDemoComponent),
-  new ComponentPage("combobox", "Combobox", ComboboxDemoComponent),
-  new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent),
-  new ComponentPage("icon", "Icon", IconDemoComponent),
-  new ComponentPage("input", "Input", InputDemoComponent),
+  new ComponentPage("badge", "Badge", BadgeDemoComponent, "prod"),
+  new ComponentPage("button", "Button", ButtonDemoComponent, "prod"),
+  new ComponentPage("combobox", "Combobox", ComboboxDemoComponent, "prod"),
+  new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent, "prod"),
+  new ComponentPage("icon", "Icon", IconDemoComponent, "prod"),
+  new ComponentPage("input", "Input", InputDemoComponent, "prod"),
   new ComponentPage("table", "Table", TableDemoComponent),
   new ComponentPage("pagination", "Pagination", PaginationDemoComponent),
   new ComponentPage("breadcrumb", "Breadcrumb", BreadcrumbDemoComponent),
@@ -53,12 +53,16 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("textarea", "Textarea", TextareaDemoComponent),
 ];
 
+export const prodComponentPages: ComponentPage[] = allComponentPages.filter(
+  (component) => component.version === "prod"
+);
+
 export const readmePage: Page = {
   id: "read-me",
   name: "README",
   mdUrl: "/README.md",
 };
 
-export const allPages: Page[] = [...allComponentPages, readmePage].sort((a, b) =>
+export const mainPages: Page[] = [...prodComponentPages, readmePage].sort((a, b) =>
   a.name.localeCompare(b.name)
 );

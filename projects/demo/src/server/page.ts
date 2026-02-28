@@ -1,5 +1,7 @@
 import { Type } from "@angular/core";
 
+export type ComponentVersion = "private" | "prod";
+
 export type Page = {
   id: string;
   name: string;
@@ -15,6 +17,7 @@ export class ComponentPage implements Page {
     public id: string,
     public name: string,
     public componentRef: Type<unknown>,
+    public version: ComponentVersion = "private",
     public workInProgress: boolean = false
   ) {}
 

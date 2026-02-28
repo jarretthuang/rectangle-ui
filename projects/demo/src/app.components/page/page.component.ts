@@ -2,7 +2,7 @@ import { afterRender, Component, computed, HostBinding, input } from "@angular/c
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
-import { allPages } from "../../server/pages";
+import { mainPages } from "../../server/pages";
 import { IconComponent } from "@/components/icon/icon.component";
 import { matConstruction } from "@ng-icons/material-icons/baseline";
 
@@ -59,7 +59,7 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
 })
 export class PageComponent {
   componentId = input<string>();
-  component = computed(() => allPages.find((component) => component.id === this.componentId()));
+  component = computed(() => mainPages.find((component) => component.id === this.componentId()));
 
   @HostBinding("class") hostClass: string = "flex w-full flex-col gap-8 px-4";
 

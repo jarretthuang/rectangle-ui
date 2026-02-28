@@ -5,7 +5,7 @@ import {
   HostBinding,
   Output,
 } from "@angular/core";
-import { allComponentPages, readmePage } from "../../server/pages";
+import { prodComponentPages, readmePage } from "../../server/pages";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { NgClass } from "@angular/common";
 
@@ -49,7 +49,7 @@ export class NavbarListComponent {
   @Output() selected = new EventEmitter<void>();
 
   protected readonly readmePage = readmePage;
-  protected readonly allComponents = [...allComponentPages].sort((a, b) =>
+  protected readonly allComponents = [...prodComponentPages].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 }
