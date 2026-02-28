@@ -3,9 +3,7 @@ import { TabsComponent } from "./tabs.component";
 @Component({
   selector: "rui-tabs-demo",
   template: `
-    <rui-tabs [tabs]="tabs" [(active)]="active">
-      <p>Selected: {{ active }}</p>
-    </rui-tabs>
+    <rui-tabs [tabs]="tabs" [(active)]="active" />
   `,
   imports: [TabsComponent],
 })

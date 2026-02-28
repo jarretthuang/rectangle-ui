@@ -17,7 +17,6 @@ export type TabItem = { label: string; value: string };
           </button>
         }
       </div>
-      <div class="text-sm text-primary-700 dark:text-primary-300"><ng-content></ng-content></div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

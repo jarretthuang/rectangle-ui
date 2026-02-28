@@ -9,7 +9,7 @@ import { BreadcrumbComponent } from "./breadcrumb.component";
 })
 export class BreadcrumbDemoComponent {
   items = [
-    { label: "Docs", href: "#" },
+    { label: "Home", href: "#" },
     { label: "Components", href: "#" },
     { label: "Breadcrumb" },
   ];
