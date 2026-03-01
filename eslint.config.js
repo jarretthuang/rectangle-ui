@@ -32,6 +32,16 @@ module.exports = tseslint.config(
       ],
       "@typescript-eslint/no-inferrable-types": "off",
       "@typescript-eslint/consistent-type-definitions": "off",
+      "max-len": [
+        "error",
+        {
+          code: 100,
+          ignoreUrls: true,
+          ignoreStrings: true,
+          ignoreTemplateLiterals: true,
+          ignoreRegExpLiterals: true,
+        },
+      ],
     },
   },
   {

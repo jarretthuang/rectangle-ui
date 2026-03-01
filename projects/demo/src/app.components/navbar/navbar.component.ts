@@ -7,9 +7,9 @@ import { NavbarListComponent } from "./navbar.list.component";
 import { slideUpDownAnimation } from "@/utils/animations/slide";
 
 @Component({
-    selector: "app-navbar",
-    animations: [slideUpDownAnimation],
-    template: `
+  selector: "app-navbar",
+  animations: [slideUpDownAnimation],
+  template: `
     <div class="fixed left-0 top-0 z-40 flex h-14 select-none md:hidden">
       <div class="z-50 flex h-14 w-14">
         <rui-icon
@@ -19,18 +19,18 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
       </div>
       <div
         [@slideUpDown]="isMenuOpen ? 'down' : 'up'"
-        class="fixed flex h-screen w-screen bg-primary-100 pl-5 pr-10 pt-20 dark:bg-primary-1000">
+        class="fixed flex h-screen w-screen bg-primary-100 px-5 pt-20 dark:bg-primary-1000">
         <div class="flex-1">
           <app-navbar-list (selected)="toggleMenu()"></app-navbar-list>
         </div>
       </div>
     </div>
-    <div class="fixed top-14 hidden h-screen w-32 py-12 pl-2 pr-5 md:flex md:h-[calc(100vh-3.5rem)]">
+    <div class="fixed top-14 hidden h-screen w-32 py-12 md:flex md:h-[calc(100vh-3.5rem)]">
       <app-navbar-list></app-navbar-list>
     </div>
   `,
-    imports: [RouterLink, RouterLinkActive, IconComponent, NgClass, NavbarListComponent],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [RouterLink, RouterLinkActive, IconComponent, NgClass, NavbarListComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
   protected isMenuOpen: boolean = false;

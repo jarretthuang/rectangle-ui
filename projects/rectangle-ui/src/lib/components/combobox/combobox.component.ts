@@ -11,16 +11,23 @@ import {
   signal,
 } from "@angular/core";
 import { NgClass } from "@angular/common";
-import { matArrowDropDown, matArrowDropUp, matCheck, matClose } from "@ng-icons/material-icons/baseline";
+import {
+  matArrowDropDown,
+  matArrowDropUp,
+  matCheck,
+  matClose,
+} from "@ng-icons/material-icons/baseline";
 import { IconComponent } from "@/components/icon/icon.component";
 import { ComboboxOption } from "@/components/combobox/combobox.model";
 
 const COMBOBOX_BACKGROUND =
   "border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 focus-within:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:focus-within:bg-primary-900/50";
-const COMBOBOX_TEXT = "text-sm font-semibold text-primary-900 placeholder:text-primary-700/70 dark:text-primary-100 dark:placeholder:text-primary-300/70";
+const COMBOBOX_TEXT =
+  "text-sm font-semibold text-primary-900 placeholder:text-primary-700/70 dark:text-primary-100 dark:placeholder:text-primary-300/70";
 const COMBOBOX_LAYOUT = "w-full rounded-xl px-3 py-2 pr-16 outline-none";
 const COMBOBOX_ANIMATION = "transition-colors duration-200 ease-in-out";
-const CONTROLS_LAYOUT = "pointer-events-none absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1";
+const CONTROLS_LAYOUT =
+  "pointer-events-none absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1";
 const ICON_BUTTON_LAYOUT =
   "pointer-events-auto rounded-md p-1 text-primary-700 hover:bg-primary-300/60 dark:text-primary-300 dark:hover:bg-primary-800";
 
@@ -48,13 +55,20 @@ const ICON_BUTTON_LAYOUT =
           <rui-icon [icon]="matClose"></rui-icon>
         </button>
 
-        <button type="button" [ngClass]="iconButtonClasses" (click)="toggleExpanded()" aria-label="Toggle options">
-          <rui-icon class="scale-110" [icon]="isExpanded() ? matArrowDropUp : matArrowDropDown"></rui-icon>
+        <button
+          type="button"
+          [ngClass]="iconButtonClasses"
+          (click)="toggleExpanded()"
+          aria-label="Toggle options">
+          <rui-icon
+            class="scale-110"
+            [icon]="isExpanded() ? matArrowDropUp : matArrowDropDown"></rui-icon>
         </button>
       </div>
 
       @if (isExpanded()) {
-        <ul class="absolute left-0 z-20 mt-1 max-h-60 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 bg-primary-100 dark:border-primary-800 dark:bg-primary-900">
+        <ul
+          class="absolute left-0 z-20 mt-1 max-h-60 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 bg-primary-100 dark:border-primary-800 dark:bg-primary-900">
           @for (option of filteredOptions(); track option.value) {
             <li>
               <button
@@ -68,7 +82,10 @@ const ICON_BUTTON_LAYOUT =
               </button>
             </li>
           } @empty {
-            <li class="px-4 py-2 text-sm font-semibold text-primary-700/70 dark:text-primary-300/70">No options found</li>
+            <li
+              class="px-4 py-2 text-sm font-semibold text-primary-700/70 dark:text-primary-300/70">
+              No options found
+            </li>
           }
         </ul>
       }

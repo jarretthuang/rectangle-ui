@@ -1,0 +1,20 @@
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { TooltipComponent } from "./tooltip.component";
+describe("TooltipComponent", () => {
+  let component: TooltipComponent;
+  let fixture: ComponentFixture<TooltipComponent>;
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({ imports: [TooltipComponent] }).compileComponents();
+    fixture = TestBed.createComponent(TooltipComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+  it("should create", () => expect(component).toBeTruthy());
+  it("should open and close", () => {
+    component.open();
+    const state = (component as unknown as { isOpen: () => boolean }).isOpen;
+    expect(state()).toBeTrue();
+    component.close();
+    expect(state()).toBeFalse();
+  });
+});

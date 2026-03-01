@@ -17,24 +17,15 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "paths": {
-      "@/components/*": [
-        "./projects/rectangle-ui/src/lib/components/*"
-      ],
-      "@/utils/*": [
-        "./projects/utils-lib/src/lib/*"
-      ],
-      "@/pages/*": [
-        "./projects/demo/src/pages/*"
-      ]
+      "@/components/*": ["./projects/rectangle-ui/src/lib/components/*"],
+      "@/utils/*": ["./projects/utils-lib/src/lib/*"],
+      "@/pages/*": ["./projects/demo/src/pages/*"]
     },
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
-},
+    "lib": ["ES2022", "dom"]
+  },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

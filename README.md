@@ -11,6 +11,7 @@ With the recent advancements in Angular, such as [signals](https://angular.dev/g
 Inspired by popular libraries like [shadcn-ui](https://github.com/shadcn-ui/ui) for React, my goal is to develop a suite of Angular UI components that can be effortlessly copied and pasted into any Angular project, with minimal setup or configuration.
 
 ### Dependencies
+
 - `@angular/core`
 - `@angular/common`
 - `@angular/animations`

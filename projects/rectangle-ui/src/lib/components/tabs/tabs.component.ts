@@ -1,0 +1,27 @@
+import { ChangeDetectionStrategy, Component, Input, model } from "@angular/core";
+export type TabItem = { label: string; value: string };
+@Component({
+  selector: "rui-tabs",
+  template: `
+    <div class="space-y-3">
+      <div
+        class="inline-flex rounded-xl border border-primary-300 bg-primary-100 p-1 dark:border-primary-800 dark:bg-primary-900">
+        @for (tab of tabs; track tab.value) {
+          <button
+            type="button"
+            class="rounded-lg px-3 py-1 text-sm font-semibold transition-colors duration-200 ease-in-out hover:bg-primary-200 dark:hover:bg-primary-800"
+            [class.bg-primary-200]="active() === tab.value"
+            [class.dark:bg-primary-800]="active() === tab.value"
+            (click)="active.set(tab.value)">
+            {{ tab.label }}
+          </button>
+        }
+      </div>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class TabsComponent {
+  @Input() tabs: TabItem[] = [];
+  active = model("");
+}

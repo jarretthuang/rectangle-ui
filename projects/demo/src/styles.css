@@ -4,13 +4,19 @@
 @tailwind utilities;
 
 @layer base {
+  html,
   body {
-    @apply min-h-screen block overflow-x-hidden overflow-y-auto font-sans;
-    @apply bg-primary-50 dark:bg-primary-1000 text-primary-800 dark:text-primary-300;
+    @apply h-full overflow-hidden;
+    overscroll-behavior: none;
+  }
+
+  body {
+    @apply block font-sans;
+    @apply bg-primary-50 text-primary-800 dark:bg-primary-1000 dark:text-primary-300;
   }
 
   app-root {
-    @apply flex flex-col items-center;
+    @apply flex h-dvh w-dvw flex-col items-center overflow-y-auto;
   }
 
   h1 {
@@ -30,7 +36,7 @@
   }
 
   p a {
-    @apply underline font-bold hover:opacity-90 active:opacity-90;
+    @apply font-bold underline hover:opacity-90 active:opacity-90;
   }
 
   markdown img {
@@ -42,25 +48,25 @@
   }
 
   markdown ul li {
-    @apply px-2 list-disc list-inside;
+    @apply list-inside list-disc px-2;
   }
 
-  markdown pre[class*=language-] {
-    @apply rounded-lg block max-h-screen overflow-y-auto text-sm;
+  markdown pre[class*="language-"] {
+    @apply block max-h-screen overflow-y-auto rounded-lg text-sm;
   }
 
-  markdown code[class*=language-] {
-    @apply [text-shadow:none] text-sm;
+  markdown code[class*="language-"] {
+    @apply text-sm [text-shadow:none];
   }
 }
 
 @layer utilities {
   .primary-gradient {
-    @apply bg-gradient-to-br dark:from-black dark:to-primary-1000 from-primary-100 to-primary-300;
+    @apply bg-gradient-to-br from-primary-100 to-primary-300 dark:from-black dark:to-primary-1000;
   }
 
   .hover-outline {
-    @apply rounded bg-transparent hover:bg-primary-300 active:bg-primary-300 dark:hover:bg-primary-900 dark:active:bg-primary-900;
+    @apply rounded-lg bg-transparent hover:bg-primary-300 active:bg-primary-300 dark:hover:bg-primary-900 dark:active:bg-primary-900;
     @apply transition-all duration-200 ease-in-out;
   }
 }

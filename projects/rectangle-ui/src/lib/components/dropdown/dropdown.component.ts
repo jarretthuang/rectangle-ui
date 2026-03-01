@@ -18,27 +18,35 @@ import { DropdownItemComponent } from "@/components/dropdown/dropdown.item.compo
 
 const DROPDOWN_BACKGROUND =
   "border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 active:bg-primary-200 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:active:bg-primary-900/50";
-const DROPDOWN_TEXT = "cursor-pointer select-none text-sm font-semibold text-primary-900 dark:text-primary-100";
+const DROPDOWN_TEXT =
+  "cursor-pointer select-none text-sm font-semibold text-primary-900 dark:text-primary-100";
 const DROPDOWN_LAYOUT = "flex w-full items-center justify-between rounded-lg px-2 py-2";
 const DROPDOWN_ANIMATION = "transition-colors duration-200 ease-in-out";
 const EMPTY_OPTION_TEXT = "text-primary-700/70 dark:text-primary-300/70";
 
 @Component({
-    selector: "rui-dropdown",
-    imports: [NgClass, IconComponent],
-    template: `
+  selector: "rui-dropdown",
+  imports: [NgClass, IconComponent],
+  template: `
     <div class="relative w-full">
       <button type="button" [ngClass]="styleClasses" (click)="toggleDropdown()">
         <span class="px-2" [ngClass]="!selectedItem() ? placeholderTextClasses : []">
           {{ selectedItem()?.label ?? placeholder }}
         </span>
-        <rui-icon class="scale-110" [icon]="isExpanded ? matArrowDropUp : matArrowDropDown"></rui-icon>
+        <rui-icon
+          class="scale-110"
+          [icon]="isExpanded ? matArrowDropUp : matArrowDropDown"></rui-icon>
       </button>
       @if (isExpanded) {
-        <ul class="absolute left-0 z-10 mt-1 max-h-60 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 dark:border-primary-800">
+        <ul
+          class="absolute left-0 z-10 mt-1 max-h-60 w-full overflow-y-auto overflow-x-hidden rounded-lg border-[1px] border-primary-300 dark:border-primary-800">
           @if (!required) {
             <li class="list-none">
-              <button type="button" [ngClass]="emptyOptionClasses" (click)="clearSelection()" aria-label="Clear selection">
+              <button
+                type="button"
+                [ngClass]="emptyOptionClasses"
+                (click)="clearSelection()"
+                aria-label="Clear selection">
                 {{ emptyOptionLabel }}
               </button>
             </li>
@@ -48,7 +56,7 @@ const EMPTY_OPTION_TEXT = "text-primary-700/70 dark:text-primary-300/70";
       }
     </div>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownComponent {
   @ContentChildren(DropdownItemComponent) items: QueryList<DropdownItemComponent> | undefined;
@@ -121,7 +129,10 @@ export class DropdownComponent {
     "bg-primary-100 hover:bg-primary-200 dark:bg-primary-900 dark:hover:bg-primary-800",
     EMPTY_OPTION_TEXT,
   ];
-  protected readonly placeholderTextClasses: string[] = ["text-primary-700/70", "dark:text-primary-300/70"];
+  protected readonly placeholderTextClasses: string[] = [
+    "text-primary-700/70",
+    "dark:text-primary-300/70",
+  ];
 
   @HostListener("document:click", ["$event"])
   onDocumentClick(event: MouseEvent) {

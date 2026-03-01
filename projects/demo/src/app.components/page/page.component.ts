@@ -2,18 +2,18 @@ import { afterRender, Component, computed, HostBinding, input } from "@angular/c
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
-import { allPages } from "../../server/pages";
+import { mainPages } from "../../server/pages";
 import { IconComponent } from "@/components/icon/icon.component";
 import { matConstruction } from "@ng-icons/material-icons/baseline";
 
 @Component({
-    selector: "app-page",
-    template: `
+  selector: "app-page",
+  template: `
     <div>
       <div class="flex items-center gap-2">
         <h1>{{ component()?.name ?? "404 page not found" }}</h1>
-        @if (component()?.workInProgress) {
-          <rui-icon [icon]="matConstruction" [tooltip]="'WIP'"></rui-icon>
+        @if (component()?.version === "beta") {
+          <rui-icon [icon]="matConstruction" [tooltip]="'WIP (beta)'"></rui-icon>
         }
       </div>
       @if (component()?.mdUrl) {
@@ -25,7 +25,7 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
       <div>
         <h2>Preview</h2>
         <div
-          class="flex h-60 w-full items-center justify-center rounded-lg border-[1px] border-primary-300 shadow-sm dark:border-primary-800">
+          class="flex h-60 w-full items-center justify-center rounded-lg border-[1px] border-primary-300 p-4 shadow-sm dark:border-primary-800">
           <router-outlet></router-outlet>
         </div>
       </div>
@@ -49,15 +49,17 @@ import { matConstruction } from "@ng-icons/material-icons/baseline";
       Copyright © {{ copyRightYear }}
       <a class="underline" target="_blank" href="https://jhuang.ca">Jarrett Huang</a>
       | MIT License |
-      <a class="underline" target="_blank" href="https://github.com/jarretthuang/rectangle-ui">Github</a>
+      <a class="underline" target="_blank" href="https://github.com/jarretthuang/rectangle-ui">
+        Github
+      </a>
     </div>
   `,
-    providers: [provideMarkdown({ loader: HttpClient })],
-    imports: [MarkdownComponent, RouterOutlet, IconComponent]
+  providers: [provideMarkdown({ loader: HttpClient })],
+  imports: [MarkdownComponent, RouterOutlet, IconComponent],
 })
 export class PageComponent {
   componentId = input<string>();
-  component = computed(() => allPages.find((component) => component.id === this.componentId()));
+  component = computed(() => mainPages.find((component) => component.id === this.componentId()));
 
   @HostBinding("class") hostClass: string = "flex w-full flex-col gap-8 px-4";
 

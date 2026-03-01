@@ -8,15 +8,20 @@ const BADGE_LAYOUT = "flex w-fit rounded-2xl px-3 py-1.5";
 const BADGE_ANIMATION = "transition-colors duration-200 ease-in-out";
 
 @Component({
-    selector: "rui-badge",
-    imports: [NgClass],
-    template: `
+  selector: "rui-badge",
+  imports: [NgClass],
+  template: `
     <div [ngClass]="styleClasses">
       <ng-content></ng-content>
     </div>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeComponent {
-  protected readonly styleClasses: string[] = [BADGE_BACKGROUND, BADGE_TEXT, BADGE_LAYOUT, BADGE_ANIMATION];
+  protected readonly styleClasses: string[] = [
+    BADGE_BACKGROUND,
+    BADGE_TEXT,
+    BADGE_LAYOUT,
+    BADGE_ANIMATION,
+  ];
 }
