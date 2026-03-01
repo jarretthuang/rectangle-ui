@@ -14,11 +14,12 @@ import { ChangeDetectionStrategy, Component, computed, signal } from "@angular/c
         <button
           type="button"
           class="cursor-pointer rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/60"
-          (click)="onLogoTap()"
-          (pointerdown)="onLogoTap()"
+          (pointerdown)="onLogoPointerDown($event)"
+          (pointerup)="onLogoPointerUp()"
+          (pointercancel)="onLogoPointerUp()"
           aria-label="Interactive Rectangle UI logo">
           <svg
-            class="h-40 w-40 transform-gpu transition-transform duration-200 ease-out"
+            class="h-40 w-40 transform-gpu [transform-style:preserve-3d] transition-transform duration-150 ease-out"
             viewBox="40 40 120 120"
             xmlns="http://www.w3.org/2000/svg"
             [style.transform]="logoTransform()"
@@ -49,10 +50,6 @@ import { ChangeDetectionStrategy, Component, computed, signal } from "@angular/c
               ry="10" />
           </svg>
         </button>
-
-        <p class="text-sm font-semibold tracking-wide text-primary-800/80 dark:text-primary-200/80">
-          Touch or click the logo to nudge it.
-        </p>
       </div>
     </div>
   `,
@@ -61,12 +58,15 @@ import { ChangeDetectionStrategy, Component, computed, signal } from "@angular/c
 export class ReadmeHeroComponent {
   private readonly rotateX = signal(0);
   private readonly rotateY = signal(0);
-  private readonly rotateZ = signal(0);
+  private readonly pressDepth = signal(0);
+  private readonly impulseX = signal(0);
+  private readonly impulseY = signal(0);
 
-  protected readonly logoTransform = computed(
-    () =>
-      `perspective(700px) rotateX(${this.rotateX()}deg) rotateY(${this.rotateY()}deg) rotateZ(${this.rotateZ()}deg)`
-  );
+  protected readonly logoTransform = computed(() => {
+    const x = this.rotateX() + this.impulseX();
+    const y = this.rotateY() + this.impulseY();
+    return `perspective(700px) translateZ(${this.pressDepth()}px) rotateX(${x}deg) rotateY(${y}deg)`;
+  });
 
   onPointerMove(event: PointerEvent) {
     const target = event.currentTarget as HTMLElement;
@@ -81,11 +81,25 @@ export class ReadmeHeroComponent {
   onPointerLeave() {
     this.rotateX.set(0);
     this.rotateY.set(0);
-    this.rotateZ.set(0);
+    this.pressDepth.set(0);
+    this.impulseX.set(0);
+    this.impulseY.set(0);
   }
 
-  onLogoTap() {
-    const next = this.rotateZ() === 0 ? 6 : 0;
-    this.rotateZ.set(next);
+  onLogoPointerDown(event: PointerEvent) {
+    const element = event.currentTarget as HTMLElement;
+    const rect = element.getBoundingClientRect();
+    const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+    const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
+
+    this.pressDepth.set(-8);
+    this.impulseX.set(offsetY * -8);
+    this.impulseY.set(offsetX * 8);
+  }
+
+  onLogoPointerUp() {
+    this.pressDepth.set(0);
+    this.impulseX.set(0);
+    this.impulseY.set(0);
   }
 }
