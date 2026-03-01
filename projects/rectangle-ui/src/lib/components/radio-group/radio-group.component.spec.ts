@@ -23,14 +23,14 @@ describe("RadioGroupComponent", () => {
     expect(component.value()).toBe("b");
   });
 
-  it("should set a deterministic fallback native name", () => {
+  it("should set a fallback native name", () => {
     const input: HTMLInputElement = fixture.nativeElement.querySelector("input[type='radio']");
     expect(input.name).toContain("rui-radio-group-");
   });
 
 
 
-  it("should derive same fallback name for identical option sets", () => {
+  it("should generate unique fallback names per component instance", () => {
     const secondFixture = TestBed.createComponent(RadioGroupComponent);
     secondFixture.componentInstance.options = [
       { label: "A", value: "a" },
@@ -41,7 +41,7 @@ describe("RadioGroupComponent", () => {
     const firstInput: HTMLInputElement = fixture.nativeElement.querySelector("input[type='radio']");
     const secondInput: HTMLInputElement = secondFixture.nativeElement.querySelector("input[type='radio']");
 
-    expect(firstInput.name).toBe(secondInput.name);
+    expect(firstInput.name).not.toBe(secondInput.name);
   });
 
   it("should bind option value to native input value", () => {

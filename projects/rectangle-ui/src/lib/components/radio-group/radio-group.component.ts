@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, Input, model } from "@angular/core"
 
 export type RadioOption = { label: string; value: string };
 
+let nextFallbackGroupId = 0;
+
 @Component({
   selector: "rui-radio-group",
   template: `
@@ -29,18 +31,9 @@ export class RadioGroupComponent {
 
   value = model<string>("");
 
+  private readonly fallbackName = `rui-radio-group-${nextFallbackGroupId++}`;
+
   protected get resolvedName(): string {
-    return this.name?.trim() || this.generatedFallbackName;
-  }
-
-  private get generatedFallbackName(): string {
-    const signature = this.options.map((option) => `${option.label}:${option.value}`).join("|");
-    let hash = 0;
-
-    for (let i = 0; i < signature.length; i++) {
-      hash = (hash * 31 + signature.charCodeAt(i)) >>> 0;
-    }
-
-    return `rui-radio-group-${hash.toString(36) || "default"}`;
+    return this.name?.trim() || this.fallbackName;
   }
 }
