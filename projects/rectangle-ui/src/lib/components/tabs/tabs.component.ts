@@ -5,7 +5,7 @@ export type TabItem = { label: string; value: string };
   template: `
     <div class="space-y-3">
       <div
-        class="inline-flex rounded-xl border border-primary-300 bg-primary-100 p-1 dark:border-primary-800 dark:bg-primary-900">
+        class="inline-flex gap-1 rounded-xl border border-primary-300 bg-primary-100 p-1 dark:border-primary-800 dark:bg-primary-900">
         @for (tab of tabs; track tab.value) {
           <button
             type="button"
