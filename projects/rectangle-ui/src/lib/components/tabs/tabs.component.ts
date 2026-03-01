@@ -9,7 +9,7 @@ export type TabItem = { label: string; value: string };
         @for (tab of tabs; track tab.value) {
           <button
             type="button"
-            class="rounded-lg px-3 py-1 text-sm font-semibold"
+            class="rounded-lg px-3 py-1 text-sm font-semibold transition-colors duration-200 ease-in-out hover:bg-primary-200 dark:hover:bg-primary-800"
             [class.bg-primary-200]="active() === tab.value"
             [class.dark:bg-primary-800]="active() === tab.value"
             (click)="active.set(tab.value)">
