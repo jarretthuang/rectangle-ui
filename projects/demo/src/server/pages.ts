@@ -39,7 +39,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("accordion", "Accordion", AccordionDemoComponent),
   new ComponentPage("dialog", "Dialog", DialogDemoComponent),
   new ComponentPage("popover", "Popover", PopoverDemoComponent),
-  new ComponentPage("tooltip", "Tooltip", TooltipDemoComponent),
+  new ComponentPage("tooltip", "Tooltip", TooltipDemoComponent, "prod"),
   new ComponentPage("avatar", "Avatar", AvatarDemoComponent),
   new ComponentPage("alert", "Alert", AlertDemoComponent),
   new ComponentPage("card", "Card", CardDemoComponent),
