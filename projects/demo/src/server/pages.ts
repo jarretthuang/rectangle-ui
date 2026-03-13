@@ -50,7 +50,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("skeleton", "Skeleton", SkeletonDemoComponent),
   new ComponentPage("separator", "Separator", SeparatorDemoComponent),
   new ComponentPage("label", "Label", LabelDemoComponent),
-  new ComponentPage("textarea", "Textarea", TextareaDemoComponent),
+  new ComponentPage("textarea", "Textarea", TextareaDemoComponent, "prod"),
 ];
 
 export const prodComponentPages: ComponentPage[] = allComponentPages.filter(
