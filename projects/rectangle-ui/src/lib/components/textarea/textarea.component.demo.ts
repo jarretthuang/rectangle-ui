@@ -3,7 +3,6 @@ import { TextareaComponent } from "./textarea.component";
 
 @Component({
   selector: "rui-textarea-demo",
-  host: { class: "self-start" },
   template: `
     <div class="w-full max-w-md">
       <rui-textarea placeholder="Share your thoughts" [(value)]="note"></rui-textarea>
