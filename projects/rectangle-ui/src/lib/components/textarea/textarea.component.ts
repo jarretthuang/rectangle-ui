@@ -5,7 +5,7 @@ const TEXTAREA_BACKGROUND =
   "border-[1px] border-primary-400 bg-primary-100 hover:bg-primary-200 focus:bg-primary-200 disabled:cursor-not-allowed disabled:opacity-60 dark:border-primary-800 dark:bg-primary-900 dark:hover:bg-primary-900/50 dark:focus:bg-primary-900/50";
 const TEXTAREA_TEXT =
   "text-sm font-semibold text-primary-900 placeholder:text-primary-700/70 dark:text-primary-100 dark:placeholder:text-primary-300/70";
-const TEXTAREA_LAYOUT = "w-full min-h-24 rounded-xl px-3 py-2 outline-none";
+const TEXTAREA_LAYOUT = "w-full min-h-24 max-h-80 resize-y rounded-xl px-3 py-2 outline-none";
 const TEXTAREA_ANIMATION = "transition-colors duration-200 ease-in-out";
 
 @Component({

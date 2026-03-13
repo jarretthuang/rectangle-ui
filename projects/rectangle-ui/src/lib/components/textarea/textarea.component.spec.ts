@@ -17,4 +17,11 @@ describe("TextareaComponent", () => {
     textarea.dispatchEvent(new Event("input"));
     expect(component.value()).toBe("hello");
   });
+
+  it("should keep textarea resize constrained vertically", () => {
+    const textarea: HTMLTextAreaElement = fixture.nativeElement.querySelector("textarea");
+
+    expect(textarea.className).toContain("resize-y");
+    expect(textarea.className).toContain("max-h-80");
+  });
 });
