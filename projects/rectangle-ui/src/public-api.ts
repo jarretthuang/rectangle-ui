@@ -13,3 +13,4 @@ export * from "./lib/components/badge/badge.component";
 export * from "./lib/components/button/button.component";
 export * from "./lib/components/tooltip/tooltip.component";
 export * from "./lib/components/textarea/textarea.component";
+export * from "./lib/components/table/table.component";

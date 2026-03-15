@@ -32,7 +32,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("dropdown", "Dropdown", DropdownDemoComponent, "prod"),
   new ComponentPage("icon", "Icon", IconDemoComponent, "prod"),
   new ComponentPage("input", "Input", InputDemoComponent, "prod"),
-  new ComponentPage("table", "Table", TableDemoComponent),
+  new ComponentPage("table", "Table", TableDemoComponent, "prod"),
   new ComponentPage("pagination", "Pagination", PaginationDemoComponent),
   new ComponentPage("breadcrumb", "Breadcrumb", BreadcrumbDemoComponent, "prod"),
   new ComponentPage("tabs", "Tabs", TabsDemoComponent, "prod"),
