@@ -48,7 +48,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("checkbox", "Checkbox", CheckboxDemoComponent),
   new ComponentPage("progress", "Progress", ProgressDemoComponent),
   new ComponentPage("skeleton", "Skeleton", SkeletonDemoComponent),
-  new ComponentPage("separator", "Separator", SeparatorDemoComponent),
+  new ComponentPage("separator", "Separator", SeparatorDemoComponent, "prod"),
   new ComponentPage("label", "Label", LabelDemoComponent),
   new ComponentPage("textarea", "Textarea", TextareaDemoComponent, "prod"),
 ];
