@@ -22,7 +22,6 @@ import { CheckboxDemoComponent } from "@/components/checkbox/checkbox.component.
 import { ProgressDemoComponent } from "@/components/progress/progress.component.demo";
 import { SkeletonDemoComponent } from "@/components/skeleton/skeleton.component.demo";
 import { SeparatorDemoComponent } from "@/components/separator/separator.component.demo";
-import { LabelDemoComponent } from "@/components/label/label.component.demo";
 import { TextareaDemoComponent } from "@/components/textarea/textarea.component.demo";
 
 export const allComponentPages: ComponentPage[] = [
@@ -49,7 +48,6 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("progress", "Progress", ProgressDemoComponent),
   new ComponentPage("skeleton", "Skeleton", SkeletonDemoComponent),
   new ComponentPage("separator", "Separator", SeparatorDemoComponent, "prod"),
-  new ComponentPage("label", "Label", LabelDemoComponent),
   new ComponentPage("textarea", "Textarea", TextareaDemoComponent, "prod"),
 ];
 
