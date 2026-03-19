@@ -26,5 +26,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Check standalone imports
+        run: npm run lint:standalone-imports
+
       - name: Build
         run: npm run build

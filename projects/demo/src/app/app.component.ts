@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
-import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { RouterOutlet } from "@angular/router";
 import { HeaderComponent } from "../app.components/header/header.component";
-import { PageComponent } from "../app.components/page/page.component";
 import { allComponentPages, readmePage } from "../server/pages";
 import { NavbarComponent } from "../app.components/navbar/navbar.component";
 
@@ -10,10 +9,6 @@ import { NavbarComponent } from "../app.components/navbar/navbar.component";
   imports: [
     RouterOutlet,
     HeaderComponent,
-    HeaderComponent,
-    PageComponent,
-    RouterLink,
-    RouterLinkActive,
     NavbarComponent,
   ],
   template: `

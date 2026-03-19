@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { RouterLink, RouterLinkActive } from "@angular/router";
 import { IconComponent } from "@/components/icon/icon.component";
 import { matMenu, matMenuOpen } from "@ng-icons/material-icons/baseline";
-import { NgClass } from "@angular/common";
 import { NavbarListComponent } from "./navbar.list.component";
 import { slideUpDownAnimation } from "@/utils/animations/slide";
 
@@ -29,7 +27,7 @@ import { slideUpDownAnimation } from "@/utils/animations/slide";
       <app-navbar-list></app-navbar-list>
     </div>
   `,
-  imports: [RouterLink, RouterLinkActive, IconComponent, NgClass, NavbarListComponent],
+  imports: [IconComponent, NavbarListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {

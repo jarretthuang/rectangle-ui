@@ -7,7 +7,6 @@ import {
 } from "@angular/core";
 import { prodComponentPages, readmePage } from "../../server/pages";
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { NgClass } from "@angular/common";
 
 @Component({
   selector: "app-navbar-list",
@@ -37,7 +36,7 @@ import { NgClass } from "@angular/common";
       </ul>
     </nav>
   `,
-  imports: [RouterLink, RouterLinkActive, NgClass],
+  imports: [RouterLink, RouterLinkActive],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarListComponent {
