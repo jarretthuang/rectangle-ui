@@ -14,9 +14,9 @@ import { IconComponent } from "@/components/icon/icon.component";
   template: `
     <div role="alert" [ngClass]="classes">
       <rui-icon class="shrink-0 text-current" [icon]="icon"></rui-icon>
-      <span class="min-w-0 flex-1">
+      <div class="min-w-0 flex-1">
         <ng-content></ng-content>
-      </span>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
