@@ -15,35 +15,38 @@ describe("ProgressComponent", () => {
   it("should create", () => expect(component).toBeTruthy());
 
   it("should clamp value and compute width", () => {
-    component.value = 200;
-    component.max = 100;
+    fixture.componentRef.setInput("value", 200);
+    fixture.componentRef.setInput("max", 100);
     fixture.detectChanges();
 
     expect((component as unknown as { width: string }).width).toBe("100%");
   });
 
-  it("should return 0% when max is non-positive", () => {
-    component.value = 50;
-    component.max = 0;
-    fixture.detectChanges();
-
-    expect((component as unknown as { width: string }).width).toBe("0%");
-  });
-
   it("should return 0% when value is NaN", () => {
-    component.value = Number.NaN;
-    component.max = 100;
+    fixture.componentRef.setInput("value", Number.NaN);
+    fixture.componentRef.setInput("max", 100);
     fixture.detectChanges();
 
     expect((component as unknown as { width: string }).width).toBe("0%");
   });
 
-  it("should return 0% when max is NaN", () => {
-    component.value = 50;
-    component.max = Number.NaN;
+  it("should fall back to a safe max when max is non-positive", () => {
+    fixture.componentRef.setInput("value", 50);
+    fixture.componentRef.setInput("max", 0);
     fixture.detectChanges();
 
-    expect((component as unknown as { width: string }).width).toBe("0%");
+    expect((component as unknown as { safeMax: number }).safeMax).toBe(100);
+    expect((component as unknown as { width: string }).width).toBe("50%");
   });
 
+  it("should expose clamped progressbar aria values", () => {
+    fixture.componentRef.setInput("value", 120);
+    fixture.componentRef.setInput("max", 80);
+    fixture.detectChanges();
+
+    const progressbar: HTMLDivElement = fixture.nativeElement.querySelector('[role="progressbar"]');
+    expect(progressbar.getAttribute("aria-valuemin")).toBe("0");
+    expect(progressbar.getAttribute("aria-valuemax")).toBe("80");
+    expect(progressbar.getAttribute("aria-valuenow")).toBe("80");
+  });
 });

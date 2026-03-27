@@ -16,3 +16,4 @@ export * from "./lib/components/textarea/textarea.component";
 export * from "./lib/components/table/table.component";
 export * from "./lib/components/separator/separator.component";
 export * from "./lib/components/alert/alert.component";
+export * from "./lib/components/progress/progress.component";
