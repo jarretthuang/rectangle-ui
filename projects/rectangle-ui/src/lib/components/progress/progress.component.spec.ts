@@ -49,4 +49,9 @@ describe("ProgressComponent", () => {
     expect(progressbar.getAttribute("aria-valuemax")).toBe("80");
     expect(progressbar.getAttribute("aria-valuenow")).toBe("80");
   });
+
+  it("should render as a full-width block host", () => {
+    expect(fixture.nativeElement.className).toContain("block");
+    expect(fixture.nativeElement.className).toContain("w-full");
+  });
 });

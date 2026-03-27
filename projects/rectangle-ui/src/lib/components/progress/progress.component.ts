@@ -1,5 +1,5 @@
 import { NgStyle } from "@angular/common";
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from "@angular/core";
 
 @Component({
   selector: "rui-progress",
@@ -19,6 +19,8 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressComponent {
+  @HostBinding("class") hostClasses = "block w-full";
+
   @Input() value: number = 0;
   @Input() max: number = 100;
 
