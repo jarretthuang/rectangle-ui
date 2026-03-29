@@ -15,6 +15,7 @@ describe("public-api exports", () => {
       "DropdownItemComponent",
       "IconComponent",
       "InputComponent",
+      "PaginationComponent",
       "SeparatorComponent",
       "TableComponent",
       "TextareaComponent",
