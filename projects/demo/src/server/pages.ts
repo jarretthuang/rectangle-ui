@@ -45,7 +45,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("radio-group", "RadioGroup", RadioGroupDemoComponent),
   new ComponentPage("switch", "Switch", SwitchDemoComponent),
   new ComponentPage("checkbox", "Checkbox", CheckboxDemoComponent),
-  new ComponentPage("progress", "Progress", ProgressDemoComponent),
+  new ComponentPage("progress", "Progress", ProgressDemoComponent, "prod"),
   new ComponentPage("skeleton", "Skeleton", SkeletonDemoComponent),
   new ComponentPage("separator", "Separator", SeparatorDemoComponent, "prod"),
   new ComponentPage("textarea", "Textarea", TextareaDemoComponent, "prod"),

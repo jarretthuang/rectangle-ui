@@ -17,6 +17,7 @@ describe("public-api exports", () => {
       "IconComponent",
       "InputComponent",
       "PaginationComponent",
+      "ProgressComponent",
       "SeparatorComponent",
       "TableComponent",
       "TextareaComponent",
