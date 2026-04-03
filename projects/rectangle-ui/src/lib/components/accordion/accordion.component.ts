@@ -1,6 +1,17 @@
-import { ChangeDetectionStrategy, Component, Input, model } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Injectable, Input, inject, model } from "@angular/core";
 
 export type AccordionItem = { title: string; content: string };
+
+@Injectable({ providedIn: "root" })
+class AccordionIdSequence {
+  private nextId = 0;
+
+  next(): number {
+    const id = this.nextId;
+    this.nextId += 1;
+    return id;
+  }
+}
 
 @Component({
   selector: "rui-accordion",
@@ -37,6 +48,8 @@ export class AccordionComponent {
   @Input() items: AccordionItem[] = [];
   @Input() id?: string;
 
+  private readonly fallbackInstanceId = inject(AccordionIdSequence).next();
+
   openIndex = model<number | -1>(-1);
 
   toggle(i: number) {
@@ -52,7 +65,7 @@ export class AccordionComponent {
   }
 
   private accordionId(): string {
-    return this.id?.trim() || `rui-accordion-${hashAccordionItems(this.items)}`;
+    return this.id?.trim() || `rui-accordion-${this.fallbackInstanceId}-${hashAccordionItems(this.items)}`;
   }
 }
 

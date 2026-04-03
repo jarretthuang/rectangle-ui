@@ -25,7 +25,7 @@ describe("AccordionComponent", () => {
     expect(component.openIndex()).toBe(-1);
   });
 
-  it("should keep stable accessible ids for the same input items", () => {
+  it("should generate unique fallback ids for multiple instances with the same items", () => {
     const otherFixture = TestBed.createComponent(AccordionComponent);
     otherFixture.componentInstance.items = component.items;
     otherFixture.detectChanges();
@@ -35,10 +35,15 @@ describe("AccordionComponent", () => {
     const otherButtons = otherFixture.nativeElement.querySelectorAll("button");
     const otherPanels = otherFixture.nativeElement.querySelectorAll("[role='region']");
 
-    expect(buttons[0].id).toBe(otherButtons[0].id);
-    expect(buttons[1].id).toBe(otherButtons[1].id);
-    expect(panels[0].id).toBe(otherPanels[0].id);
-    expect(panels[1].id).toBe(otherPanels[1].id);
+    expect(buttons[0].id).not.toBe(otherButtons[0].id);
+    expect(buttons[1].id).not.toBe(otherButtons[1].id);
+    expect(panels[0].id).not.toBe(otherPanels[0].id);
+    expect(panels[1].id).not.toBe(otherPanels[1].id);
+
+    expect(buttons[0].getAttribute("aria-controls")).toBe(panels[0].id);
+    expect(otherButtons[0].getAttribute("aria-controls")).toBe(otherPanels[0].id);
+    expect(panels[0].getAttribute("aria-labelledby")).toBe(buttons[0].id);
+    expect(otherPanels[0].getAttribute("aria-labelledby")).toBe(otherButtons[0].id);
   });
 
   it("should wire accessible trigger and panel attributes for collapsed and expanded items", () => {
