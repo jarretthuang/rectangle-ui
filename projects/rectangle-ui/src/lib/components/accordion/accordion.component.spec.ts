@@ -25,18 +25,35 @@ describe("AccordionComponent", () => {
     expect(component.openIndex()).toBe(-1);
   });
 
-  it("should wire accessible trigger and panel attributes", () => {
+  it("should keep stable accessible ids for the same input items", () => {
+    const otherFixture = TestBed.createComponent(AccordionComponent);
+    otherFixture.componentInstance.items = component.items;
+    otherFixture.detectChanges();
+
     const buttons = fixture.nativeElement.querySelectorAll("button");
+    const panels = fixture.nativeElement.querySelectorAll("[role='region']");
+    const otherButtons = otherFixture.nativeElement.querySelectorAll("button");
+    const otherPanels = otherFixture.nativeElement.querySelectorAll("[role='region']");
+
+    expect(buttons[0].id).toBe(otherButtons[0].id);
+    expect(buttons[1].id).toBe(otherButtons[1].id);
+    expect(panels[0].id).toBe(otherPanels[0].id);
+    expect(panels[1].id).toBe(otherPanels[1].id);
+  });
+
+  it("should wire accessible trigger and panel attributes for collapsed and expanded items", () => {
+    const buttons = fixture.nativeElement.querySelectorAll("button");
+    const panels = fixture.nativeElement.querySelectorAll("[role='region']");
 
     expect(buttons[0].getAttribute("aria-expanded")).toBe("false");
+    expect(buttons[0].getAttribute("aria-controls")).toBe(panels[0].id);
+    expect(panels[0].getAttribute("aria-labelledby")).toBe(buttons[0].id);
+    expect(panels[0].hasAttribute("hidden")).toBe(true);
 
     component.toggle(0);
     fixture.detectChanges();
 
-    const panel = fixture.nativeElement.querySelector("[role='region']");
-
     expect(buttons[0].getAttribute("aria-expanded")).toBe("true");
-    expect(buttons[0].getAttribute("aria-controls")).toBe(panel.id);
-    expect(panel.getAttribute("aria-labelledby")).toBe(buttons[0].id);
+    expect(panels[0].hasAttribute("hidden")).toBe(false);
   });
 });
