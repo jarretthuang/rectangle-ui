@@ -1,5 +1,18 @@
-import { ChangeDetectionStrategy, Component, Input, model } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Injectable, Input, inject, model } from "@angular/core";
+
 export type AccordionItem = { title: string; content: string };
+
+@Injectable({ providedIn: "root" })
+class AccordionIdSequence {
+  private nextId = 0;
+
+  next(): number {
+    const id = this.nextId;
+    this.nextId += 1;
+    return id;
+  }
+}
+
 @Component({
   selector: "rui-accordion",
   template: `
@@ -10,15 +23,21 @@ export type AccordionItem = { title: string; content: string };
           <button
             type="button"
             class="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-semibold text-primary-900 dark:text-primary-100"
+            [attr.aria-controls]="contentId(i)"
+            [attr.aria-expanded]="openIndex() === i"
+            [attr.id]="triggerId(i)"
             (click)="toggle(i)">
             {{ item.title }}
-            <span>{{ openIndex() === i ? "−" : "+" }}</span>
+            <span aria-hidden="true">{{ openIndex() === i ? "−" : "+" }}</span>
           </button>
-          @if (openIndex() === i) {
-            <div class="px-3 pb-3 text-sm text-primary-700 dark:text-primary-300">
-              {{ item.content }}
-            </div>
-          }
+          <div
+            class="px-3 pb-3 text-sm text-primary-700 dark:text-primary-300"
+            role="region"
+            [attr.aria-labelledby]="triggerId(i)"
+            [attr.hidden]="openIndex() === i ? null : ''"
+            [attr.id]="contentId(i)">
+            {{ item.content }}
+          </div>
         </div>
       }
     </div>
@@ -27,8 +46,39 @@ export type AccordionItem = { title: string; content: string };
 })
 export class AccordionComponent {
   @Input() items: AccordionItem[] = [];
+  @Input() id?: string;
+
+  private readonly fallbackInstanceId = inject(AccordionIdSequence).next();
+
   openIndex = model<number | -1>(-1);
+
   toggle(i: number) {
     this.openIndex.set(this.openIndex() === i ? -1 : i);
   }
+
+  protected triggerId(i: number): string {
+    return `${this.accordionId()}-trigger-${i}`;
+  }
+
+  protected contentId(i: number): string {
+    return `${this.accordionId()}-content-${i}`;
+  }
+
+  private accordionId(): string {
+    return this.id?.trim() || `rui-accordion-${this.fallbackInstanceId}-${hashAccordionItems(this.items)}`;
+  }
+}
+
+function hashAccordionItems(items: AccordionItem[]): string {
+  let hash = 0;
+
+  for (const item of items) {
+    const value = `${item.title}\u0000${item.content}\u0001`;
+
+    for (let i = 0; i < value.length; i += 1) {
+      hash = (hash * 31 + value.charCodeAt(i)) >>> 0;
+    }
+  }
+
+  return hash.toString(36);
 }

@@ -17,5 +17,6 @@ export * from "./lib/components/table/table.component";
 export * from "./lib/components/pagination/pagination.component";
 export * from "./lib/components/breadcrumb/breadcrumb.component";
 export * from "./lib/components/separator/separator.component";
+export * from "./lib/components/accordion/accordion.component";
 export * from "./lib/components/alert/alert.component";
 export * from "./lib/components/progress/progress.component";

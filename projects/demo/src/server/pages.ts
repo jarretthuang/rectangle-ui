@@ -35,7 +35,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("pagination", "Pagination", PaginationDemoComponent, "prod"),
   new ComponentPage("breadcrumb", "Breadcrumb", BreadcrumbDemoComponent, "prod"),
   new ComponentPage("tabs", "Tabs", TabsDemoComponent, "prod"),
-  new ComponentPage("accordion", "Accordion", AccordionDemoComponent),
+  new ComponentPage("accordion", "Accordion", AccordionDemoComponent, "prod"),
   new ComponentPage("dialog", "Dialog", DialogDemoComponent),
   new ComponentPage("popover", "Popover", PopoverDemoComponent),
   new ComponentPage("tooltip", "Tooltip", TooltipDemoComponent, "prod"),

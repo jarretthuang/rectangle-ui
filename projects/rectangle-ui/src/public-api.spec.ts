@@ -7,6 +7,7 @@ describe("public-api exports", () => {
       .sort();
 
     expect(exportedComponents).toEqual([
+      "AccordionComponent",
       "AlertComponent",
       "BadgeComponent",
       "BreadcrumbComponent",
