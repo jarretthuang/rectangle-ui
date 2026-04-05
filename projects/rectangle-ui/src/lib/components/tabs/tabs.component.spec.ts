@@ -38,12 +38,15 @@ describe("TabsComponent", () => {
   });
 
   it("should support arrow key navigation", () => {
+    const buttons: HTMLButtonElement[] = Array.from(fixture.nativeElement.querySelectorAll("button"));
     const event = new KeyboardEvent("keydown", { key: "ArrowRight" });
 
+    buttons[0].focus();
     fixture.nativeElement.dispatchEvent(event);
     fixture.detectChanges();
 
     expect(component.active()).toBe("usage");
+    expect(document.activeElement).toBe(buttons[1]);
   });
 
   it("should expose tablist semantics", () => {

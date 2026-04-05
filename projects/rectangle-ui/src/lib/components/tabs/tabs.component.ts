@@ -1,12 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   HostListener,
   Injectable,
   Input,
   OnChanges,
   OnInit,
+  QueryList,
   SimpleChanges,
+  ViewChildren,
   inject,
   model,
 } from "@angular/core";
@@ -34,6 +37,7 @@ class TabsIdSequence {
         [attr.aria-label]="ariaLabel">
         @for (tab of tabs; track tab.value; let i = $index) {
           <button
+            #tabButton
             type="button"
             class="rounded-lg px-3 py-1 text-sm font-semibold text-primary-900 transition-colors duration-200 ease-in-out hover:bg-primary-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:text-primary-100 dark:hover:bg-primary-800"
             role="tab"
@@ -58,6 +62,8 @@ export class TabsComponent implements OnChanges, OnInit {
 
   private readonly fallbackInstanceId = inject(TabsIdSequence).next();
 
+  @ViewChildren("tabButton") private readonly tabButtons?: QueryList<ElementRef<HTMLButtonElement>>;
+
   active = model("");
 
   ngOnInit(): void {
@@ -70,7 +76,7 @@ export class TabsComponent implements OnChanges, OnInit {
     }
   }
 
-  activate(index: number): void {
+  activate(index: number, options?: { focus?: boolean }): void {
     const tab = this.tabs[index];
 
     if (!tab) {
@@ -78,6 +84,10 @@ export class TabsComponent implements OnChanges, OnInit {
     }
 
     this.active.set(tab.value);
+
+    if (options?.focus) {
+      this.tabButtons?.get(index)?.nativeElement.focus();
+    }
   }
 
   @HostListener("keydown", ["$event"])
@@ -92,20 +102,20 @@ export class TabsComponent implements OnChanges, OnInit {
       case "ArrowRight":
       case "ArrowDown":
         event.preventDefault();
-        this.activate((selectedIndex + 1) % this.tabs.length);
+        this.activate((selectedIndex + 1) % this.tabs.length, { focus: true });
         break;
       case "ArrowLeft":
       case "ArrowUp":
         event.preventDefault();
-        this.activate((selectedIndex - 1 + this.tabs.length) % this.tabs.length);
+        this.activate((selectedIndex - 1 + this.tabs.length) % this.tabs.length, { focus: true });
         break;
       case "Home":
         event.preventDefault();
-        this.activate(0);
+        this.activate(0, { focus: true });
         break;
       case "End":
         event.preventDefault();
-        this.activate(this.tabs.length - 1);
+        this.activate(this.tabs.length - 1, { focus: true });
         break;
     }
   }
