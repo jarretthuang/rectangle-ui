@@ -21,6 +21,7 @@ describe("public-api exports", () => {
       "ProgressComponent",
       "SeparatorComponent",
       "TableComponent",
+      "TabsComponent",
       "TextareaComponent",
       "TooltipComponent",
     ]);
