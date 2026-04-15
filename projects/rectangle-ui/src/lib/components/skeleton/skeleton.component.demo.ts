@@ -23,5 +23,5 @@ import { SkeletonComponent } from "./skeleton.component";
   imports: [SkeletonComponent],
 })
 export class SkeletonDemoComponent {
-  @HostBinding("class") hostClasses = "block w-full";
+  @HostBinding("class") hostClasses = "flex w-full justify-center";
 }
