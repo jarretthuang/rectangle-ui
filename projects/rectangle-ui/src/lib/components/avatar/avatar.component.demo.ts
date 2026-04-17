@@ -14,12 +14,7 @@ import { AvatarComponent } from "./avatar.component";
 
       <div class="flex flex-col items-center gap-2 text-xs text-primary-700 dark:text-primary-200">
         <rui-avatar fallback="AH"></rui-avatar>
-        <span>Fallback</span>
-      </div>
-
-      <div class="flex flex-col items-center gap-2 text-xs text-primary-700 dark:text-primary-200">
-        <rui-avatar src="/broken-avatar.png" fallback="ER"></rui-avatar>
-        <span>Image error fallback</span>
+        <span>Initials</span>
       </div>
     </div>
   `,
