@@ -6,9 +6,9 @@ import { AvatarComponent } from "./avatar.component";
     <div class="flex flex-wrap items-center gap-4">
       <div class="flex flex-col items-center gap-2 text-xs text-primary-700 dark:text-primary-200">
         <rui-avatar
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
-          alt="Profile photo"
-          fallback="JD"></rui-avatar>
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+          alt="Pikachu avatar"
+          fallback="PK"></rui-avatar>
         <span>Image</span>
       </div>
 
