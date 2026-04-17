@@ -20,5 +20,6 @@ export * from "./lib/components/tabs/tabs.component";
 export * from "./lib/components/separator/separator.component";
 export * from "./lib/components/accordion/accordion.component";
 export * from "./lib/components/alert/alert.component";
+export * from "./lib/components/avatar/avatar.component";
 export * from "./lib/components/progress/progress.component";
 export * from "./lib/components/skeleton/skeleton.component";

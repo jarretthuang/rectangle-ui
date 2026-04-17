@@ -9,6 +9,7 @@ describe("public-api exports", () => {
     expect(exportedComponents).toEqual([
       "AccordionComponent",
       "AlertComponent",
+      "AvatarComponent",
       "BadgeComponent",
       "BreadcrumbComponent",
       "ButtonComponent",
