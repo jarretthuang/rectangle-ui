@@ -39,7 +39,7 @@ export const allComponentPages: ComponentPage[] = [
   new ComponentPage("dialog", "Dialog", DialogDemoComponent),
   new ComponentPage("popover", "Popover", PopoverDemoComponent),
   new ComponentPage("tooltip", "Tooltip", TooltipDemoComponent, "prod"),
-  new ComponentPage("avatar", "Avatar", AvatarDemoComponent),
+  new ComponentPage("avatar", "Avatar", AvatarDemoComponent, "prod"),
   new ComponentPage("alert", "Alert", AlertDemoComponent, "prod"),
   new ComponentPage("card", "Card", CardDemoComponent),
   new ComponentPage("radio-group", "RadioGroup", RadioGroupDemoComponent),

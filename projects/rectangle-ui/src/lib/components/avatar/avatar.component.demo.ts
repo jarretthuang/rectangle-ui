@@ -3,9 +3,16 @@ import { AvatarComponent } from "./avatar.component";
 @Component({
   selector: "rui-avatar-demo",
   template: `
-    <div class="flex items-center gap-3">
-      <rui-avatar fallback="JD"></rui-avatar>
-      <rui-avatar fallback="AH"></rui-avatar>
+    <div class="flex flex-wrap items-center gap-4">
+      <div class="flex flex-col items-center gap-2 text-xs text-primary-700 dark:text-primary-200">
+        <rui-avatar src="/img/sad_pikachu.png" alt="Pikachu avatar" fallback="PK"></rui-avatar>
+        <span>Image</span>
+      </div>
+
+      <div class="flex flex-col items-center gap-2 text-xs text-primary-700 dark:text-primary-200">
+        <rui-avatar fallback="AH"></rui-avatar>
+        <span>Initials</span>
+      </div>
     </div>
   `,
   imports: [AvatarComponent],
