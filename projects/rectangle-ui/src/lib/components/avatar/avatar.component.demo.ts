@@ -5,10 +5,7 @@ import { AvatarComponent } from "./avatar.component";
   template: `
     <div class="flex flex-wrap items-center gap-4">
       <div class="flex flex-col items-center gap-2 text-xs text-primary-700 dark:text-primary-200">
-        <rui-avatar
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-          alt="Pikachu avatar"
-          fallback="PK"></rui-avatar>
+        <rui-avatar src="/img/sad_pikachu.png" alt="Pikachu avatar" fallback="PK"></rui-avatar>
         <span>Image</span>
       </div>
 
