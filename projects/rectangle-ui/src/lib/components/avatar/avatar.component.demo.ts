@@ -5,7 +5,7 @@ import { AvatarComponent } from "./avatar.component";
   template: `
     <div class="flex flex-wrap items-center gap-4">
       <div class="flex flex-col items-center gap-2 text-xs text-primary-700 dark:text-primary-200">
-        <rui-avatar src="/img/sad_pikachu.png" alt="Pikachu avatar" fallback="PK"></rui-avatar>
+        <rui-avatar src="/avatar-demo.svg" alt="Avatar demo illustration" fallback="AD"></rui-avatar>
         <span>Image</span>
       </div>
 
